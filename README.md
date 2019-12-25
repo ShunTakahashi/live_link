@@ -41,10 +41,10 @@
 * 管理者機能
 
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/1WGAH23kbG8F-JX2edgY9RuY7_pK05gXQSUOPUtShJEs/edit#gid=0
+https://docs.google.com/spreadsheets/d/1WGAH23kbG8F-JX2edgY9RuY7_pK05gXQSUOPUtShJEs/edit?usp=sharing
 
 ## テーブル定義
-https://docs.google.com/spreadsheets/d/1HTWQqjKxb6uHIRUMgj6AU-fDKDWaMaF7FVo6PmwNybs/edit#gid=47125614
+https://docs.google.com/spreadsheets/d/1HTWQqjKxb6uHIRUMgj6AU-fDKDWaMaF7FVo6PmwNybs/edit?usp=sharing
 
 ## 画面遷移図/ワイヤーフレーム
 https://xd.adobe.com/view/1d7ea470-2bfd-4db6-680e-e80e3f1021bc-6b4f/
