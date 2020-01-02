@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_01_071427) do
+ActiveRecord::Schema.define(version: 2020_01_01_155053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lives", force: :cascade do |t|
+    t.string "title", null: false
+    t.date "date", null: false
+    t.time "open_time"
+    t.time "start_time"
+    t.time "end_time"
+    t.integer "early_bird_ticket_price", null: false
+    t.integer "tickets_for_today_price", null: false
+    t.string "image"
+    t.string "time_table_image"
+    t.text "remarks"
+    t.integer "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
