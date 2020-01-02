@@ -1,5 +1,5 @@
 class Live < ApplicationRecord
-  validates :title, maximum: 100
+  validates :title, length: {maximum: 100}
   with_options presence: true do
     validates :title
     validates :date
