@@ -25,7 +25,7 @@ class LivesController < ApplicationController
     if @live.save
       redirect_to 'index', notice: "投稿が完了しました。"
     else
-      render new_lives_path
+      render new_life_path
     end
   end
 
