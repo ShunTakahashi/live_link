@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resource :lives
+  resources :lives
 
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
