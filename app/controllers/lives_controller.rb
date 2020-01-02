@@ -23,20 +23,20 @@ class LivesController < ApplicationController
     # @live = current_user.lives.build(live_params)
     @live = Live.new(live_params)
     if @live.save
-      redirect_to lives_path,notice:"投稿が完了しました。"
+      redirect_to lives_path, notice: "投稿が完了しました。"
     else
-      render new_live_path
+      render new_lives_path
     end
   end
 
   def destroy
     @live.destroy
-    redirect_to lives_path,notice: "投稿を削除しました。"
+    redirect_to lives_path, notice: "投稿を削除しました。"
   end
 
   def update
     if @live.update(live_params)
-      redirect_to lives_path,notice: "編集が完了しました"
+      redirect_to lives_path, notice: "編集が完了しました"
     else
       render 'edit'
     end
