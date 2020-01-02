@@ -23,7 +23,7 @@ class LivesController < ApplicationController
     # @live = current_user.lives.build(live_params)
     @live = Live.new(live_params)
     if @live.save
-      redirect_to lives_path, notice: "投稿が完了しました。"
+      redirect_to 'index', notice: "投稿が完了しました。"
     else
       render new_lives_path
     end
