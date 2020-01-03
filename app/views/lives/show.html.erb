@@ -7,32 +7,32 @@
 
 <p>
   <strong>Date:</strong>
-  <%= @live.date %>
+  <%= l(@live.date, format: :default) %>
 </p>
 
 <p>
   <strong>Open Time:</strong>
-  <%= @live.open_time %>
+    <%= l(@live.open_time, format: :time) %>
 </p>
 
 <p>
   <strong>Start Time:</strong>
-  <%= @live.start_time %>
+  <%= l(@live.start_time, format: :time) %>
 </p>
 
 <p>
   <strong>End Time:</strong>
-  <%= @live.end_time %>
+  <%= l(@live.end_time, format: :time) %>
 </p>
 
 <p>
   <strong>Early Bird Ticket Price:</strong>
-  <%= @live.early_bird_ticket_price %>
+  <%= @live.early_bird_ticket_price.to_s(:currency) %>
 </p>
 
 <p>
   <strong>Tickets For Today Price:</strong>
-  <%= @live.tickets_for_today_price %>
+  <%= @live.tickets_for_today_price.to_s(:currency) %>
 </p>
 
 <p>
