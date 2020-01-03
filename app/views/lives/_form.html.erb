@@ -54,11 +54,13 @@
   <div>
     <%= form.label :image %>
     <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   </div>
 
   <div>
     <%= form.label :time_table_image %>
     <%= form.file_field :time_table_image %>
+    <%= form.hidden_field :time_table_image_cache %>
   </div>
 
   <div class="field">
