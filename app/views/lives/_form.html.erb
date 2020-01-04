@@ -28,17 +28,17 @@
 
   <div>
     <%= form.label :start_time %>
-    <%= form.time_select :start_time %>
+    <%= form.time_select :start_time, {minute_step: 10} %>
   </div>
 
   <div>
     <%= form.label :end_time %>
-    <%= form.time_select :end_time %>
+    <%= form.time_select :end_time, {minute_step: 10} %>
   </div>
 
   <div>
     <%= form.label :open_time %>
-    <%= form.time_select :open_time %>
+    <%= form.time_select :open_time, {minute_step: 10} %>
   </div>
 
   <div>
@@ -54,12 +54,14 @@
   <div>
     <%= form.label :image %>
     <%= form.file_field :image %>
+    <%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %>
     <%= form.hidden_field :image_cache %>
   </div>
 
   <div>
     <%= form.label :time_table_image %>
     <%= form.file_field :time_table_image %>
+    <%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %>
     <%= form.hidden_field :time_table_image_cache %>
   </div>
 
