@@ -1,0 +1,81 @@
+<%= form_with(model: @live, local: true) do |form| %>
+  <% if @live.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(live.errors.count, "error") %> prohibited this live from being saved:</h2>
+
+      <ul>
+        <% live.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div>
+    <%= form.label :open_time %>
+    <%= form.time_select :open_time %>
+  </div>
+
+  <div>
+    <%= form.label :start_time %>
+    <%= form.time_select :start_time, {minute_step: 10} %>
+  </div>
+
+  <div>
+    <%= form.label :end_time %>
+    <%= form.time_select :end_time, {minute_step: 10} %>
+  </div>
+
+  <div>
+    <%= form.label :open_time %>
+    <%= form.time_select :open_time, {minute_step: 10} %>
+  </div>
+
+  <div>
+    <%= form.label :early_bird_ticket_price %>
+    <%= form.number_field :early_bird_ticket_price %>
+  </div>
+
+  <div>
+    <%= form.label :tickets_for_today_price %>
+    <%= form.number_field :tickets_for_today_price %>
+  </div>
+
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+  <div>
+    <%= form.label :time_table_image %>
+    <%= form.file_field :time_table_image %>
+    <%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %>
+    <%= form.hidden_field :time_table_image_cache %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remarks %>
+    <%= form.text_area :remarks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
