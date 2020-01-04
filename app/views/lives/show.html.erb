@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @live.title %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= l(@live.date, format: :default) %>
+</p>
+
+<p>
+  <strong>Open Time:</strong>
+    <%= l(@live.open_time, format: :time) %>
+</p>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= l(@live.start_time, format: :time) %>
+</p>
+
+<p>
+  <strong>End Time:</strong>
+  <%= l(@live.end_time, format: :time) %>
+</p>
+
+<p>
+  <strong>Early Bird Ticket Price:</strong>
+  <%= @live.early_bird_ticket_price.to_s(:currency) %>
+</p>
+
+<p>
+  <strong>Tickets For Today Price:</strong>
+  <%= @live.tickets_for_today_price.to_s(:currency) %>
+</p>
+
+<p>
+  <strong>image:</strong>
+  <%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %>
+</p>
+
+<p>
+  <strong>time_table_image:</strong>
+  <%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @live.remarks %>
+</p>
+
+<p>
+  <strong>status:</strong>
+  <%= @live.status %>
+</p>
+
+<%= link_to 'Edit', edit_life_path(@live) %> |
+<%= link_to 'Back', lives_path %>
