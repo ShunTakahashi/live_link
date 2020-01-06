@@ -17,7 +17,7 @@
       <td><%= live.title %></td>
       <td><%= live.date %></td>
       <td><%= link_to 'Show', live %></td>
-      <td><%= link_to 'Edit', edit_life_path(live) %></td>
+      <td><%= link_to 'Edit', edit_live_path(live) %></td>
       <td><%= link_to 'Destroy', live, method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Blog', new_life_path %>
+<%= link_to 'New Blog', new_live_path %>
