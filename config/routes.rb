@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :lives
+  resources :lives, only: :index
+  resources :lives, as: :live, except: :index
 
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
