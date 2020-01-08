@@ -1,29 +1,27 @@
 <p id="notice"><%= notice %></p>
+<div class="live_page">
+  <div class="live_index_image_area">
+  </div>
 
-<h1>Blogs</h1>
 
-<table>
-  <thead>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+  <div class="live_index_page">
+    <h1>ライブ一覧</h1>
 
-  <tbody>
-  <% @lives.each do |live| %>
-    <tr>
-      <td><%= live.title %></td>
-      <td><%= live.date %></td>
-      <td><%= link_to 'Show', live_path(live) %></td>
-      <td><%= link_to 'Edit', edit_live_path(live) %></td>
-      <td><%= link_to 'Destroy', live_path(live), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    <table>
+      <tbody>
+      <% @lives.each do |live| %>
+        <tr>
+          <td><%= l(live.date, format: :default) %></td>
+          <td><%= live.title %></td>
 
-<br>
+          <td><%= link_to 'Show', live_path(live) %></td>
+          <td><%= link_to 'Edit', edit_live_path(live) %></td>
+          <td><%= link_to 'Destroy', live_path(live), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Blog', new_live_path %>
+    <%= link_to 'New Blog', new_live_path %>
+  </div>
+</div>
