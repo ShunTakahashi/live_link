@@ -1,59 +1,71 @@
 <p id="notice"><%= notice %></p>
+<div class="live_page">
+  <div class="live_index_image_area">
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @live.title %>
-</p>
+  <div class="live_show_page">
 
-<p>
-  <strong>Date:</strong>
-  <%= l(@live.date, format: :default) %>
-</p>
+  <table>
 
-<p>
-  <strong>Open Time:</strong>
-    <%= l(@live.open_time, format: :time) %>
-</p>
+    <tr>
+      <th>Title:</th>
+      <td><%= @live.title %></td>
+    </tr>
 
-<p>
-  <strong>Start Time:</strong>
-  <%= l(@live.start_time, format: :time) %>
-</p>
+    <tr>
+      <th>Date:</th>
+      <td><%= l(@live.date, format: :default) %></td>
+    </tr>
 
-<p>
-  <strong>End Time:</strong>
-  <%= l(@live.end_time, format: :time) %>
-</p>
+    <tr>
+      <th>Open Time:</th>
+      <td><%= l(@live.open_time, format: :time) %></td>
+    </tr>
 
-<p>
-  <strong>Early Bird Ticket Price:</strong>
-  <%= @live.early_bird_ticket_price.to_s(:currency) %>
-</p>
+    <tr>
+      <th>Start Time:</th>
+      <td><%= l(@live.start_time, format: :time) %></td>
+    </tr>
 
-<p>
-  <strong>Tickets For Today Price:</strong>
-  <%= @live.tickets_for_today_price.to_s(:currency) %>
-</p>
+    <tr>
+      <th>End Time:</th>
+      <td><%= l(@live.end_time, format: :time) %></td>
+    </tr>
 
-<p>
-  <strong>image:</strong>
-  <%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %>
-</p>
+    <tr>
+      <th>Early Bird Ticket Price:</th>
+      <td><%= @live.early_bird_ticket_price.to_s(:currency) %></td>
+    </tr>
 
-<p>
-  <strong>time_table_image:</strong>
-  <%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %>
-</p>
+    <tr>
+      <th>Tickets For Today Price:</th>
+      <td><%= @live.tickets_for_today_price.to_s(:currency) %></td>
+    </tr>
 
-<p>
-  <strong>Remarks:</strong>
-  <%= @live.remarks %>
-</p>
+    <tr>
+      <th>image:</th>
+      <td><%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %></td>
+    </tr>
 
-<p>
-  <strong>status:</strong>
-  <%= @live.status %>
-</p>
+    <tr>
+      <th>time_table_image:</th>
+      <td><%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %></td>
+    </tr>
 
-<%= link_to 'Edit', edit_live_path(@live) %> |
-<%= link_to 'Back', lives_path %>
+    <tr>
+      <th>Remarks:</th>
+      <td><%= @live.remarks %></td>
+    </tr>
+
+    <tr>
+      <th>status:</th>
+      <td><%= @live.status %></td>
+    </tr>
+
+  </table>
+
+  <%= link_to 'Edit', edit_live_path(@live) %> |
+  <%= link_to 'Back', lives_path %>
+
+  </div>
+</div>
