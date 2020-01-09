@@ -25,3 +25,15 @@
     <%= link_to 'New Blog', new_live_path %>
   </div>
 </div>
+
+
+<p>開発用</p>
+<% if user_signed_in? %>
+  ログインユーザー： <%= current_user.email %>
+  <%= link_to 'アカウント変更', edit_user_registration_path %>
+  <%= link_to "ログアウト", destroy_user_session_path %>
+<% else %>
+  <%= link_to "TOP画面", root_path %>
+  <%= link_to "新規作成", new_user_registration_path %>
+  <%= link_to "ログイン", new_user_session_path %>
+<% end %>
