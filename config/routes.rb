@@ -13,10 +13,5 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  # devise_for :users, controllers: {
-  #   confirmations: 'users/confirmations',
-  #   passwords:     'users/passwords',
-  #   registrations: 'users/registrations',
-  #   sessions:      'users/sessions',
-  # }
+
 end
