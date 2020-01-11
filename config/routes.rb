@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :bands
   resources :lives, only: :index
   resources :lives, as: :live, except: :index
 
