@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'relationships/create'
   get 'relationships/destroy'
   devise_for :users
+  devise_for :bands
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
