@@ -25,5 +25,9 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'users/sessions#destroy'
   end
 
+  devise_scope :band do
+    get '/bands/sign_out' => 'bands/sessions#destroy'
+  end
+
 
 end
