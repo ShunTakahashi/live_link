@@ -21,12 +21,22 @@ Rails.application.routes.draw do
     registrations: 'bands/registrations'
   }
 
+  devise_for :live_houses, controllers: {
+    sessions:      'live_houses/sessions',
+    passwords:     'live_houses/passwords',
+    registrations: 'live_houses/registrations'
+  }
+
   devise_scope :user do
     get '/users/sign_out' => 'users/sessions#destroy'
   end
 
   devise_scope :band do
     get '/bands/sign_out' => 'bands/sessions#destroy'
+  end
+
+  devise_scope :live_house do
+    get '/live_houses/sign_out' => 'live_houses/sessions#destroy'
   end
 
 
