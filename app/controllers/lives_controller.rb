@@ -20,8 +20,7 @@ class LivesController < ApplicationController
   end
 
   def create
-    # @live = current_user.lives.build(live_params)
-    @live = Live.new(live_params)
+    @live = current_band.lives.build(live_params)
     if @live.save
       redirect_to lives_path, notice: "投稿が完了しました。"
     else

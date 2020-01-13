@@ -1,4 +1,5 @@
 class Live < ApplicationRecord
+  belongs_to :band, class_name: "Band"
   mount_uploader :image, ImageUploader
   mount_uploader :time_table_image, ImageUploader
   validates :title, length: {maximum: 100}
