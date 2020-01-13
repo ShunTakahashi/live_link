@@ -49,3 +49,14 @@
   <%= link_to "新規作成", new_band_registration_path %>
   <%= link_to "ログイン", new_band_session_path %>
 <% end %>
+
+<p>live_house開発用</p>
+<% if live_house_signed_in? %>
+  ログインユーザー： <%= current_live_house.email %>
+  <%= link_to 'アカウント変更', edit_live_house_registration_path %>
+  <%= link_to "ログアウト", destroy_live_house_session_path %>
+<% else %>
+  <%= link_to "TOP画面", root_path %>
+  <%= link_to "新規作成", new_live_house_registration_path %>
+  <%= link_to "ログイン", new_live_house_session_path %>
+<% end %>
