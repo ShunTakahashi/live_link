@@ -7,10 +7,26 @@ Rails.application.routes.draw do
 
   get 'relationships/create'
   get 'relationships/destroy'
-  devise_for :users
+  # devise_for :users
+  # devise_for :bands
+  # 
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
+  devise_for :bands, controllers: {
+    sessions:      'bands/sessions',
+    passwords:     'bands/passwords',
+    registrations: 'bands/registrations'
+  }
 
   devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+    get '/users/sign_out' => 'users/sessions#destroy'
+  end
+
+  devise_scope :band do
+    get '/bands/sign_out' => 'bands/sessions#destroy'
   end
 
 

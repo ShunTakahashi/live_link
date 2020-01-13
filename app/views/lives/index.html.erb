@@ -27,7 +27,7 @@
 </div>
 
 
-<p>開発用</p>
+<p>user開発用</p>
 <% if user_signed_in? %>
   ログインユーザー： <%= current_user.email %>
   <%= link_to 'アカウント変更', edit_user_registration_path %>
@@ -36,4 +36,16 @@
   <%= link_to "TOP画面", root_path %>
   <%= link_to "新規作成", new_user_registration_path %>
   <%= link_to "ログイン", new_user_session_path %>
+<% end %>
+
+
+<p>band開発用</p>
+<% if band_signed_in? %>
+  ログインユーザー： <%= current_band.email %>
+  <%= link_to 'アカウント変更', edit_band_registration_path %>
+  <%= link_to "ログアウト", destroy_band_session_path %>
+<% else %>
+  <%= link_to "TOP画面", root_path %>
+  <%= link_to "新規作成", new_band_registration_path %>
+  <%= link_to "ログイン", new_band_session_path %>
 <% end %>

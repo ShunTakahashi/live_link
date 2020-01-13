@@ -1,6 +1,6 @@
 <h1>編集画面</h1>
 
-<%= render partial: "form" ,locals: { lives: @live } %>
+<%= render 'form', live: @live %>
 
 <%=  link_to t('views.show '), @live %>
 <%=  link_to t('views.back '), lives_path %>
