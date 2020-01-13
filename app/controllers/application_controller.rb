@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :ticket_name, :avatar])
     elsif resource_class == Band
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :prefecture, :avatar])
+    else
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :tel, :prefecture, :address])
     end
   end
 end
