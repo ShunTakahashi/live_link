@@ -5,67 +5,73 @@
 
   <div class="live_show_page">
 
-  <table>
+    <table>
 
-    <tr>
-      <th>Title:</th>
-      <td><%= @live.title %></td>
-    </tr>
+      <tr>
+        <th>Title:</th>
+        <td><%= @live.title %></td>
+      </tr>
 
-    <tr>
-      <th>Date:</th>
-      <td><%= l(@live.date, format: :default) %></td>
-    </tr>
+      <tr>
+        <th>Date:</th>
+        <td><%= l(@live.date, format: :default) %></td>
+      </tr>
 
-    <tr>
-      <th>Open Time:</th>
-      <td><%= l(@live.open_time, format: :time) %></td>
-    </tr>
+      <tr>
+        <th>Open Time:</th>
+        <td><%= l(@live.open_time, format: :time) %></td>
+      </tr>
 
-    <tr>
-      <th>Start Time:</th>
-      <td><%= l(@live.start_time, format: :time) %></td>
-    </tr>
+      <tr>
+        <th>Start Time:</th>
+        <td><%= l(@live.start_time, format: :time) %></td>
+      </tr>
 
-    <tr>
-      <th>End Time:</th>
-      <td><%= l(@live.end_time, format: :time) %></td>
-    </tr>
+      <tr>
+        <th>End Time:</th>
+        <td><%= l(@live.end_time, format: :time) %></td>
+      </tr>
 
-    <tr>
-      <th>Early Bird Ticket Price:</th>
-      <td><%= @live.early_bird_ticket_price.to_s(:currency) %></td>
-    </tr>
+      <tr>
+        <th>Early Bird Ticket Price:</th>
+        <td><%= @live.early_bird_ticket_price.to_s(:currency) %></td>
+      </tr>
 
-    <tr>
-      <th>Tickets For Today Price:</th>
-      <td><%= @live.tickets_for_today_price.to_s(:currency) %></td>
-    </tr>
+      <tr>
+        <th>Tickets For Today Price:</th>
+        <td><%= @live.tickets_for_today_price.to_s(:currency) %></td>
+      </tr>
 
-    <tr>
-      <th>image:</th>
-      <td><%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %></td>
-    </tr>
+      <tr>
+        <th>image:</th>
+        <td><%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %></td>
+      </tr>
 
-    <tr>
-      <th>time_table_image:</th>
-      <td><%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %></td>
-    </tr>
+      <tr>
+        <th>time_table_image:</th>
+        <td><%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %></td>
+      </tr>
 
-    <tr>
-      <th>Remarks:</th>
-      <td><%= @live.remarks %></td>
-    </tr>
+      <tr>
+        <th>Remarks:</th>
+        <td><%= @live.remarks %></td>
+      </tr>
 
-    <tr>
-      <th>status:</th>
-      <td><%= @live.status %></td>
-    </tr>
+      <tr>
+        <th>status:</th>
+        <td><%= @live.status %></td>
+      </tr>
 
-  </table>
+    </table>
 
-  <%= link_to 'Edit', edit_live_path(@live) %> |
-  <%= link_to 'Back', lives_path %>
+    <%= link_to 'Edit', edit_live_path(@live) %> |
+    <%= link_to 'Back', lives_path %>
 
   </div>
 </div>
+
+<% if @going_to_live.present? %>
+  <%= link_to 'お気に入り解除する', going_to_live_path(id: @going_to_live.id), method: :delete, class: 'btn btn-danger' %>
+<% else %>
+  <%= link_to 'お気に入りする', going_to_lives_path(live_id: @live.id), method: :post, class: 'btn btn-primary' %>
+<% end %>

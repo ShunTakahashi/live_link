@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :lives, only: :index
   resources :lives, as: :live, except: :index
 
+  resources :going_to_lives, only: [:create, :destroy]
+
   root 'lives#index'
 
 
