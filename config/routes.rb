@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   resources :lives, only: :index
   resources :lives, as: :live, except: :index
 
+  resources :going_to_lives, only: :create
+  resources :going_to_lives, as: :going_to_live, only: :destroy
+  # resources :posts do
+  #   post 'add' => 'favorites#create'
+  #   delete '/add' => 'favorites#destroy'
+  # end
   root 'lives#index'
 
 
@@ -11,19 +17,19 @@ Rails.application.routes.draw do
   # devise_for :bands
   # 
   devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
   devise_for :bands, controllers: {
-    sessions:      'bands/sessions',
-    passwords:     'bands/passwords',
+    sessions: 'bands/sessions',
+    passwords: 'bands/passwords',
     registrations: 'bands/registrations'
   }
 
   devise_for :live_houses, controllers: {
-    sessions:      'live_houses/sessions',
-    passwords:     'live_houses/passwords',
+    sessions: 'live_houses/sessions',
+    passwords: 'live_houses/passwords',
     registrations: 'live_houses/registrations'
   }
 
