@@ -21,7 +21,6 @@
       <% end %>
       </tbody>
     </table>
-
     <%= link_to 'New Blog', new_live_path %>
   </div>
 </div>
@@ -32,6 +31,7 @@
   ログインユーザー： <%= current_user.email %>
   <%= link_to 'アカウント変更', edit_user_registration_path %>
   <%= link_to "ログアウト", destroy_user_session_path %>
+  <%= link_to "マイページ", user_path(current_user) %>
 <% else %>
   <%= link_to "TOP画面", root_path %>
   <%= link_to "新規作成", new_user_registration_path %>
