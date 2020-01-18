@@ -1,7 +1,7 @@
 class Live < ApplicationRecord
   belongs_to :band, class_name: "Band"
   has_many :going_to_lives, class_name: "GoingToLive", dependent: :destroy
-  has_many :users, through: :going_to_lives
+  has_many :going_to_lives, through: :going_to_lives
   mount_uploader :image, ImageUploader
   mount_uploader :time_table_image, ImageUploader
   validates :title, length: {maximum: 100}
