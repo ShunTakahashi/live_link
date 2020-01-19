@@ -1,3 +1,11 @@
 <h1>Bands#show</h1>
 <p>Find me in app/views/bands/show.html.erb</p>
 <%= @band.name %>
+
+<% if user_signed_in? %>
+  <% if !FollowBand.exists?(user_id: current_user.id, band_id: @band.id) %>
+    <%= link_to 'フォロー', follow_bands_path(band_id: @band.id), method: :post %>
+  <% else %>
+    <%= link_to 'フォロー解除', follow_band_path(id: @band), method: :delete %>
+  <% end %>
+<% end %>
