@@ -1,0 +1,11 @@
+<h1>バンド一覧</h1>
+<table>
+  <tbody>
+  <% @bands.each do |band| %>
+  <tr>
+    <td><%= band.name %></td>
+    <td><%= link_to 'show', band_path(band) %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
