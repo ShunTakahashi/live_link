@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'live_houses/show'
   get 'bands/show'
   root 'lives#index'
   get 'relationships/create'
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
   }
   resources :bands, only: :show
 
-  resources :live_houses, only: :show
+
   devise_scope :live_house do
     get '/live_houses/sign_out' => 'live_houses/sessions#destroy'
   end
@@ -40,11 +41,5 @@ Rails.application.routes.draw do
     passwords: 'live_houses/passwords',
     registrations: 'live_houses/registrations'
   }
-
-
-
-
-
-
-
+  resources :live_houses, only: :show
 end
