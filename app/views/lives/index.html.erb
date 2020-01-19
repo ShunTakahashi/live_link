@@ -56,6 +56,7 @@
   ログインユーザー： <%= current_live_house.email %>
   <%= link_to 'アカウント変更', edit_live_house_registration_path %>
   <%= link_to "ログアウト", destroy_live_house_session_path %>
+  <%= link_to "マイページ", live_house_path(current_live_house) %>
 <% else %>
   <%= link_to "TOP画面", root_path %>
   <%= link_to "新規作成", new_live_house_registration_path %>
