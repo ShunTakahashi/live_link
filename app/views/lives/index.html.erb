@@ -44,6 +44,7 @@
   ログインユーザー： <%= current_band.email %>
   <%= link_to 'アカウント変更', edit_band_registration_path %>
   <%= link_to "ログアウト", destroy_band_session_path %>
+  <%= link_to "マイページ", band_path(current_band) %>
 <% else %>
   <%= link_to "TOP画面", root_path %>
   <%= link_to "新規作成", new_band_registration_path %>
