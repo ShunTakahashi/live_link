@@ -18,6 +18,13 @@
       </tr>
 
       <tr>
+        <th>Act</th>
+        <% @live.act.each do |act| %>
+          <td><%= act.name %></td>
+        <% end %>
+      </tr>
+
+      <tr>
         <th>Open Time:</th>
         <td><%= l(@live.open_time, format: :time) %></td>
       </tr>
