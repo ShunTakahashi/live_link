@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_01_21_113614) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "live_id"
+    t.index ["live_id"], name: "index_acts_on_live_id"
   end
 
   create_table "bands", force: :cascade do |t|
@@ -105,6 +107,7 @@ ActiveRecord::Schema.define(version: 2020_01_21_113614) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "acts", "lives", column: "live_id"
   add_foreign_key "follow_bands", "bands"
   add_foreign_key "follow_bands", "users"
   add_foreign_key "going_to_lives", "lives", column: "live_id"

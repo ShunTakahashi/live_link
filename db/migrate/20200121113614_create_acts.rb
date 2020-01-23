@@ -4,6 +4,7 @@ class CreateActs < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :url
       t.timestamps
+      t.references :live, foreign_key: true
     end
   end
 end
