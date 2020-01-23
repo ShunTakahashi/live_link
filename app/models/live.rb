@@ -1,5 +1,8 @@
 class Live < ApplicationRecord
   belongs_to :band, class_name: "Band"
+  has_many :act
+  accepts_nested_attributes_for :act
+
   has_many :going_to_lives, class_name: "GoingToLive", dependent: :destroy
   has_many :going_to_lives, through: :going_to_lives
   mount_uploader :image, ImageUploader

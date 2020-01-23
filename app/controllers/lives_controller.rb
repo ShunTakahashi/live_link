@@ -13,6 +13,7 @@ class LivesController < ApplicationController
       @live = Live.new(live_params)
     else
       @live = Live.new
+      @live.act.build
     end
   end
 
@@ -52,7 +53,8 @@ class LivesController < ApplicationController
                                  :end_time, :early_bird_ticket_price,
                                  :tickets_for_today_price, :image, :image_cache,
                                  :time_table_image, :time_table_image_cache,
-                                 :remarks, :status)
+                                 :remarks, :status,
+                                 act_attributes: [:name, :url])
   end
 
 end

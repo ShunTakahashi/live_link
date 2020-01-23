@@ -25,6 +25,18 @@
         <td><%= form.date_select :date %></td>
       </tr>
 
+      <%= form.fields_for :act do |m| %>
+        <tr>
+          <th><%= m.label :acts %></th>
+          <td><%= m.text_field :act %></td>
+        </tr>
+
+        <tr>
+          <th><%= m.label :url %></th>
+          <td><%= m.text_field :url %></td>
+        </tr>
+      <% end %>
+
       <tr>
         <th><%= form.label :open_time %></th>
         <td><%= form.time_select :open_time, {minute_step: 10} %></td>
