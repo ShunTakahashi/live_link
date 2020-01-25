@@ -14,6 +14,7 @@ class LivesController < ApplicationController
     else
       @live = Live.new
       @live.act.build
+      @live.place.build
     end
   end
 
@@ -54,7 +55,8 @@ class LivesController < ApplicationController
                                  :tickets_for_today_price, :image, :image_cache,
                                  :time_table_image, :time_table_image_cache,
                                  :remarks, :status,
-                                 act_attributes: [:name, :url])
+                                 act_attributes: [:name, :url],
+                                 place_attributes: [:name, :url])
   end
 
 end
