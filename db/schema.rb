@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_113614) do
+ActiveRecord::Schema.define(version: 2020_01_24_123625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,15 @@ ActiveRecord::Schema.define(version: 2020_01_21_113614) do
     t.index ["band_id"], name: "index_lives_on_band_id"
   end
 
+  create_table "places", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "live_id"
+    t.index ["live_id"], name: "index_places_on_live_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -113,4 +122,5 @@ ActiveRecord::Schema.define(version: 2020_01_21_113614) do
   add_foreign_key "going_to_lives", "lives", column: "live_id"
   add_foreign_key "going_to_lives", "users"
   add_foreign_key "lives", "bands"
+  add_foreign_key "places", "lives", column: "live_id"
 end

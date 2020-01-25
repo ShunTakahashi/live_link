@@ -20,6 +20,18 @@
         <td><%= form.text_field :title %></td>
       </tr>
 
+      <%= form.fields_for :place do |n| %>
+        <tr>
+          <th><%= n.label :place %></th>
+          <td><%= n.text_field :place %></td>
+        </tr>
+
+        <tr>
+          <th><%= n.label :url %></th>
+          <td><%= n.text_field :url %></td>
+        </tr>
+      <% end %>
+
       <tr>
         <th><%= form.label :date %></th>
         <td><%= form.date_select :date %></td>

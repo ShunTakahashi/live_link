@@ -13,6 +13,13 @@
       </tr>
 
       <tr>
+        <th>Place:</th>
+        <% @live.place.each do |place| %>
+        <td><%= place.name %></td>
+        <% end %>
+      </tr>
+
+      <tr>
         <th>Date:</th>
         <td><%= l(@live.date, format: :default) %></td>
       </tr>
