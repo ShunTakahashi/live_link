@@ -5,3 +5,74 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+User.create!(
+  [
+    {
+      email: 'user1@user',
+      password: '0116',
+      name: 'テスト1',
+      ticket_name: 'テスト1',
+    },
+    {
+      email: 'user2@user',
+      password: '0116',
+      name: 'テスト2',
+      ticket_name: 'テスト2'
+    }
+  ]
+)
+
+Band.create!(
+  [
+    {
+      email: 'band1@band',
+      password: '0116',
+      name: 'バンド1',
+      prefecture: '1',
+    },
+    {
+      email: 'band2@band',
+      password: '0116',
+      name: 'バンド2',
+      prefecture: '1',
+    },
+    {
+      email: 'band3@band',
+      password: '0116',
+      name: 'バンド3',
+      prefecture: '1',
+    }
+  ]
+)
+
+LiveHouse.create!(
+  [
+    {
+      email: 'live1@live',
+      password: '0116',
+      name: '渋谷',
+      tel: '1',
+      prefecture: '1',
+      address: 'sample',
+    },
+    {
+      email: 'live2@live',
+      password: '0116',
+      name: '新宿',
+      tel: '1',
+      prefecture: '1',
+      address: 'sample',
+    },
+    {
+      email: 'live3@live',
+      password: '0116',
+      name: '原宿',
+      tel: '1',
+      prefecture: '1',
+      address: 'sample',
+    }
+  ]
+)
+
