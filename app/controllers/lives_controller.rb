@@ -2,7 +2,8 @@ class LivesController < ApplicationController
   before_action :set_live, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lives = Live.all
+    @q = Live.includes(:act, :place).ransack(params[:q])
+    @lives = @q.result.order(created_at: :desc)
   end
 
   def show
