@@ -3,6 +3,19 @@
   <div class="live_index_image_area">
   </div>
 
+  <div>
+    <%= search_form_for @q do |f| %>
+
+      <%= f.label :place %>
+      <%= f.search_field :place_name_cont %>
+
+      <%= f.label :act %>
+      <%= f.search_field :act_name_cont %>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
+
 
   <div class="live_index_page">
     <h1>ライブ一覧</h1>
