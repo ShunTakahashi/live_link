@@ -1,7 +1,8 @@
 class BandsController < ApplicationController
 
   def index
-    @bands = Band.all
+    @q = Band.ransack(params[:q])
+    @bands = @q.result.order(created_at: :desc)
   end
 
   def show
