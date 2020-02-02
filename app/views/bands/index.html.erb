@@ -1,11 +1,16 @@
 <h1>バンド一覧</h1>
-<table>
-  <tbody>
-  <% @bands.each do |band| %>
-  <tr>
-    <td><%= band.name %></td>
-    <td><%= link_to 'show', band_path(band) %></td>
-  </tr>
+
+<div>
+  <%= search_form_for @q do |f| %>
+
+    <%= f.label :name %>
+    <%= f.search_field :name_cont %>
+
+    <%= f.submit %>
   <% end %>
-  </tbody>
-</table>
+</div>
+<div>
+  <% @bands.each do |band| %>
+    <%= link_to band.name, band_path(band) %>
+  <% end %>
+</div>

@@ -10,8 +10,9 @@
     <% end %>
   </div>
 
-  <% @live_houses.each do |live_house| %>
-    <%= link_to live_house.name, live_house_path(live_house) %>
-  <% end %>
-
+  <div>
+    <% @live_houses.each do |live_house| %>
+      <%= link_to live_house.name, live_house_path(live_house) %>
+    <% end %>
+  </div>
 </div>
