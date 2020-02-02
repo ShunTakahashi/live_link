@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   resources :lives, only: :index
   resources :lives, as: :live, except: :index
 
+  resources :live_houses, only: [:index, :show]
+
+  resources :bands, only: [:index, :show]
+
   resources :going_to_lives, only: :create
   resources :going_to_lives, as: :going_to_live, only: :destroy
 
