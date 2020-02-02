@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'live_houses/show'
-  get 'bands/show'
-  root 'lives#index'
+  get 'root/index'
+  # get 'live_houses/show'
+  # get 'bands/show'
+
+  root 'root#index'
   get 'relationships/create'
   get 'relationships/destroy'
   resources :lives, only: :index
