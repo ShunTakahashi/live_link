@@ -8,13 +8,18 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
+<body>
+
 <header class="header">
+  <div class="header_top_link">
+    <%= link_to 'Live Link', root_path, class: 'header_logo' %>
+  </div>
 
 </header>
 
-<body>
 <div class="main_body">
-  <%= yield %>
-</div>
-</body>
-</html>
+  <%=  yield  %>
+  </div>
+
+  </body>
+  </html>
