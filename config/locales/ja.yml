@@ -8,7 +8,13 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
   views:
-
+    user:
+      name: ユーザー名
+      ticket_name: チケット予約名
+    band:
+      name: バンド名
+      email: メールアドレス
+      prefecture: 地域
 
   date:
     abbr_day_names:
