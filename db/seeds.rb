@@ -30,19 +30,19 @@ Band.create!(
       email: 'band1@band',
       password: '0116syun',
       name: 'バンド1',
-      prefecture: '1',
+      prefecture: 1,
     },
     {
       email: 'band2@band',
       password: '0116syun',
       name: 'バンド2',
-      prefecture: '1',
+      prefecture: 1,
     },
     {
       email: 'band3@band',
       password: '0116syun',
       name: 'バンド3',
-      prefecture: '1',
+      prefecture: 1,
     }
   ]
 )
@@ -54,7 +54,7 @@ LiveHouse.create!(
       password: '0116syun',
       name: '渋谷',
       tel: '1',
-      prefecture: '1',
+      prefecture: 1,
       address: 'sample',
     },
     {
@@ -62,7 +62,7 @@ LiveHouse.create!(
       password: '0116syun',
       name: '新宿',
       tel: '1',
-      prefecture: '1',
+      prefecture: 1,
       address: 'sample',
     },
     {
@@ -70,7 +70,7 @@ LiveHouse.create!(
       password: '0116syun',
       name: '原宿',
       tel: '1',
-      prefecture: '1',
+      prefecture: 1,
       address: 'sample',
     }
   ]
