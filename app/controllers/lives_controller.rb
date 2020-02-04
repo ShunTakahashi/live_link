@@ -1,13 +1,12 @@
 class LivesController < ApplicationController
-  before_action :set_live, only: [:show, :edit, :update, :destroy]
+  before_action :set_live, only: %i[show edit update destroy]
 
   def index
     @q = Live.includes(:act, :place).ransack(params[:q])
     @lives = @q.result.order(created_at: :desc)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     if params[:back]
@@ -19,8 +18,7 @@ class LivesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @live = current_band.lives.build(live_params)
@@ -56,8 +54,8 @@ class LivesController < ApplicationController
                                  :tickets_for_today_price, :image, :image_cache,
                                  :time_table_image, :time_table_image_cache,
                                  :remarks, :status,
-                                 act_attributes: [:name, :url],
-                                 place_attributes: [:name, :url])
+                                 act_attributes: %i[name url],
+                                 place_attributes: %i[name url])
   end
 
 end

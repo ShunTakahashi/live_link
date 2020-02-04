@@ -1,0 +1,37 @@
+// Place all the styles related to the root controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.root_image {
+  background-color: #666666;
+  width: 100%;
+  height: 450px;
+}
+
+.root_description {
+  text-align: center;
+}
+
+.root_starting_link, .root_sign_up_link, .root_login_link {
+  display: block;
+  text-align: center;
+}
+
+.root_searching_band, .root_searching_live, .root_searching_live_house,
+.root_sign_up_user, .root_sign_up_band, .root_sign_up_live_house,
+.root_login_user, .root_login_band, .root_login_live_house {
+  width: 15rem;
+  height: 10rem;
+  display: inline-block;
+}
+
+.circle_link {
+  display: inline-block;
+  vertical-align: middle;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: skyblue;
+  text-align: center;
+  line-height: 10rem;
+}
