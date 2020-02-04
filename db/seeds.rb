@@ -47,32 +47,32 @@ Band.create!(
   ]
 )
 
-LiveHouse.create!(
-  [
-    {
-      email: 'live1@live',
-      password: '0116syun',
-      name: '渋谷',
-      tel: '1',
-      prefecture: '1',
-      address: 'sample',
-    },
-    {
-      email: 'live2@live',
-      password: '0116syun',
-      name: '新宿',
-      tel: '1',
-      prefecture: '1',
-      address: 'sample',
-    },
-    {
-      email: 'live3@live',
-      password: '0116syun',
-      name: '原宿',
-      tel: '1',
-      prefecture: '1',
-      address: 'sample',
-    }
-  ]
-)
+# LiveHouse.create!(
+#   [
+#     {
+#       email: 'live1@live',
+#       password: '0116syun',
+#       name: '渋谷',
+#       tel: '1',
+#       prefecture: '1',
+#       address: 'sample',
+#     },
+#     {
+#       email: 'live2@live',
+#       password: '0116syun',
+#       name: '新宿',
+#       tel: '1',
+#       prefecture: '1',
+#       address: 'sample',
+#     },
+#     {
+#       email: 'live3@live',
+#       password: '0116syun',
+#       name: '原宿',
+#       tel: '1',
+#       prefecture: '1',
+#       address: 'sample',
+#     }
+#   ]
+# )
 
