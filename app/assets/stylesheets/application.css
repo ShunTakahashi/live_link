@@ -14,12 +14,10 @@
  *= require_self
  */
 
-
-header {
-  width: 100%;
-  background-color: #2E2F30;
-  height: 50px;
-
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 body {
@@ -27,10 +25,25 @@ body {
   padding: 0;
   background-color: #1b1b1b;
   color: #e2e2e2;
+  min-height: 100%;
 }
 
-.main_body {
 
+header {
+  width: 100%;
+  background-color: #2E2F30;
+  height: 50px;
+}
+
+.header_logo{
+  margin-left: 5%;
+  text-decoration: none;
+  font-size: 2rem;
+  color: #e2e2e2;
+}
+
+
+.main_body {
   padding-left: 5%;
   padding-right: 5%;
 }

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'live_houses/show'
-  get 'bands/show'
-  root 'lives#index'
+  root 'root#index'
+
+  get 'root/index'
+
   get 'relationships/create'
   get 'relationships/destroy'
   resources :lives, only: :index
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   resources :going_to_lives, only: :create
   resources :going_to_lives, as: :going_to_live, only: :destroy
 
-  resources :follow_bands, only: [:create, :destroy]
+  resources :follow_bands, only: %i[create destroy]
 
 
   devise_scope :user do
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
     passwords: 'bands/passwords',
     registrations: 'bands/registrations'
   }
-  resources :bands, only: [:index, :show]
+  resources :bands, only: %i[index show]
 
 
   devise_scope :live_house do
@@ -43,5 +44,5 @@ Rails.application.routes.draw do
     passwords: 'live_houses/passwords',
     registrations: 'live_houses/registrations'
   }
-  resources :live_houses, only: :show
+  resources :live_houses, only: %i[index show]
 end
