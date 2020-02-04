@@ -15,7 +15,8 @@
 
   <div class="field">
     <%= f.label :prefecture %><br/>
-    <%= f.number_field :prefecture, autofocus: true %>
+    <%= f.select :prefecture, Band.prefectures.keys, {prompt: '選択してください'},
+                  class: 'form-control btn btn-info',autofocus: true %>
   </div>
 
   <div class="field">
