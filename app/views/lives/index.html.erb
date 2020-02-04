@@ -6,6 +6,9 @@
   <div>
     <%= search_form_for @q do |f| %>
 
+      <%= f.label :date %>
+      <%= f.date_field :date_eq %>
+
       <%= f.label :place %>
       <%= f.search_field :place_name_cont %>
 
