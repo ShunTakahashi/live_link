@@ -1,7 +1,6 @@
-<h1>Bands#show</h1>
-<p>Find me in app/views/bands/show.html.erb</p>
-<%= @band.name %>
 
+<%= @band.name %>
+<%= @band.prefecture %>
 <% if user_signed_in? %>
   <% if !FollowBand.exists?(user_id: current_user.id, band_id: @band.id) %>
     <%= link_to 'フォロー', follow_bands_path(band_id: @band.id), method: :post %>
