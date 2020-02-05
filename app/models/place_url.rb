@@ -1,0 +1,2 @@
+class PlaceUrl < ApplicationRecord
+end

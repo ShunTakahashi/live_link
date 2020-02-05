@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_04_131416) do
+ActiveRecord::Schema.define(version: 2020_02_05_221611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,13 @@ ActiveRecord::Schema.define(version: 2020_02_04_131416) do
     t.datetime "updated_at", null: false
     t.bigint "band_id"
     t.index ["band_id"], name: "index_lives_on_band_id"
+  end
+
+  create_table "place_urls", force: :cascade do |t|
+    t.integer "place_id"
+    t.integer "live_house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "places", force: :cascade do |t|
