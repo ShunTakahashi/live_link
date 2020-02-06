@@ -1,5 +1,8 @@
 class LiveHouse < ApplicationRecord
 
+  has_many :place_urls
+  has_many :places, through: :place_urls
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
