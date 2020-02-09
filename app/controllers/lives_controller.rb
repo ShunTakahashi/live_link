@@ -1,3 +1,5 @@
+require "live.rb"
+
 class LivesController < ApplicationController
   before_action :set_live, only: %i[show edit update destroy]
 
@@ -6,7 +8,8 @@ class LivesController < ApplicationController
     @lives = @q.result.order(created_at: :desc)
   end
 
-  def show; end
+  def show;
+  end
 
   def new
     if params[:back]
@@ -18,10 +21,19 @@ class LivesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit;
+  end
 
   def create
     @live = current_band.lives.build(live_params)
+    @live.place.each do |place|
+      if LiveHouse.find_by(name: place.name) != nil
+        live_house = LiveHouse.find_by(name: place.name)
+        place.place_urls.build(live_house_id: live_house.id)
+        place.url = live_house_path(live_house.id)
+      end
+    end
+
     if @live.save
       redirect_to lives_path, notice: "投稿が完了しました。"
     else
