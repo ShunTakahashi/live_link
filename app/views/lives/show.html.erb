@@ -15,7 +15,7 @@
       <tr>
         <th>Place:</th>
         <% @live.place.each do |place| %>
-        <td><%= place.name %></td>
+        <td><%= link_to place.name, place.url %></td>
         <% end %>
       </tr>
 
