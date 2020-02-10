@@ -15,7 +15,7 @@
       <tr>
         <th>Place:</th>
         <% @live.place.each do |place| %>
-        <td><%= place.name %></td>
+        <td><%= link_to place.name, place.url %></td>
         <% end %>
       </tr>
 
@@ -27,7 +27,7 @@
       <tr>
         <th>Act</th>
         <% @live.act.each do |act| %>
-          <td><%= act.name %></td>
+          <td><%= link_to act.name, act.url %></td>
         <% end %>
       </tr>
 
