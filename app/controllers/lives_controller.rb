@@ -6,10 +6,10 @@ class LivesController < ApplicationController
   def index
     @q = Live.includes(:act, :place).ransack(params[:q])
     @lives = @q.result.order(created_at: :desc)
+    byebug
   end
 
-  def show;
-  end
+  def show; end
 
   def new
     if params[:back]
@@ -21,8 +21,7 @@ class LivesController < ApplicationController
     end
   end
 
-  def edit;
-  end
+  def edit; end
 
   def create
     @live = current_band.lives.build(live_params)
