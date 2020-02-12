@@ -11,6 +11,7 @@ class Live < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   mount_uploader :time_table_image, ImageUploader
+
   validates :title, length: {maximum: 100}
   with_options presence: true do
     validates :title
