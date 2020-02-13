@@ -6,7 +6,7 @@ class LivesController < ApplicationController
   def index
     @q = Live.includes(:act, :place).ransack(params[:q])
     @lives = @q.result.order(created_at: :desc)
-    byebug
+    # byebug
   end
 
   def show; end
