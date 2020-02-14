@@ -4,6 +4,7 @@ class LivesController < ApplicationController
   def index
     @q = Live.includes(:act, :place).ransack(params[:q])
     @lives = @q.result.order(created_at: :desc)
+    # byebug
   end
 
   def show; end
@@ -22,6 +23,21 @@ class LivesController < ApplicationController
 
   def create
     @live = current_band.lives.build(live_params)
+    @live.place.each do |place|
+      if LiveHouse.find_by(name: place.name) != nil
+        live_house = LiveHouse.find_by(name: place.name)
+        place.place_urls.build(live_house_id: live_house.id)
+        place.url = live_house_path(live_house.id)
+      end
+    end
+
+    @live.act.each do |act|
+      if Band.find_by(name: act.name) != nil
+        band = Band.find_by(name: act.name)
+        band.act_urls.build(band_id: band.id)
+        act.url = band_path(band.id)
+      end
+    end
     if @live.save
       redirect_to lives_path, notice: "投稿が完了しました。"
     else

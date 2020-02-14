@@ -1,4 +1,4 @@
 class ActUrl < ApplicationRecord
-  belongs_to :act
   belongs_to :band
+  belongs_to :act
 end
