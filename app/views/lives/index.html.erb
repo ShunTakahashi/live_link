@@ -9,6 +9,16 @@
       <%= f.label :date %>
       <%= f.date_field :date_eq %>
 
+      <%= f.label :prefecture %>
+
+<!--      "place_live_house_xxx"が正常に機能しているかのチェック-->
+<!--      結果: 機能している-->
+      <%= f.search_field :place_live_house_name_cont %>
+
+<!--      prefectureのみ機能しない-->
+      <%= f.select :place_live_house_prefecture_eq, LiveHouse.prefectures.keys, {prompt: '選択してください'},
+                   class: 'form-control btn btn-info', autofocus: true %>
+
       <%= f.label :place %>
       <%= f.search_field :place_name_cont %>
 
