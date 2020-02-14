@@ -1,5 +1,3 @@
-require "live.rb"
-
 class LivesController < ApplicationController
   before_action :set_live, only: %i[show edit update destroy]
 
@@ -40,7 +38,6 @@ class LivesController < ApplicationController
         act.url = band_path(band.id)
       end
     end
-
     if @live.save
       redirect_to lives_path, notice: "投稿が完了しました。"
     else
