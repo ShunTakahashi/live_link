@@ -47,3 +47,19 @@ header {
   padding-left: 5%;
   padding-right: 5%;
 }
+
+.search_form table{
+  margin: auto;
+}
+
+.search_submit{
+  text-align: center;
+}
+
+.top_title{
+  text-align: center;
+}
+
+.search_form h1{
+  text-align: center;
+}

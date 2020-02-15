@@ -14,8 +14,15 @@ ja:
     band:
       name: バンド名
       email: メールアドレス
+      prefecture: 活動拠点
+    live:
+      act: バンド名
+      place: ライブハウス名
       prefecture: 地域
-
+      date: 日付
+    live_house:
+      name: ライブハウス名
+      prefecture: 地域
   date:
     abbr_day_names:
       - 日
