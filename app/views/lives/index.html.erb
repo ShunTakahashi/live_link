@@ -3,29 +3,33 @@
   <div class="live_index_image_area">
   </div>
 
-  <div>
+  <div class="search_form">
+    <h1>ライブ検索フォーム</h1>
     <%= search_form_for @q do |f| %>
+      <table>
+        <tbody>
+        <tr>
+          <th><%= f.label t('views.live.date') %></th>
+          <td><%= f.date_field :date_eq %></td>
+        </tr>
+        <tr>
+          <th><%= f.label t('views.live.prefecture') %></th>
 
-      <%= f.label :date %>
-      <%= f.date_field :date_eq %>
+        </tr>
+        <tr>
+          <th><%= f.label t('views.live.place') %></th>
+          <td><%= f.search_field :place_name_cont %></td>
+        </tr>
+        <tr>
+          <th><%= f.label t('views.live.act') %></th>
+          <td><%= f.search_field :act_name_cont %></td>
+        </tr>
+        </tbody>
+      </table>
 
-      <%= f.label :prefecture %>
-
-<!--      "place_live_house_xxx"が正常に機能しているかのチェック-->
-<!--      結果: 機能している-->
-      <%= f.search_field :place_live_house_name_cont %>
-
-<!--      prefectureのみ機能しない-->
-      <%= f.select :place_live_house_prefecture_eq, LiveHouse.prefectures.keys, {prompt: '選択してください'},
-                   class: 'form-control btn btn-info', autofocus: true %>
-
-      <%= f.label :place %>
-      <%= f.search_field :place_name_cont %>
-
-      <%= f.label :act %>
-      <%= f.search_field :act_name_cont %>
-
-      <%= f.submit %>
+      <div class="search_submit">
+        <%= f.submit %>
+      </div>
     <% end %>
   </div>
 
