@@ -7,5 +7,7 @@ class BandsController < ApplicationController
 
   def show
     @band = Band.find(params[:id])
+    @follow_bands = @band.band_to_user.count
+    @lives = @band.lives.all
   end
 end
