@@ -14,7 +14,8 @@
         </tr>
         <tr>
           <th><%= f.label t('views.live.prefecture') %></th>
-
+          <td><%= f.select :place_live_house_prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
+                           class: 'form-control btn btn-info', autofocus: true %></td>
         </tr>
         <tr>
           <th><%= f.label t('views.live.place') %></th>
