@@ -1,23 +1,20 @@
 <h1 class="top_title">ユーザーマイページ</h1>
 <div class="user_profile">
-  <div class="user_name">
+  <div class="profile_left">
     <h3>ユーザー名:<%= @user.name %></h3>
     <h4>チケット予約名:<%= @user.ticket_name %></h4>
   </div>
 
-  <div class="user_follow_bands">
+  <div class="profile_rigth">
     <h3>フォローバンド数:<%= link_to @follow_bands, follow_band_page_user_path %></h3>
-    <%# @follow_bands.each do |band| %>
-    <%#= band.name %>
-    <%# end %>
   </div>
 </div>
 
-<div class="my_page_menu_list">
+<div class="profile_menu_list">
 
 </div>
 
-<div class="my_page_content">
+<div class="profile_content">
   <h2>行く予定のライブ</h2>
   <table>
     <tbody>
