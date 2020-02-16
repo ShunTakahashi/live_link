@@ -1,0 +1,13 @@
+<h1 class="top_title">フォローバンド一覧</h1>
+<div class="my_page_content">
+  <table>
+    <tbody>
+    <% @follow_bands.each do |band| %>
+    <tr>
+      <td><%= band.prefecture %></td>
+      <td><%= link_to band.name, band_path(band) %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
