@@ -3,5 +3,5 @@ class Place < ApplicationRecord
 
 
   has_many :place_urls, dependent: :destroy
-  has_many :live_house, through: :place_urls, source: :live_house
+  has_many :place_to_live_houses, through: :place_urls, source: :live_house
 end
