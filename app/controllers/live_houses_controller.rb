@@ -7,5 +7,7 @@ class LiveHousesController < ApplicationController
 
   def show
     @live_house = LiveHouse.find(params[:id])
+    @place_url = @live_house.live_house_to_places.all.pluck(:live_id)
+    @lives = [Live.find(@place_url.first)]
   end
 end
