@@ -23,7 +23,11 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations',
   }
-  resources :users, only: :show
+  resources :users, only: :show do
+    member do
+      get :follow_band_page
+    end
+  end
 
   devise_scope :band do
     get '/bands/sign_out' => 'bands/sessions#destroy'

@@ -32,7 +32,7 @@ body {
 header {
   width: 100%;
   background-color: #2E2F30;
-  height: 50px;
+  height: 3rem;
 }
 
 .header_logo{
@@ -44,8 +44,8 @@ header {
 
 
 .main_body {
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .search_form table{
