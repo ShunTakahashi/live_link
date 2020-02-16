@@ -1,7 +1,7 @@
 class Band < ApplicationRecord
   has_many :lives, class_name: "Live"
   has_many :follow_bands
-  has_many :users, through: :follow_bands, source: :user
+  has_many :band_to_user, through: :follow_bands, source: :user
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
