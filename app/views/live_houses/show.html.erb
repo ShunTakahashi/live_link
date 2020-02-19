@@ -19,14 +19,16 @@
   <h2>ライブスケジュール</h2>
   <table>
     <tbody>
-    <% @lives.each do |live| %>
-      <tr>
-        <td><%= l(live.date, format: :default) %></td>
-        <td><%= link_to live.title, live_path(live) %></td>
-        <% live.place.each do |place| %>
-          <td><%= place.name %></td>
-        <% end %>
-      </tr>
+    <% unless @lives == nil %>
+      <% @lives.each do |live| %>
+        <tr>
+          <td><%= l(live.date, format: :default) %></td>
+          <td><%= link_to live.title, live_path(live) %></td>
+          <% live.place.each do |place| %>
+            <td><%= place.name %></td>
+          <% end %>
+        </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>
