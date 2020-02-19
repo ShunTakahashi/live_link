@@ -1,58 +1,55 @@
 <p id="notice"><%= notice %></p>
 <div class="live_page">
-  <div class="live_index_image_area">
-  </div>
-
   <div class="live_show_page">
 
     <table>
 
       <tr>
-        <th>Title:</th>
+        <th><%= t('views.live.title') %>:</th>
         <td><%= @live.title %></td>
       </tr>
 
       <tr>
-        <th>Place:</th>
+        <th><%= t('views.live.place') %>:</th>
         <% @live.place.each do |place| %>
         <td><%= place.name %></td>
         <% end %>
       </tr>
 
       <tr>
-        <th>Date:</th>
+        <th><%= t('views.live.date') %>:</th>
         <td><%= l(@live.date, format: :default) %></td>
       </tr>
 
       <tr>
-        <th>Act</th>
+        <th><%= t('views.live.act') %>:</th>
         <% @live.act.each do |act| %>
           <td><%= act.name %></td>
         <% end %>
       </tr>
 
       <tr>
-        <th>Open Time:</th>
+        <th><%= t('views.live.open_time') %>:</th>
         <td><%= l(@live.open_time, format: :time) %></td>
       </tr>
 
       <tr>
-        <th>Start Time:</th>
+        <th><%= t('views.live.start_time') %>:</th>
         <td><%= l(@live.start_time, format: :time) %></td>
       </tr>
 
       <tr>
-        <th>End Time:</th>
+        <th><%= t('views.live.end_time') %>:</th>
         <td><%= l(@live.end_time, format: :time) %></td>
       </tr>
 
       <tr>
-        <th>Early Bird Ticket Price:</th>
+        <th><%= t('views.live.early_bird_ticket_price') %>:</th>
         <td><%= @live.early_bird_ticket_price.to_s(:currency) %></td>
       </tr>
 
       <tr>
-        <th>Tickets For Today Price:</th>
+        <th><%= t('views.live.tickets_for_today_price') %>:</th>
         <td><%= @live.tickets_for_today_price.to_s(:currency) %></td>
       </tr>
 
@@ -67,19 +64,13 @@
       </tr>
 
       <tr>
-        <th>Remarks:</th>
+        <th><%= t('views.live.remarks') %>:</th>
         <td><%= @live.remarks %></td>
       </tr>
 
-      <tr>
-        <th>status:</th>
-        <td><%= @live.status %></td>
-      </tr>
-
     </table>
-
-    <%= link_to 'Edit', edit_live_path(@live) %> |
-    <%= link_to 'Back', lives_path %>
+    <br>
+    <%= link_to t('views.back'), :back %>
 
   </div>
 </div>
