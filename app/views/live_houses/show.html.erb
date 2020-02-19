@@ -1,13 +1,13 @@
 <h1 class="top_title">ライブハウスページ</h1>
 <div class="user_profile">
   <div class="profile_left">
-    <h3>ユーザー名:<%= @live_house.name %></h3>
-    <h4>地域:<%= @live_house.prefecture %></h4>
+    <h3><%= t('views.live_house.name') %>:<%= @live_house.name %></h3>
+    <h4><%= t('views.live_house.prefecture') %>:<%= @live_house.prefecture %></h4>
   </div>
 
   <div class="profile_right">
-    <h3>住所:<%= @live_house.address %></h3>
-    <h4>電話番号:<%= @live_house.tel %></h4>
+    <h3><%= t('views.live_house.address') %>:<%= @live_house.address %></h3>
+    <h4><%= t('views.live_house.tel') %>:<%= @live_house.tel %></h4>
   </div>
 </div>
 
@@ -16,7 +16,7 @@
 </div>
 
 <div class="profile_content">
-  <h2>行く予定のライブ</h2>
+  <h2>ライブスケジュール</h2>
   <table>
     <tbody>
     <% @lives.each do |live| %>
@@ -30,4 +30,6 @@
     <% end %>
     </tbody>
   </table>
+  <br>
+  <%= link_to t('views.back'), :back %>
 </div>

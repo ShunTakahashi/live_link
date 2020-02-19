@@ -12,14 +12,27 @@
 
 <header class="header">
   <div class="header_top_link">
-    <%= link_to 'Live Link', root_path, class: 'header_logo' %>
+    <% if user_signed_in? || band_signed_in? || live_house_signed_in? %>
+      <%= link_to 'Live Link', lives_path, class: 'header_logo' %>
+    <% else %>
+      <%= link_to 'Live Link', root_path, class: 'header_logo' %>
+    <% end %>
+  </div>
+  <div class="header_my_page_link">
+    <% if user_signed_in? %>
+      <%= link_to 'My Page', user_path(current_user), class: 'header_my_page' %>
+    <% elsif band_signed_in? %>
+      <%= link_to 'My Page', band_path(current_band), class: 'header_my_page' %>
+    <% elsif live_house_signed_in? %>
+      <%= link_to 'My Page', live_house_path(current_live_house), class: 'header_my_page' %>
+    <% end %>
   </div>
 
 </header>
 
 <div class="main_body">
-  <%=  yield  %>
-  </div>
+  <%= yield %>
+</div>
 
-  </body>
-  </html>
+</body>
+</html>
