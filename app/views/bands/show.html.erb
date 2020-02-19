@@ -29,6 +29,8 @@
     <% end %>
     </tbody>
   </table>
+  <br>
+  <%= link_to t('views.back'), :back %>
 </div>
 <% if user_signed_in? %>
   <% if !FollowBand.exists?(user_id: current_user.id, band_id: @band.id) %>

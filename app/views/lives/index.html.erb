@@ -1,59 +1,57 @@
 <p id="notice"><%= notice %></p>
-<div class="live_page">
-  <div class="live_index_image_area">
-  </div>
-
-  <div class="search_form">
-    <h1>ライブ検索フォーム</h1>
-    <%= search_form_for @q do |f| %>
-      <table>
-        <tbody>
-        <tr>
-          <th><%= f.label t('views.live.date') %></th>
-          <td><%= f.date_field :date_eq %></td>
-        </tr>
-        <tr>
-          <th><%= f.label t('views.live.prefecture') %></th>
-          <td><%= f.select :place_place_to_live_houses_prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
-                           class: 'form-control btn btn-info', autofocus: true %></td>
-        </tr>
-        <tr>
-          <th><%= f.label t('views.live.place') %></th>
-          <td><%= f.search_field :place_name_cont %></td>
-        </tr>
-        <tr>
-          <th><%= f.label t('views.live.act') %></th>
-          <td><%= f.search_field :act_name_cont %></td>
-        </tr>
-        </tbody>
-      </table>
-
-      <div class="search_submit">
-        <%= f.submit %>
-      </div>
-    <% end %>
-  </div>
-
-
-  <div class="live_index_page">
-    <h1>ライブ一覧</h1>
-
+<div class="search_form">
+  <h1>ライブ検索フォーム</h1>
+  <%= search_form_for @q do |f| %>
     <table>
       <tbody>
-      <% @lives.each do |live| %>
-        <tr>
-          <td><%= l(live.date, format: :default) %></td>
-          <td><%= live.title %></td>
-
-          <td><%= link_to 'Show', live_path(live) %></td>
-          <td><%= link_to 'Edit', edit_live_path(live) %></td>
-          <td><%= link_to 'Destroy', live_path(live), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-        </tr>
-      <% end %>
+      <tr>
+        <th><%= f.label t('views.live.date') %></th>
+        <td><%= f.date_field :date_eq %></td>
+      </tr>
+      <tr>
+        <th><%= f.label t('views.live.prefecture') %></th>
+        <td><%= f.select :place_place_to_live_houses_prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
+                         class: 'form-control btn btn-info', autofocus: true %></td>
+      </tr>
+      <tr>
+        <th><%= f.label t('views.live.place') %></th>
+        <td><%= f.search_field :place_name_cont %></td>
+      </tr>
+      <tr>
+        <th><%= f.label t('views.live.act') %></th>
+        <td><%= f.search_field :act_name_cont %></td>
+      </tr>
       </tbody>
     </table>
-    <%= link_to 'New Blog', new_live_path %>
+
+    <div class="search_submit">
+      <%= f.submit %>
+    </div>
+  <% end %>
+  <div class="search_link">
+    <%= link_to "バンドから探す", bands_path %>
+    <%= link_to "ライブハウスから探す", live_houses_path %>
   </div>
+</div>
+
+
+<div class="live_index_page">
+  <h1>ライブ一覧</h1>
+
+  <table>
+    <tbody>
+    <% @lives.each do |live| %>
+      <tr>
+        <td><%= l(live.date, format: :default) %></td>
+        <td><%= link_to live.title, live_path(live) %></td>
+        <% live.place.each do |place| %>
+          <td><%= place.name %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'New Blog', new_live_path %>
 </div>
 
 

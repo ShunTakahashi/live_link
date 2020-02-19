@@ -35,13 +35,31 @@ header {
   height: 3rem;
 }
 
+.header_top_link{
+  width: 50%;
+  float: left;
+}
+
 .header_logo{
-  margin-left: 5%;
+  margin-left: 15%;
   text-decoration: none;
   font-size: 2rem;
   color: #e2e2e2;
+  float: left;
 }
 
+.header_my_page_link{
+  width: 50%;
+  float: right;
+}
+
+.header_my_page{
+  padding-right: 15%;
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #e2e2e2;
+  float: right;
+}
 
 .main_body {
   padding-left: 10%;
@@ -75,6 +93,9 @@ header {
   text-align: center;
 }
 
+.profile_content{
+  text-align: center;
+}
 
 .profile_content table{
   margin: 0 auto;
@@ -82,5 +103,9 @@ header {
 }
 
 .profile_content h2{
+  text-align: center;
+}
+
+.search_link{
   text-align: center;
 }
