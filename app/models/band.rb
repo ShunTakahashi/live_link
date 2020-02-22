@@ -1,14 +1,14 @@
 class Band < ApplicationRecord
-  #association
+  # association
   has_many :lives, class_name: "Live"
   has_many :follow_bands
   has_many :band_to_user, through: :follow_bands, source: :user
 
-  #devise
+  # devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #validates
+  # validates
   include DeviseValidators
   include PrefectureValidators
 
