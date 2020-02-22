@@ -1,10 +1,10 @@
 class LivesController < ApplicationController
-  before_action :set_live, only: %i[show edit update destroy]
+  before_action :set_live, only: %i(show edit update destroy)
+  before_action :authenticate_band!, only: %i(new edit create destory update)
 
   def index
     @q = Live.includes(:act, :place).ransack(params[:q])
     @lives = @q.result.order(created_at: :desc)
-    # byebug
   end
 
   def show; end
