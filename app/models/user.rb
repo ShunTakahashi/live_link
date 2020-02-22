@@ -8,4 +8,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # validates
+  include DeviseValidators
+  validates :ticket_name, presence: true
 end
