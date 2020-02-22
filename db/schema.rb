@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_05_221611) do
+ActiveRecord::Schema.define(version: 2020_02_22_094134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "act_urls", force: :cascade do |t|
+    t.integer "act_id"
+    t.integer "band_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "acts", force: :cascade do |t|
     t.string "name"
@@ -85,7 +92,7 @@ ActiveRecord::Schema.define(version: 2020_02_05_221611) do
     t.string "image"
     t.string "time_table_image"
     t.text "remarks"
-    t.integer "status", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "band_id"
