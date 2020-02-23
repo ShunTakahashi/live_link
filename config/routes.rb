@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   root 'root#index'
 
   get 'root/index'
-
   get 'relationships/create'
   get 'relationships/destroy'
   resources :lives, only: :index
@@ -42,7 +41,7 @@ Rails.application.routes.draw do
   resources :bands, only: %i[index show]
 
 
-  devise_scope :live_house do
+  devise_scope :show do
     get '/live_houses/sign_out' => 'live_houses/sessions#destroy'
   end
   devise_for :live_houses, controllers: {
