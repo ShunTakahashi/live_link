@@ -55,7 +55,6 @@ LiveHouse.create!(
       name: '渋谷',
       tel: '1',
       prefecture: 1,
-      address: 'sample',
     },
     {
       email: 'live2@live',
@@ -63,7 +62,6 @@ LiveHouse.create!(
       name: '新宿',
       tel: '1',
       prefecture: 2,
-      address: 'sample',
     },
     {
       email: 'live3@live',
@@ -71,7 +69,6 @@ LiveHouse.create!(
       name: '原宿',
       tel: '1',
       prefecture: 3,
-      address: 'sample',
     }
   ]
 )
