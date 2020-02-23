@@ -21,13 +21,15 @@
   <div class="field">
     <%= f.label :prefecture %><br/>
     <%= f.select :prefecture, LiveHouse.prefectures.keys, {prompt: '選択してください'},
-                 class: 'form-control btn btn-info',autofocus: true %>
+                 class: 'form-control btn btn-info', autofocus: true %>
   </div>
 
-<!--  <div class="field">-->
-<!--    <%#= f.label :address %><br/>-->
-    <%#= f.text_field :address, autofocus: true %>
-<!--  </div>-->
+  <div class="field">
+    <%= f.fields_for :address do |n| %>
+      <%= n.label :address %><br>
+      <%= n.text_field :address %>
+    <% end %>
+  </div>
 
   <div class="field">
     <%= f.label :password %>

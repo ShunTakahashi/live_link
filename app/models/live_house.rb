@@ -1,5 +1,10 @@
 class LiveHouse < ApplicationRecord
   # association
+  # has_one :address, class_name: "Address"
+
+  has_one :address, inverse_of: :live_house
+  accepts_nested_attributes_for :address
+
   has_many :place_urls
   has_many :live_house_to_places, through: :place_urls, source: :place
 
