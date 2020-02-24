@@ -35,3 +35,33 @@
   <br>
   <%= link_to t('views.back'), :back %>
 </div>
+
+<!--<script>-->
+<!--  $(function initMap() {-->
+
+<!--    var test ={lat: <%= @live_house.address.latitude %>, lng: <%= @live_house.address.longitude %>};-->
+<!--    var map = new google.maps.Map(document.getElementById('map'), {-->
+<!--      zoom: 16,-->
+<!--      center: test-->
+<!--    });-->
+<!--    var transitLayer = new google.maps.TransitLayer();-->
+<!--    transitLayer.setMap(map);-->
+
+<!--    var contentString = '住所：<%= @live_house.address.address %>';-->
+<!--    var infowindow = new google.maps.InfoWindow({-->
+<!--      content: contentString-->
+<!--    });-->
+
+<!--    var marker = new google.maps.Marker({-->
+<!--      position:test,-->
+<!--      map: map,-->
+<!--      title: contentString-->
+<!--    });-->
+
+<!--    marker.addListener('click', function() {-->
+<!--      infowindow.open(map, marker);-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->
+
+<div id="map"></div>
