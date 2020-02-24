@@ -1,0 +1,93 @@
+<p id="notice"><%= notice %></p>
+<div class="search_form">
+  <h1>ライブ検索フォーム</h1>
+  <%= search_form_for @q do |f| %>
+    <table>
+      <tbody>
+      <tr>
+        <th><%= f.label t('views.live.date') %></th>
+        <td><%= f.date_field :date_eq %></td>
+      </tr>
+      <tr>
+        <th><%= f.label t('views.live.prefecture') %></th>
+        <td><%= f.select :place_place_to_live_houses_prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
+                         class: 'form-control btn btn-info', autofocus: true %></td>
+      </tr>
+      <tr>
+        <th><%= f.label t('views.live.place') %></th>
+        <td><%= f.search_field :place_name_cont %></td>
+      </tr>
+      <tr>
+        <th><%= f.label t('views.live.act') %></th>
+        <td><%= f.search_field :act_name_cont %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="search_submit">
+      <%= f.submit %>
+    </div>
+  <% end %>
+  <div class="search_link">
+    <%= link_to "バンドから探す", bands_path %>
+    <%= link_to "ライブハウスから探す", live_houses_path %>
+  </div>
+</div>
+
+
+<div class="live_index_page">
+  <h1>ライブ一覧</h1>
+
+  <table>
+    <tbody>
+    <% @lives.each do |live| %>
+      <tr>
+        <td><%= l(live.date, format: :default) %></td>
+        <td><%= link_to live.title, live_path(live) %></td>
+        <% live.place.each do |place| %>
+          <td><%= place.name %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'New Blog', new_live_path %>
+</div>
+
+
+<p>user開発用</p>
+<% if user_signed_in? %>
+  ログインユーザー： <%= current_user.email %>
+  <%= link_to 'アカウント変更', edit_user_registration_path %>
+  <%= link_to "ログアウト", destroy_user_session_path %>
+  <%= link_to "マイページ", user_path(current_user) %>
+<% else %>
+  <%= link_to "TOP画面", root_path %>
+  <%= link_to "新規作成", new_user_registration_path %>
+  <%= link_to "ログイン", new_user_session_path %>
+<% end %>
+
+
+<p>band開発用</p>
+<% if band_signed_in? %>
+  ログインユーザー： <%= current_band.email %>
+  <%= link_to 'アカウント変更', edit_band_registration_path %>
+  <%= link_to "ログアウト", destroy_band_session_path %>
+  <%= link_to "マイページ", band_path(current_band) %>
+<% else %>
+  <%= link_to "TOP画面", root_path %>
+  <%= link_to "新規作成", new_band_registration_path %>
+  <%= link_to "ログイン", new_band_session_path %>
+<% end %>
+
+<p>live_house開発用</p>
+<% if live_house_signed_in? %>
+  ログインユーザー： <%= current_live_house.email %>
+  <%= link_to 'アカウント変更', edit_live_house_registration_path %>
+  <%= link_to "ログアウト", destroy_live_house_session_path %>
+  <%= link_to "マイページ", live_house_path(current_live_house) %>
+<% else %>
+  <%= link_to "TOP画面", root_path %>
+  <%= link_to "新規作成", new_live_house_registration_path %>
+  <%= link_to "ログイン", new_live_house_session_path %>
+<% end %>

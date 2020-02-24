@@ -1,0 +1,40 @@
+<div class="search_form">
+  <h1>ライブハウス検索フォーム</h1>
+  <%= search_form_for @q do |f| %>
+    <table>
+      <tbody>
+      <tr>
+        <th><%= f.label t('views.live_house.name') %></th>
+        <td><%= f.search_field :name_cont %></td>
+      </tr>
+      <tr>
+        <th><%= f.label t('views.live_house.prefecture') %></th>
+        <td><%= f.select :prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
+                         class: 'form-control btn btn-info', autofocus: true %></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="search_submit">
+      <%= f.submit %>
+    </div>
+  <% end %>
+  <div class="search_link">
+    <%= link_to "ライブを直接探す", lives_path %>
+    <%= link_to "バンドから探す", bands_path %>
+  </div>
+</div>
+
+<div class="live_house_index">
+  <h1 class="top_title">ライブハウス一覧</h1>
+  <% @live_houses.each do |live_house| %>
+    <table>
+      <tbody>
+      <tr>
+        <th><%= live_house.prefecture %></th>
+        <td><%= link_to live_house.name, live_house_path(live_house) %></td>
+      </tr>
+      </tbody>
+    </table>
+
+  <% end %>
+</div>

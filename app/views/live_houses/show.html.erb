@@ -1,0 +1,39 @@
+<h1 class="top_title">ライブハウスページ</h1>
+<div class="user_profile">
+  <div class="profile_left">
+    <h3><%= t('views.live_house.name') %>:<%= @live_house.name %></h3>
+    <h4><%= t('views.live_house.prefecture') %>:<%= @live_house.prefecture %></h4>
+  </div>
+
+  <div class="profile_right">
+    <h3><%= t('views.live_house.address') %>:<%= @live_house.address.address %></h3>
+    <h4><%= t('views.live_house.tel') %>:<%= @live_house.tel %></h4>
+  </div>
+</div>
+
+<div class="profile_menu_list">
+
+</div>
+
+<div class="profile_content">
+  <h2>ライブスケジュール</h2>
+  <table>
+    <tbody>
+    <% unless @lives == nil %>
+      <% @lives.each do |live| %>
+        <tr>
+          <td><%= l(live.date, format: :default) %></td>
+          <td><%= link_to live.title, live_path(live) %></td>
+          <% live.place.each do |place| %>
+            <td><%= place.name %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to t('views.back'), :back %>
+</div>
+
+<div id="map"></div>

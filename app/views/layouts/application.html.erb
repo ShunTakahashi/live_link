@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiveLink</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= Gon::Base.render_data %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="//maps.google.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_KEY"]%>"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="header_top_link">
+    <% if user_signed_in? || band_signed_in? || live_house_signed_in? %>
+      <%= link_to 'Live Link', lives_path, class: 'header_logo' %>
+    <% else %>
+      <%= link_to 'Live Link', root_path, class: 'header_logo' %>
+    <% end %>
+  </div>
+  <div class="header_my_page_link">
+    <% if user_signed_in? %>
+      <%= link_to 'My Page', user_path(current_user), class: 'header_my_page' %>
+    <% elsif band_signed_in? %>
+      <%= link_to 'My Page', band_path(current_band), class: 'header_my_page' %>
+    <% elsif live_house_signed_in? %>
+      <%= link_to 'My Page', live_house_path(current_live_house), class: 'header_my_page' %>
+    <% end %>
+  </div>
+
+</header>
+
+<div class="main_body">
+  <%= yield %>
+</div>
+
+</body>
+</html>

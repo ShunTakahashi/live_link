@@ -1,0 +1,32 @@
+<h1 class="top_title">ユーザーマイページ</h1>
+<div class="user_profile">
+  <div class="profile_left">
+    <h3>ユーザー名:<%= @user.name %></h3>
+    <h4>チケット予約名:<%= @user.ticket_name %></h4>
+  </div>
+
+  <div class="profile_right">
+    <h3>フォローバンド数:<%= link_to @follow_bands, follow_band_page_user_path %></h3>
+  </div>
+</div>
+
+<div class="profile_menu_list">
+
+</div>
+
+<div class="profile_content">
+  <h2>行く予定のライブ</h2>
+  <table>
+    <tbody>
+    <% @going_to_lives.each do |live| %>
+      <tr>
+        <td><%= l(live.date, format: :default) %></td>
+        <td><%= link_to live.title, live_path(live) %></td>
+        <% live.place.each do |place| %>
+          <td><%= place.name %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

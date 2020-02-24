@@ -1,0 +1,83 @@
+<p id="notice"><%= notice %></p>
+<div class="live_page">
+  <div class="live_show_page">
+
+    <table>
+
+      <tr>
+        <th><%= t('views.live.title') %>:</th>
+        <td><%= @live.title %></td>
+      </tr>
+
+      <tr>
+        <th><%= t('views.live.place') %>:</th>
+        <% @live.place.each do |place| %>
+        <td><%= place.name %></td>
+        <% end %>
+      </tr>
+
+      <tr>
+        <th><%= t('views.live.date') %>:</th>
+        <td><%= l(@live.date, format: :default) %></td>
+      </tr>
+
+      <tr>
+        <th><%= t('views.live.act') %>:</th>
+        <% @live.act.each do |act| %>
+          <td><%= act.name %></td>
+        <% end %>
+      </tr>
+
+      <tr>
+        <th><%= t('views.live.open_time') %>:</th>
+        <td><%= l(@live.open_time, format: :time) %></td>
+      </tr>
+
+      <tr>
+        <th><%= t('views.live.start_time') %>:</th>
+        <td><%= l(@live.start_time, format: :time) %></td>
+      </tr>
+
+      <tr>
+        <th><%= t('views.live.end_time') %>:</th>
+        <td><%= l(@live.end_time, format: :time) %></td>
+      </tr>
+
+      <tr>
+        <th><%= t('views.live.early_bird_ticket_price') %>:</th>
+        <td><%= @live.early_bird_ticket_price.to_s(:currency) %></td>
+      </tr>
+
+      <tr>
+        <th><%= t('views.live.tickets_for_today_price') %>:</th>
+        <td><%= @live.tickets_for_today_price.to_s(:currency) %></td>
+      </tr>
+
+      <tr>
+        <th>image:</th>
+        <td><%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %></td>
+      </tr>
+
+      <tr>
+        <th>time_table_image:</th>
+        <td><%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %></td>
+      </tr>
+
+      <tr>
+        <th><%= t('views.live.remarks') %>:</th>
+        <td><%= @live.remarks %></td>
+      </tr>
+
+    </table>
+    <br>
+    <%= link_to t('views.back'), :back %>
+
+  </div>
+</div>
+<% if user_signed_in? %>
+  <% if !GoingToLive.exists?(user_id: current_user.id, live_id: @live.id) %>
+    <%= link_to '行く予定ボタン', going_to_lives_path(live_id: @live.id), method: :post %>
+  <% else %>
+    <%= link_to '行く予定ボタン解除', going_to_live_path(id: @live), method: :delete %>
+  <% end %>
+<% end %>
