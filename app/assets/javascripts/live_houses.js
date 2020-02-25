@@ -1,4 +1,4 @@
-$(function initMap() {
+$(document).on('turbolinks:load',function() {
 
   var test = {lat: gon.latitude, lng: gon.longitude};
   var map = new google.maps.Map(document.getElementById('map'), {
