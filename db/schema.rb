@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_094134) do
+ActiveRecord::Schema.define(version: 2020_02_23_075947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 2020_02_22_094134) do
     t.datetime "updated_at", null: false
     t.bigint "live_id"
     t.index ["live_id"], name: "index_acts_on_live_id"
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "live_house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["live_house_id"], name: "index_addresses_on_live_house_id"
   end
 
   create_table "bands", force: :cascade do |t|
@@ -69,7 +79,6 @@ ActiveRecord::Schema.define(version: 2020_02_22_094134) do
     t.string "name", null: false
     t.string "tel", null: false
     t.integer "prefecture", default: 0, null: false
-    t.string "address", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -131,6 +140,7 @@ ActiveRecord::Schema.define(version: 2020_02_22_094134) do
   end
 
   add_foreign_key "acts", "lives", column: "live_id"
+  add_foreign_key "addresses", "live_houses"
   add_foreign_key "follow_bands", "bands"
   add_foreign_key "follow_bands", "users"
   add_foreign_key "going_to_lives", "lives", column: "live_id"
