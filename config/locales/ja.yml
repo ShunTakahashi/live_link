@@ -10,6 +10,10 @@ ja:
   views:
     back: 戻る
     edit: 編集
+    update: 更新する
+    current_password: 現在のパスワード
+    new_password: 新しいパスワード
+    new_password_confirmation: 新しいパスワードの確認
     user:
       name: ユーザー名
       ticket_name: チケット予約名

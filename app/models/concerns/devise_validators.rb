@@ -1,6 +1,7 @@
 module DeviseValidators
   extend ActiveSupport::Concern
 
+
   included do
     with_options presence: true do
       validates :name, :email
