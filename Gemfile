@@ -42,6 +42,7 @@ gem 'geocoder'
 gem 'gon'
 gem 'ransack'
 gem 'dotenv-rails'
+gem 'kaminari'
 
 
 group :development, :test do

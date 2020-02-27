@@ -1,8 +1,9 @@
 class LiveHousesController < ApplicationController
+  PER = 10
 
   def index
     @q = LiveHouse.ransack(params[:q])
-    @live_houses = @q.result.order(created_at: :desc)
+    @live_houses = @q.result.order(created_at: :desc).page(params[:page]).per(PER)
   end
 
   def show
