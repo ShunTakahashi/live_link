@@ -10,6 +10,7 @@ ja:
   views:
     back: 戻る
     edit: 編集
+    edit_page: 編集ページ
     update: 更新する
     current_password: 現在のパスワード
     new_password: 新しいパスワード
