@@ -8,6 +8,9 @@
   <div class="profile_right">
     <h3><%= t('views.live_house.address') %>:<%= @live_house.address.address %></h3>
     <h4><%= t('views.live_house.tel') %>:<%= @live_house.tel %></h4>
+    <% if current_live_house.id == @live_house.id %>
+      <%= link_to t('views.edit_page'), edit_live_house_registration_path %>
+    <% end %>
   </div>
 </div>
 
