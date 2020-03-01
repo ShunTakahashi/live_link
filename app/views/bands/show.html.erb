@@ -20,6 +20,11 @@
 
 <div class="profile_content">
   <h2>ライブスケジュール</h2>
+  <% if current_band.id == @band.id %>
+    <%= link_to '新たにライブを追加する', new_live_path %>
+  <% end %>
+  <br>
+  <br>
   <table>
     <tbody>
     <% @lives.each do |live| %>

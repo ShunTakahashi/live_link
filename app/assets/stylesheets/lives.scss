@@ -34,11 +34,12 @@
 }
 
 .live_show_page {
+  padding-top: 3%;
   width: 100%;
   text-align: center;
 }
 
-.live_show_page, .search_form table{
+.live_show_page, .live_show_page table, .search_form table{
   margin: auto;
 }
 
