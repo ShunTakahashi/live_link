@@ -36,6 +36,7 @@ ja:
       image: 添付画像
       time_table_image: タイムテーブル画像
       remarks: 備考
+      destory: ライブを削除する
     live_house:
       name: ライブハウス名
       prefecture: 地域

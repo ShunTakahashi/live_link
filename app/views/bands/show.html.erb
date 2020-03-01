@@ -38,6 +38,13 @@
         <% live.place.each do |place| %>
           <td><%= place.name %></td>
         <% end %>
+        <% if current_band != nil %>
+          <% if current_band.id = live.band_id %>
+            <td><%= link_to t('views.edit'), edit_live_path(live) %></td>
+            <td><%= link_to t('views.live.destory'), live_path(live), method: :delete,
+                            data: {confirm: '本当に削除してもよろしいですか？'} %></td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
     </tbody>
