@@ -7,8 +7,10 @@
 
   <div class="profile_right">
     <h3>フォローユーザー数:<%= @follow_bands %></h3>
-    <% if current_band.id == @band.id %>
-      <%= link_to t('views.edit_page'), edit_band_registration_path %>
+    <% if current_band != nil %>
+      <% if current_band.id == @band.id %>
+        <%= link_to t('views.edit_page'), edit_band_registration_path %>
+      <% end %>
     <% end %>
   </div>
 
@@ -20,8 +22,10 @@
 
 <div class="profile_content">
   <h2>ライブスケジュール</h2>
-  <% if current_band.id == @band.id %>
-    <%= link_to '新たにライブを追加する', new_live_path %>
+  <% if current_band != nil %>
+    <% if current_band.id == @band.id %>
+      <%= link_to '新たにライブを追加する', new_live_path %>
+    <% end %>
   <% end %>
   <br>
   <br>
@@ -37,14 +41,16 @@
       </tr>
     <% end %>
     </tbody>
+    <br>
+    <%= link_to t('views.back'), :back %>
+    <br><br>
+    <% if user_signed_in? %>
+      <% if !FollowBand.exists?(user_id: current_user.id, band_id: @band.id) %>
+        <%= link_to 'フォロー', follow_bands_path(band_id: @band.id), method: :post %>
+      <% else %>
+        <%= link_to 'フォロー解除', follow_band_path(id: @band), method: :delete %>
+      <% end %>
+    <% end %>
   </table>
-  <br>
-  <%= link_to t('views.back'), :back %>
+
 </div>
-<% if user_signed_in? %>
-  <% if !FollowBand.exists?(user_id: current_user.id, band_id: @band.id) %>
-    <%= link_to 'フォロー', follow_bands_path(band_id: @band.id), method: :post %>
-  <% else %>
-    <%= link_to 'フォロー解除', follow_band_path(id: @band), method: :delete %>
-  <% end %>
-<% end %>
