@@ -33,6 +33,8 @@ ja:
       end_time: 終演時間
       early_bird_ticket_price: 前売り
       tickets_for_today_price: 当日
+      image: 添付画像
+      time_table_image: タイムテーブル画像
       remarks: 備考
     live_house:
       name: ライブハウス名

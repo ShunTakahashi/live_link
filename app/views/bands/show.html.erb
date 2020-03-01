@@ -7,10 +7,11 @@
 
   <div class="profile_right">
     <h3>フォローユーザー数:<%= @follow_bands %></h3>
+    <% if current_band.id == @band.id %>
+      <%= link_to t('views.edit_page'), edit_band_registration_path %>
+    <% end %>
   </div>
-  <% if current_band.id == @band.id %>
-    <%= link_to t('views.edit_page'), edit_band_registration_path %>
-  <% end %>
+
 </div>
 
 <div class="profile_menu_list">
