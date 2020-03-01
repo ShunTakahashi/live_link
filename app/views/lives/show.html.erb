@@ -10,7 +10,11 @@
     <tr>
       <th><%= t('views.live.place') %></th>
       <% @live.place.each do |place| %>
-        <td><%= place.name %></td>
+        <% if place.url != nil %>
+          <td><%= link_to place.name, place.url %></td>
+        <% else %>
+          <td><%= place.name %></td>
+        <% end %>
       <% end %>
     </tr>
 
@@ -22,7 +26,11 @@
     <tr>
       <th><%= t('views.live.act') %></th>
       <% @live.act.each do |act| %>
-        <td><%= act.name %></td>
+        <% if act.url != nil %>
+          <td><%= link_to act.name, act.url %></td>
+        <% else %>
+          <td><%= act.name %></td>
+        <% end %>
       <% end %>
     </tr>
 

@@ -36,7 +36,7 @@ class LivesController < ApplicationController
     @live.act.each do |act|
       if Band.find_by(name: act.name) != nil
         band = Band.find_by(name: act.name)
-        band.act_urls.build(band_id: band.id)
+        act.act_urls.build(band_id: band.id)
         act.url = band_path(band.id)
       end
     end
