@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   resources :bands, only: %i[index show]
 
 
-  devise_scope :show do
+  devise_scope :live_house do
     get '/live_houses/sign_out' => 'live_houses/sessions#destroy'
   end
   devise_for :live_houses, controllers: {

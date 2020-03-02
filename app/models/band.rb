@@ -4,6 +4,9 @@ class Band < ApplicationRecord
   has_many :follow_bands
   has_many :band_to_user, through: :follow_bands, source: :user
 
+  has_many :act_urls
+  has_many :band_to_acts, through: :act_urls, source: :band
+
   # devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

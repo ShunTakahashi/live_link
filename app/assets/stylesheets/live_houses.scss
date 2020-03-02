@@ -6,10 +6,14 @@
   margin: 0 auto;
 }
 
-#map{
+.map_area{
   height: 400px;
+}
+
+#map{
+  height: 90%;
   margin-left:auto;
   margin-right:auto;
   text-align:left;
-  width: 80%;
+  width: 50%;
 }

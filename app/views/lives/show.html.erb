@@ -1,79 +1,85 @@
-<p id="notice"><%= notice %></p>
-<div class="live_page">
-  <div class="live_show_page">
+<div class="live_show_page">
 
-    <table>
+  <table>
 
-      <tr>
-        <th><%= t('views.live.title') %>:</th>
-        <td><%= @live.title %></td>
-      </tr>
+    <tr>
+      <th><%= t('views.live.title') %></th>
+      <td><%= @live.title %></td>
+    </tr>
 
-      <tr>
-        <th><%= t('views.live.place') %>:</th>
-        <% @live.place.each do |place| %>
-        <td><%= place.name %></td>
+    <tr>
+      <th><%= t('views.live.place') %></th>
+      <% @live.place.each do |place| %>
+        <% if place.url != nil %>
+          <td><%= link_to place.name, place.url %></td>
+        <% else %>
+          <td><%= place.name %></td>
         <% end %>
-      </tr>
+      <% end %>
+    </tr>
 
-      <tr>
-        <th><%= t('views.live.date') %>:</th>
-        <td><%= l(@live.date, format: :default) %></td>
-      </tr>
+    <tr>
+      <th><%= t('views.live.date') %></th>
+      <td><%= l(@live.date, format: :default) %></td>
+    </tr>
 
-      <tr>
-        <th><%= t('views.live.act') %>:</th>
-        <% @live.act.each do |act| %>
+    <tr>
+      <th><%= t('views.live.act') %></th>
+      <% @live.act.each do |act| %>
+        <% if act.url != nil %>
+          <td><%= link_to act.name, act.url %></td>
+        <% else %>
           <td><%= act.name %></td>
         <% end %>
-      </tr>
+      <% end %>
+    </tr>
 
-      <tr>
-        <th><%= t('views.live.open_time') %>:</th>
-        <td><%= l(@live.open_time, format: :time) %></td>
-      </tr>
+    <tr>
+      <th><%= t('views.live.open_time') %></th>
+      <td><%= l(@live.open_time, format: :time) %></td>
+    </tr>
 
-      <tr>
-        <th><%= t('views.live.start_time') %>:</th>
-        <td><%= l(@live.start_time, format: :time) %></td>
-      </tr>
+    <tr>
+      <th><%= t('views.live.start_time') %></th>
+      <td><%= l(@live.start_time, format: :time) %></td>
+    </tr>
 
-      <tr>
-        <th><%= t('views.live.end_time') %>:</th>
-        <td><%= l(@live.end_time, format: :time) %></td>
-      </tr>
+    <tr>
+      <th><%= t('views.live.end_time') %></th>
+      <td><%= l(@live.end_time, format: :time) %></td>
+    </tr>
 
-      <tr>
-        <th><%= t('views.live.early_bird_ticket_price') %>:</th>
-        <td><%= @live.early_bird_ticket_price.to_s(:currency) %></td>
-      </tr>
+    <tr>
+      <th><%= t('views.live.early_bird_ticket_price') %></th>
+      <td><%= @live.early_bird_ticket_price.to_s(:currency) %></td>
+    </tr>
 
-      <tr>
-        <th><%= t('views.live.tickets_for_today_price') %>:</th>
-        <td><%= @live.tickets_for_today_price.to_s(:currency) %></td>
-      </tr>
+    <tr>
+      <th><%= t('views.live.tickets_for_today_price') %></th>
+      <td><%= @live.tickets_for_today_price.to_s(:currency) %></td>
+    </tr>
 
-      <tr>
-        <th>image:</th>
-        <td><%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %></td>
-      </tr>
+    <tr>
+      <th><%= t('views.live.image') %></th>
+      <td><%= image_tag(@live.image.url, class: "live_image　rm_img") if @live.image? %></td>
+    </tr>
 
-      <tr>
-        <th>time_table_image:</th>
-        <td><%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %></td>
-      </tr>
+    <tr>
+      <th><%= t('views.live.time_table_image') %></th>
+      <td><%= image_tag(@live.time_table_image.url, class: "live_image　rm_img") if @live.time_table_image.url %></td>
+    </tr>
 
-      <tr>
-        <th><%= t('views.live.remarks') %>:</th>
-        <td><%= @live.remarks %></td>
-      </tr>
+    <tr>
+      <th><%= t('views.live.remarks') %></th>
+      <td><%= @live.remarks %></td>
+    </tr>
 
-    </table>
-    <br>
-    <%= link_to t('views.back'), :back %>
+  </table>
+  <br>
+  <%= link_to t('views.back'), :back %>
 
-  </div>
 </div>
+
 <% if user_signed_in? %>
   <% if !GoingToLive.exists?(user_id: current_user.id, live_id: @live.id) %>
     <%= link_to '行く予定ボタン', going_to_lives_path(live_id: @live.id), method: :post %>
