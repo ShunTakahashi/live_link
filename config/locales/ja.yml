@@ -15,9 +15,13 @@ ja:
     current_password: 現在のパスワード
     new_password: 新しいパスワード
     new_password_confirmation: 新しいパスワードの確認
+    sign_up: 登録する
+    log_in: ログイン
+    log_out: ログアウト
     user:
       name: ユーザー名
       ticket_name: チケット予約名
+      email: メールアドレス
     band:
       name: バンド名
       email: メールアドレス

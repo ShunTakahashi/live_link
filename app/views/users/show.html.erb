@@ -9,6 +9,7 @@
     <h3>フォローバンド数:<%= link_to @follow_bands, follow_band_page_user_path %></h3>
     <% if current_user.id == @user.id %>
       <%= link_to t('views.edit_page'), edit_user_registration_path %>
+      <%= link_to t('views.log_out'), destroy_user_session_path %>
     <% end %>
   </div>
 </div>

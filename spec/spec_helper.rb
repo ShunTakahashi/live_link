@@ -95,8 +95,6 @@ RSpec.configure do |config|
 =end
 
   RSpec.configure do |config|
-    config.include FactoryBot::Syntax::Methods
-
     config.before(:suite) do
       DatabaseCleaner.strategy = :truncation
     end
