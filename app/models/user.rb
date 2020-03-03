@@ -12,5 +12,5 @@ class User < ApplicationRecord
 
   # validates
   include DeviseValidators
-  validates :ticket_name, presence: true
+  validates :ticket_name, presence: true, length: {maximum: 30}
 end
