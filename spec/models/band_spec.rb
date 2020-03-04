@@ -24,9 +24,14 @@ RSpec.describe Band, type: :model do
     end
 
     it 'Emailが重複していると失敗すること' do
-      User.create(email: 'foo@example.com')
-      @band = User.create(email: 'foo@example.com')
+      Band.create(email: 'foo@example.com')
+      @band = Band.create(email: 'foo@example.com')
       expect(@band.save).to be_falsey
+    end
+    
+    it 'Prefectureが空だと失敗すること' do
+      @band = FactoryBot.build(:devise_band, prefecture: '')
+      expect(@band).to be_invalid
     end
 
     it 'Passwordが空だと失敗すること' do
