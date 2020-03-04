@@ -10,6 +10,7 @@
     <% if current_band != nil %>
       <% if current_band.id == @band.id %>
         <%= link_to t('views.edit_page'), edit_band_registration_path %>
+        <%= link_to t('views.log_out'), destroy_band_session_path %>
       <% end %>
     <% end %>
   </div>
