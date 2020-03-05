@@ -26,8 +26,8 @@
 
   <div class="field">
     <%= f.fields_for :address do |m| %>
-      <%= m.label :address %><br>
-      <%= m.text_field :address %>
+      <%= m.label t('views.live_house.address') %><br>
+      <%= m.text_field :address,id: 'address' %>
     <% end %>
   </div>
 
@@ -45,7 +45,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit t('views.sign_up') %>
   </div>
 <% end %>
 
