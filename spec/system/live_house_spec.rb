@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'LiveHouse', type: :system do
   before do
-    @live_house = FactoryBot.build(:devise_live_house)
-    @live_house.address
+    live_house = FactoryBot.create(:devise_live_house)
+    FactoryBot.create(:address, live_house: live_house)
   end
 
   describe "アカウント作成" do
@@ -24,7 +24,7 @@ RSpec.describe 'LiveHouse', type: :system do
   describe "ログイン" do
     before do
       visit new_live_house_session_path
-      fill_in 'メールアドレス', with: "live_house1@example.com"
+      fill_in 'メールアドレス', with: "live1@example.com"
       fill_in 'パスワード', with: '12345678'
       click_on 'ログイン'
     end
@@ -35,7 +35,7 @@ RSpec.describe 'LiveHouse', type: :system do
 
     it 'ログインページが正しく表示されていること' do
       visit live_house_path(1)
-      expect(page).to have_content '東京バンド'
+      expect(page).to have_content '渋谷サイクロン'
     end
 
     it '正しくログアウトできること' do

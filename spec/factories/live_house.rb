@@ -6,6 +6,5 @@ FactoryBot.define do
     prefecture {13}
     password {'12345678'}
     password_confirmation {'12345678'}
-    address
   end
 end

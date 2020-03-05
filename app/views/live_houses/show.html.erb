@@ -11,6 +11,7 @@
     <% if current_live_house != nil %>
       <% if current_live_house.id == @live_house.id %>
         <%= link_to t('views.edit_page'), edit_live_house_registration_path %>
+        <%= link_to t('views.log_out'), destroy_live_house_session_path %>
       <% end %>
     <% end %>
   </div>
