@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe LiveHouse, type: :model do
-  live_house = FactoryBot.build(:devise_live_house, :with_address)
+  let(:live_house) {FactoryBot.create(:devise_live_house)}
+  let(:address) {FactoryBot.create(:address)}
 
   describe 'バリデーションチェック' do
 
@@ -49,8 +50,8 @@ RSpec.describe LiveHouse, type: :model do
     end
 
     it '全て正しく登録されてれば成功すること' do
-      live_house = FactoryBot.build(:devise_live_house, :with_address)
       expect(live_house).to be_valid
+      expect(address).to be_valid
     end
 
   end
