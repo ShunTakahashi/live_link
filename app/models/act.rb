@@ -3,4 +3,6 @@ class Act < ApplicationRecord
 
   has_many :act_urls, dependent: :destroy
   has_many :act_to_band, through: :act_urls, source: :band
+
+  validates :name, presence: true
 end
