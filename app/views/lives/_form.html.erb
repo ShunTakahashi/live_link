@@ -20,35 +20,35 @@
       <%= form.fields_for :place do |n| %>
         <tr>
           <th><%= n.label t('views.live.place') %></th>
-          <td><%= n.text_field :name %></td>
+          <td><%= n.text_field :name, id: 'place' %></td>
         </tr>
       <% end %>
 
       <tr>
         <th><%= form.label t('views.live.date') %></th>
-        <td><%= form.date_select :date %></td>
+        <td><%= form.date_field :date, id: 'live_date', max: "9999-12-31" %></td>
       </tr>
 
       <%= form.fields_for :act do |m| %>
         <tr>
           <th><%= m.label t('views.live.act') %></th>
-          <td><%= m.text_field :name %></td>
+          <td><%= m.text_field :name, id: 'act_name' %></td>
         </tr>
       <% end %>
 
       <tr>
         <th><%= form.label t('views.live.open_time') %></th>
-        <td><%= form.time_select :open_time, {minute_step: 10} %></td>
+        <td><%= form.time_field :open_time, {minute_step: 10} %></td>
       </tr>
 
       <tr>
         <th><%= form.label t('views.live.start_time') %></th>
-        <td><%= form.time_select :start_time, {minute_step: 10} %></td>
+        <td><%= form.time_field :start_time, {minute_step: 10} %></td>
       </tr>
 
       <tr>
         <th><%= form.label t('views.live.end_time') %></th>
-        <td><%= form.time_select :end_time, {minute_step: 10} %></td>
+        <td><%= form.time_field :end_time, {minute_step: 10} %></td>
       </tr>
 
       <tr>
