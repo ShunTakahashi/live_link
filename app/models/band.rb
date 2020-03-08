@@ -1,10 +1,10 @@
 class Band < ApplicationRecord
   # association
   has_many :lives, class_name: "Live"
-  has_many :follow_bands
+  has_many :follow_bands, dependent: :destroy
   has_many :band_to_user, through: :follow_bands, source: :user
 
-  has_many :act_urls
+  has_many :act_urls, dependent: :destroy
   has_many :band_to_acts, through: :act_urls, source: :band
 
   # devise
