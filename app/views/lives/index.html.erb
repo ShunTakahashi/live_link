@@ -6,20 +6,20 @@
       <tbody>
       <tr>
         <th><%= f.label t('views.live.date') %></th>
-        <td><%= f.date_field :date_eq %></td>
+        <td><%= f.date_field :date_eq, id: 'search_date', max: '9999/12/31' %></td>
       </tr>
       <tr>
         <th><%= f.label t('views.live.prefecture') %></th>
         <td><%= f.select :place_place_to_live_houses_prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
-                         class: 'form-control btn btn-info', autofocus: true %></td>
+                         class: 'form-control btn btn-info',id: 'search_prefecture', autofocus: true %></td>
       </tr>
       <tr>
         <th><%= f.label t('views.live.place') %></th>
-        <td><%= f.search_field :place_name_cont %></td>
+        <td><%= f.search_field :place_name_cont, id: 'search_place' %></td>
       </tr>
       <tr>
         <th><%= f.label t('views.live.act') %></th>
-        <td><%= f.search_field :act_name_cont %></td>
+        <td><%= f.search_field :act_name_cont, id: 'search_band' %></td>
       </tr>
       </tbody>
     </table>

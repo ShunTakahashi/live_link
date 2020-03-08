@@ -5,12 +5,12 @@
       <tbody>
       <tr>
         <th><%= f.label t('views.live_house.name') %></th>
-        <td><%= f.search_field :name_cont %></td>
+        <td><%= f.search_field :name_cont, id: 'search_live_house' %></td>
       </tr>
       <tr>
         <th><%= f.label t('views.live_house.prefecture') %></th>
         <td><%= f.select :prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
-                         class: 'form-control btn btn-info', autofocus: true %></td>
+                         class: 'form-control btn btn-info', id: 'search_prefecture', autofocus: true %></td>
       </tr>
       </tbody>
     </table>

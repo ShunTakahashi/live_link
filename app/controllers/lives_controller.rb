@@ -25,6 +25,7 @@ class LivesController < ApplicationController
 
   def create
     @live = current_band.lives.build(live_params)
+
     @live.place.each do |place|
       if LiveHouse.find_by(name: place.name) != nil
         live_house = LiveHouse.find_by(name: place.name)
