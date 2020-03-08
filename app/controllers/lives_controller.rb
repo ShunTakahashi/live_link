@@ -1,6 +1,6 @@
 class LivesController < ApplicationController
-  before_action :set_live, only: %i(show edit update destroy)
-  before_action :authenticate_band!, only: %i(new edit create destory update)
+  before_action :set_live, only: %i[show edit update destroy]
+  before_action :authenticate_band!, only: %i[new edit create destory update]
 
   PER = 10
 
@@ -42,7 +42,7 @@ class LivesController < ApplicationController
       end
     end
     if @live.save
-      redirect_to lives_path, notice: "投稿が完了しました。"
+      redirect_to lives_path, notice: '投稿が完了しました。'
     else
       render new_live_path
     end
@@ -50,12 +50,12 @@ class LivesController < ApplicationController
 
   def destroy
     @live.destroy
-    redirect_to lives_path, notice: "投稿を削除しました。"
+    redirect_to lives_path, notice: '投稿を削除しました。'
   end
 
   def update
     if @live.update(live_params)
-      redirect_to lives_path, notice: "編集が完了しました"
+      redirect_to lives_path, notice: '編集が完了しました'
     else
       render 'edit'
     end
