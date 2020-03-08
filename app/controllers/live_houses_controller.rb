@@ -9,7 +9,7 @@ class LiveHousesController < ApplicationController
   def show
     @live_house = LiveHouse.find(params[:id])
     @place_url = @live_house.live_house_to_places.all.pluck(:live_id)
-    @lives = [Live.find(@place_url.first)] unless @place_url == []
+    @lives = Live.all.find(@place_url)
     gon.address = @live_house.name
     gon.latitude = @live_house.address.latitude
     gon.longitude = @live_house.address.longitude
