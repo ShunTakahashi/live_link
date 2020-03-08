@@ -5,10 +5,10 @@ RSpec.describe 'LiveHouse', type: :system do
     FactoryBot.create(:address, live_house: FactoryBot.create(:devise_live_house))
   end
 
-  describe "アカウント作成" do
+  describe 'アカウント作成が正しく機能する事' do
     it 'アカウントが作成され、同時にログインされること' do
       visit new_live_house_registration_path
-      fill_in 'live_house_email', with: "testlive_house@sample.com"
+      fill_in 'live_house_email', with: 'testlive_house@sample.com'
       fill_in 'live_house_name', with: '渋谷サイクロン'
       fill_in 'live_house_tel', with: '00012345678'
       select '東京都', from: 'live_house_prefecture'
@@ -20,10 +20,10 @@ RSpec.describe 'LiveHouse', type: :system do
     end
   end
 
-  describe "ログイン" do
+  describe 'ログイン,ログアウト機能が正しく実装される事' do
     before do
       visit new_live_house_session_path
-      fill_in 'メールアドレス', with: "live1@example.com"
+      fill_in 'メールアドレス', with: 'live1@example.com'
       fill_in 'パスワード', with: '12345678'
       click_on 'ログイン'
     end
@@ -41,6 +41,20 @@ RSpec.describe 'LiveHouse', type: :system do
       visit live_house_path(1)
       click_on 'ログアウト'
       expect(page).not_to have_content 'My Page'
+    end
+  end
+
+  describe 'ライブハウス検索機能が正しく機能すること' do
+    it 'ライブハウス検索で対象名のライブハウスが表示される事' do
+      visit live_houses_path
+      fill_in 'search_live_house', with: '渋谷サイクロン'
+      expect(page).to have_content '渋谷サイクロン'
+    end
+
+    it '地域検索で対象地域のライブハウスが表示される事' do
+      visit live_houses_path
+      select '東京都', from: 'search_prefecture'
+      expect(page).to have_content '渋谷サイクロン'
     end
   end
 end
