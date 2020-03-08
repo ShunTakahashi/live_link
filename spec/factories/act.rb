@@ -1,7 +1,5 @@
 FactoryBot.define do
-  factory :act, class: 'act' do
-    id {'1'}
-    live_id {'1'}
+  factory :act, class: 'Act' do
     name {'東京バンド'}
   end
 end

@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :live, class: 'Live' do
-    id {'1'}
     band_id {'1'}
     title {'test1'}
     date {'2020/10/01'}

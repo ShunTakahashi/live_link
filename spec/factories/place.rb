@@ -1,7 +1,5 @@
 FactoryBot.define do
-  factory :place, class: 'place' do
-    id {'1'}
-    live_id {'1'}
+  factory :place, class: 'Place' do
     name {'渋谷サイクロン'}
   end
 end
