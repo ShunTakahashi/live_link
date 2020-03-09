@@ -1,89 +1,89 @@
- <%= form_with(model: @live, local: true) do |form| %>
-    <% if @live.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(live.errors.count, "error") %> prohibited this live from being saved:</h2>
+<%= form_with(model: @live, url: url, local: true) do |form| %>
+  <% if @live.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(live.errors.count, "error") %> prohibited this live from being saved:</h2>
 
-        <ul>
-          <% live.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <table>
-      <tr>
-        <th><%= form.label t('views.live.title')%></th>
-        <td><%= form.text_field :title %></td>
-      </tr>
-
-      <%= form.fields_for :place do |n| %>
-        <tr>
-          <th><%= n.label t('views.live.place') %></th>
-          <td><%= n.text_field :name, id: 'place' %></td>
-        </tr>
-      <% end %>
-
-      <tr>
-        <th><%= form.label t('views.live.date') %></th>
-        <td><%= form.date_field :date, id: 'live_date', max: "9999-12-31" %></td>
-      </tr>
-
-      <%= form.fields_for :act do |m| %>
-        <tr>
-          <th><%= m.label t('views.live.act') %></th>
-          <td><%= m.text_field :name, id: 'act_name' %></td>
-        </tr>
-      <% end %>
-
-      <tr>
-        <th><%= form.label t('views.live.open_time') %></th>
-        <td><%= form.time_field :open_time, {minute_step: 10} %></td>
-      </tr>
-
-      <tr>
-        <th><%= form.label t('views.live.start_time') %></th>
-        <td><%= form.time_field :start_time, {minute_step: 10} %></td>
-      </tr>
-
-      <tr>
-        <th><%= form.label t('views.live.end_time') %></th>
-        <td><%= form.time_field :end_time, {minute_step: 10} %></td>
-      </tr>
-
-      <tr>
-        <th><%= form.label t('views.live.early_bird_ticket_price') %></th>
-        <td><%= form.number_field :early_bird_ticket_price %></td>
-      </tr>
-
-      <tr>
-        <th><%= form.label t('views.live.tickets_for_today_price') %></th>
-        <td><%= form.number_field :tickets_for_today_price %></td>
-      </tr>
-
-      <tr>
-        <th><%= form.label t('views.live.image') %></th>
-        <td><%= form.file_field :image %></td>
-        <td><%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %></td>
-        <%= form.hidden_field :image_cache %>
-      </tr>
-
-      <tr>
-        <th><%= form.label t('views.live.time_table_image') %></th>
-        <td><%= form.file_field :time_table_image %></td>
-        <td><%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %></td>
-        <%= form.hidden_field :time_table_image_cache %>
-      </tr>
-
-      <tr>
-        <th><%= form.label t('views.live.remarks') %></th>
-        <td><%= form.text_area :remarks %></td>
-      </tr>
-    </table>
-
-    <div class="actions_submit">
-      <%= form.submit %>
-      <br><br><br>
-      <%= link_to t('views.back'), lives_path, class: "actions_back" %>
+      <ul>
+        <% live.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+
+  <table>
+    <tr>
+      <th><%= form.label t('views.live.title') %></th>
+      <td><%= form.text_field :title %></td>
+    </tr>
+
+    <%= form.fields_for :place do |n| %>
+      <tr>
+        <th><%= n.label t('views.live.place') %></th>
+        <td><%= n.text_field :name, id: 'place' %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <th><%= form.label t('views.live.date') %></th>
+      <td><%= form.date_field :date, id: 'live_date', max: "9999-12-31" %></td>
+    </tr>
+
+    <%= form.fields_for :act do |m| %>
+      <tr>
+        <th><%= m.label t('views.live.act') %></th>
+        <td><%= m.text_field :name, id: 'act_name' %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <th><%= form.label t('views.live.open_time') %></th>
+      <td><%= form.time_field :open_time, {minute_step: 10} %></td>
+    </tr>
+
+    <tr>
+      <th><%= form.label t('views.live.start_time') %></th>
+      <td><%= form.time_field :start_time, {minute_step: 10} %></td>
+    </tr>
+
+    <tr>
+      <th><%= form.label t('views.live.end_time') %></th>
+      <td><%= form.time_field :end_time, {minute_step: 10} %></td>
+    </tr>
+
+    <tr>
+      <th><%= form.label t('views.live.early_bird_ticket_price') %></th>
+      <td><%= form.number_field :early_bird_ticket_price %></td>
+    </tr>
+
+    <tr>
+      <th><%= form.label t('views.live.tickets_for_today_price') %></th>
+      <td><%= form.number_field :tickets_for_today_price %></td>
+    </tr>
+
+    <tr>
+      <th><%= form.label t('views.live.image') %></th>
+      <td><%= form.file_field :image %></td>
+      <td><%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %></td>
+      <%= form.hidden_field :image_cache %>
+    </tr>
+
+    <tr>
+      <th><%= form.label t('views.live.time_table_image') %></th>
+      <td><%= form.file_field :time_table_image %></td>
+      <td><%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %></td>
+      <%= form.hidden_field :time_table_image_cache %>
+    </tr>
+
+    <tr>
+      <th><%= form.label t('views.live.remarks') %></th>
+      <td><%= form.text_area :remarks %></td>
+    </tr>
+  </table>
+
+  <div class="actions_submit">
+    <%= form.submit %>
+    <br><br><br>
+    <%= link_to t('views.back'), lives_path, class: "actions_back" %>
+  </div>
+<% end %>
