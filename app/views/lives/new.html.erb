@@ -1,6 +1,6 @@
 <div class="form_live_page">
 <h1 class="top_title">新規ライブ</h1>
 
-<%= render 'form', live: @live %>
+<%= render 'form', {live: @live, url: "#{live_index_path}"} %>
 
 </div>
