@@ -43,7 +43,7 @@ class LivesController < ApplicationController
     end
 
     if @live.save
-      redirect_to lives_path, notice: '投稿が完了しました。'
+      redirect_to band_path(current_band.id), notice: '投稿が完了しました。'
     else
       render new_live_path
     end
