@@ -16,9 +16,9 @@ class Live < ApplicationRecord
 
   # validates
   validates :title, length: {maximum: 100}
-  validates :title, :date, :early_bird_ticket_price,
-            :tickets_for_today_price, :status,
-            presence: true
+  validates :title, :date, :status, presence: true
+  validates :early_bird_ticket_price, :tickets_for_today_price,
+            numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validate :date_cannot_be_in_the_past
 
   def date_cannot_be_in_the_past
