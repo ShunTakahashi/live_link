@@ -27,4 +27,5 @@
 /config/master.key
 /config/initializers/geocoder.rb
 /public/uploads
+#dotenv-rails
 .env
