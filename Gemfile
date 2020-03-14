@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
+gem 'dotenv-rails'
 gem 'devise'
 gem 'jquery-rails'
 gem 'geocoder'
@@ -43,6 +46,12 @@ gem 'gon'
 gem 'ransack'
 gem 'dotenv-rails'
 gem 'kaminari'
+gem 'dotenv-rails'
+gem 'unicorn'
+gem 'mini_racer', platforms: :ruby
+gem 'bcrypt', '~> 3.1.7'
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
 
 
 group :development, :test do
@@ -52,6 +61,11 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
