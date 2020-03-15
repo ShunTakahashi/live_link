@@ -1,5 +1,5 @@
 class RootController < ApplicationController
-  def index
-    redirect_to lives_path if current_user || current_band || current_live_house != nil
-  end
+  before_action :login_check, only: [:index]
+
+  def index; end
 end
