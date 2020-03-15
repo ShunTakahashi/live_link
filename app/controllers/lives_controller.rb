@@ -26,19 +26,21 @@ class LivesController < ApplicationController
   def create
     @live = current_band.lives.create(live_params)
 
-    @live.place.each do |place|
-      if LiveHouse.find_by(name: place.name) != nil
-        live_house = LiveHouse.find_by(name: place.name)
-        place.place_urls.create(live_house_id: live_house.id)
-        place.url = live_house_path(live_house.id)
+    if @live.valid?
+      @live.place.each do |place|
+        if LiveHouse.find_by(name: place.name) != nil
+          live_house = LiveHouse.find_by(name: place.name)
+          place.place_urls.create(live_house_id: live_house.id)
+          place.url = live_house_path(live_house.id)
+        end
       end
-    end
 
-    @live.act.each do |act|
-      if Band.find_by(name: act.name) != nil
-        band = Band.find_by(name: act.name)
-        act.act_urls.create(band_id: band.id)
-        act.url = band_path(band.id)
+      @live.act.each do |act|
+        if Band.find_by(name: act.name) != nil
+          band = Band.find_by(name: act.name)
+          act.act_urls.create(band_id: band.id)
+          act.url = band_path(band.id)
+        end
       end
     end
 
