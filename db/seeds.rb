@@ -53,21 +53,21 @@ LiveHouse.create!(
       email: 'live1@live.com',
       password: 'testtest',
       name: '渋谷サイクロン',
-      tel: '1',
+      tel: '09011112222',
       prefecture: 13,
     },
     {
       email: 'live2@live.com',
       password: 'testtest',
       name: '新宿サイエンス',
-      tel: '1',
+      tel: '09022223333',
       prefecture: 13,
     },
     {
       email: 'live3@live.com',
       password: 'testtest',
       name: '大分T.O.P.S',
-      tel: '1',
+      tel: '09033334444',
       prefecture: 44,
     }
   ]
@@ -96,32 +96,34 @@ Address.create!(
   ]
 )
 
-30.times do |n|
-  [
-    {
-      id: n,
-      band_id: 1,
-      title: "test#{n}",
-      date: '2020/10/01',
-      open_time: '12:00',
-      start_time: '13:00',
-      end_time: '18:00',
-      early_bird_ticket_price: 1500,
-      tickets_for_today_price: 2000,
-    }
-  ]
+2.times do |n|
+  Live.create!(
+    [
+      {
+        id: n,
+        band_id: 1,
+        title: "test#{n}",
+        date: '2020/10/01',
+        open_time: '12:00',
+        start_time: '13:00',
+        end_time: '18:00',
+        early_bird_ticket_price: 1500,
+        tickets_for_today_price: 2000,
+      }
+    ]
+  )
 end
 
 Place.create!(
   [
     {
+      live_id: 0,
       id: 1,
-      live_id: 1,
       name: '渋谷サイクロン'
     },
     {
+      live_id: 1,
       id: 2,
-      live_id: 2,
       name: '新宿サイエンス'
     }
   ]
@@ -143,11 +145,11 @@ PlaceUrl.create!(
 Act.create!(
   [
     {
-      live_id: 1,
+      live_id: 0,
       name: 'バンド1'
     },
     {
-      live_id: 2,
+      live_id: 1,
       name: 'バンド2'
     }
   ]
