@@ -1,4 +1,5 @@
 class RootController < ApplicationController
-  def index
-  end
+  before_action :login_check, only: [:index]
+
+  def index; end
 end

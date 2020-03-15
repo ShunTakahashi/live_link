@@ -2,7 +2,14 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+
+
   protected
+
+  def login_check
+    redirect_to lives_path if current_user || current_band || current_live_house != nil
+  end
 
   def configure_permitted_parameters
     if resource_class == User
@@ -15,7 +22,7 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :tel, :prefecture,
                                                          address_attributes: %i[address latitude longitude]])
       devise_parameter_sanitizer.permit(:account_update, keys: [:name, :tel, :prefecture,
-                                                         address_attributes: %i[address latitude longitude]])
+                                                                address_attributes: %i[address latitude longitude]])
     end
   end
 end
