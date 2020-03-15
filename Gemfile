@@ -52,6 +52,7 @@ gem 'mini_racer', platforms: :ruby
 gem 'bcrypt', '~> 3.1.7'
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
+gem 'tel_formatter'
 
 
 group :development, :test do
