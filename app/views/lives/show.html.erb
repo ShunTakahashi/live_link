@@ -61,12 +61,12 @@
 
     <tr>
       <th><%= t('views.live.image') %></th>
-      <td><%= image_tag(@live.image.url, class: "live_image　rm_img") if @live.image? %></td>
+      <td><%= image_tag(@live.image.url, class: "live_image") if @live.image? %></td>
     </tr>
 
     <tr>
       <th><%= t('views.live.time_table_image') %></th>
-      <td><%= image_tag(@live.time_table_image.url, class: "live_image　rm_img") if @live.time_table_image.url %></td>
+      <td><%= image_tag(@live.time_table_image.url, class: "live_image") if @live.time_table_image.url %></td>
     </tr>
 
     <tr>
