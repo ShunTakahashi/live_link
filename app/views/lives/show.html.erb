@@ -36,43 +36,69 @@
 
     <tr>
       <th><%= t('views.live.open_time') %></th>
-      <td><%= l(@live.open_time, format: :time) %></td>
+      <% if @live.open_time? %>
+        <td><%= l(@live.open_time, format: :time) %></td>
+      <% else %>
+        <td><%= '未定' %></td>
+      <% end %>
     </tr>
 
     <tr>
       <th><%= t('views.live.start_time') %></th>
-      <td><%= l(@live.start_time, format: :time) %></td>
+      <% if @live.start_time? %>
+        <td><%= l(@live.start_time, format: :time) %></td>
+      <% else %>
+        <td><%= '未定' %></td>
+      <% end %>
     </tr>
 
     <tr>
       <th><%= t('views.live.end_time') %></th>
-      <td><%= l(@live.end_time, format: :time) %></td>
+      <% if @live.end_time? %>
+        <td><%= l(@live.end_time, format: :time) %></td>
+      <% else %>
+        <td><%= '未定' %></td>
+      <% end %>
     </tr>
 
     <tr>
       <th><%= t('views.live.early_bird_ticket_price') %></th>
-      <td><%= @live.early_bird_ticket_price.to_s(:currency) %></td>
+      <% if @live.early_bird_ticket_price? %>
+        <td><%= @live.early_bird_ticket_price.to_s(:currency) %></td>
+      <% else %>
+        <td><%= '未定' %></td>
+      <% end %>
     </tr>
 
     <tr>
       <th><%= t('views.live.tickets_for_today_price') %></th>
-      <td><%= @live.tickets_for_today_price.to_s(:currency) %></td>
+      <% if @live.tickets_for_today_price? %>
+        <td><%= @live.tickets_for_today_price.to_s(:currency) %></td>
+      <% else %>
+        <td><%= '未定' %></td>
+      <% end %>
     </tr>
 
-    <tr>
-      <th><%= t('views.live.image') %></th>
-      <td><%= image_tag(@live.image.url, class: "live_image　rm_img") if @live.image? %></td>
-    </tr>
+    <% if @live.image? %>
+      <tr>
+        <th><%= t('views.live.image') %></th>
+        <td><%= image_tag @live.image.url, class: "live_image" %></td>
+      </tr>
+    <% end %>
 
-    <tr>
-      <th><%= t('views.live.time_table_image') %></th>
-      <td><%= image_tag(@live.time_table_image.url, class: "live_image　rm_img") if @live.time_table_image.url %></td>
-    </tr>
+    <% if @live.time_table_image? %>
+      <tr>
+        <th><%= t('views.live.time_table_image') %></th>
+        <td><%= image_tag @live.time_table_image.url, class: "live_image" %></td>
+      </tr>
+    <% end %>
 
-    <tr>
-      <th><%= t('views.live.remarks') %></th>
-      <td><%= @live.remarks %></td>
-    </tr>
+    <% if @live.remarks? %>
+      <tr>
+        <th><%= t('views.live.remarks') %></th>
+        <td><%= @live.remarks %></td>
+      </tr>
+    <% end %>
 
   </table>
   <br>
