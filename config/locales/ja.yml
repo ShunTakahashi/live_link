@@ -1,6 +1,11 @@
 ---
 ja:
   activerecord:
+    models:
+      address: 住所
+    attributes:
+      address:
+        address: 住所
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
