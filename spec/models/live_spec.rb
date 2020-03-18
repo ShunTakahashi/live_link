@@ -14,7 +14,7 @@ RSpec.describe Live, type: :model do
       expect(live.errors[:title]).to include('を入力してください')
     end
 
-    it 'Titleが31文字以上だと失敗すること' do
+    it 'Titleが100文字以上だと失敗すること' do
       live.title = ('a' * 101)
       live.valid?
       expect(live.errors[:title]).to include('は100文字以内で入力してください')
