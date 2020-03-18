@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Live, type: :model do
-  let(:band) {FactoryBot.create(:devise_band)}
-  let(:live) {FactoryBot.create(:live, band: FactoryBot.create(:devise_band))}
-  let(:place) {FactoryBot.create(:place, live: FactoryBot.create(:live, band: FactoryBot.create(:devise_band)))}
-  let(:act) {FactoryBot.create(:act, live: FactoryBot.create(:live, band: FactoryBot.create(:devise_band)))}
+  let(:band) {create(:devise_band)}
+  let(:live) {create(:live, band: create(:devise_band))}
+  let(:place) {create(:place, live: create(:live, band: create(:devise_band)))}
+  let(:act) {create(:act, live: create(:live, band: create(:devise_band)))}
 
   describe 'バリデーションチェック' do
 
@@ -30,12 +30,6 @@ RSpec.describe Live, type: :model do
       live.date = '2000/10/01'
       live.valid?
       expect(live.errors[:date]).to include('に過去は登録できません')
-    end
-
-    it 'Actが空だと失敗すること' do
-      act.name = ''
-      act.valid?
-      expect(act.errors[:name]).to include('を入力してください')
     end
 
     it 'Placeが空だと失敗すること' do
