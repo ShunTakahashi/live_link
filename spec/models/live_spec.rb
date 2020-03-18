@@ -26,6 +26,12 @@ RSpec.describe Live, type: :model do
       expect(live.errors[:date]).to include('を入力してください')
     end
 
+    it 'Dateに過去が入力された場合失敗すること' do
+      live.date = '2000/10/01'
+      live.valid?
+      expect(live.errors[:date]).to include('に過去は登録できません')
+    end
+
     it 'Actが空だと失敗すること' do
       act.name = ''
       act.valid?
