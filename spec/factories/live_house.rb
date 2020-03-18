@@ -3,7 +3,7 @@ FactoryBot.define do
     id {'1'}
     name {"渋谷サイクロン"}
     sequence(:email) {"live1@example.com"}
-    tel {00011112222}
+    tel {'00011112222'}
     prefecture {13}
     password {'12345678'}
     password_confirmation {'12345678'}
