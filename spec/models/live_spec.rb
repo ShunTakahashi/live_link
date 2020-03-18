@@ -32,12 +32,6 @@ RSpec.describe Live, type: :model do
       expect(live.errors[:date]).to include('に過去は登録できません')
     end
 
-    it 'Placeが空だと失敗すること' do
-      place.name = ''
-      place.valid?
-      expect(place.errors[:name]).to include('を入力してください')
-    end
-
     it 'early_bird_ticket_priceが0以上だと失敗すること' do
       live.early_bird_ticket_price = '-1000'
       live.valid?
