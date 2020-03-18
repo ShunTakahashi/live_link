@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe LiveHouse, type: :model do
-  let(:live_house) {FactoryBot.create(:devise_live_house)}
-  let(:address) {FactoryBot.create(:address)}
+  let(:live_house) {create(:devise_live_house)}
+  let(:address) {create(:address)}
 
   describe 'バリデーションチェック' do
 
