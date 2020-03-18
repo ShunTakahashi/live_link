@@ -38,6 +38,30 @@ RSpec.describe Live, type: :model do
       expect(place.errors[:name]).to include('を入力してください')
     end
 
+    it 'early_bird_ticket_priceが0以上だと失敗すること' do
+      live.early_bird_ticket_price = '-1000'
+      live.valid?
+      expect(live.errors[:early_bird_ticket_price]).to include('は0以上の値にしてください')
+    end
+
+    it 'early_bird_ticket_priceに数字以外が入っていた場合失敗すること' do
+      live.early_bird_ticket_price = 'false'
+      live.valid?
+      expect(live.errors[:early_bird_ticket_price]).to include('は数値で入力してください')
+    end
+
+    it 'tickets_for_today_priceが0以上だと失敗すること' do
+      live.tickets_for_today_price = '-1000'
+      live.valid?
+      expect(live.errors[:tickets_for_today_price]).to include('は0以上の値にしてください')
+    end
+
+    it 'tickets_for_today_priceに数字以外入っていた場合失敗すること' do
+      live.tickets_for_today_price = 'false'
+      live.valid?
+      expect(live.errors[:tickets_for_today_price]).to include('は数値で入力してください')
+    end
+
     it '全て正しく登録されてれば成功すること' do
       expect(live).to be_valid
     end
