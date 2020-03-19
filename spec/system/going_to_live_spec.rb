@@ -8,7 +8,7 @@ RSpec.describe 'User', type: :system do
   describe 'ライブのブックマークテスト' do
     before do
       visit new_band_session_path
-      fill_in 'メールアドレス', with: "band1@example.com"
+      fill_in 'メールアドレス', with: 'band1@example.com'
       fill_in 'パスワード', with: '12345678'
       click_on 'ログイン'
 
@@ -27,7 +27,7 @@ RSpec.describe 'User', type: :system do
       click_on 'ログアウト'
 
       visit new_user_session_path
-      fill_in 'メールアドレス', with: "user1@example.com"
+      fill_in 'メールアドレス', with: 'user1@example.com'
       fill_in 'パスワード', with: '12345678'
       click_on 'ログイン'
     end

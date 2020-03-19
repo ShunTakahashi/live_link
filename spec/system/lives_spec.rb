@@ -5,7 +5,7 @@ RSpec.describe 'Live', type: :system do
     create(:address, live_house: create(:devise_live_house))
     create(:devise_band)
     visit new_band_session_path
-    fill_in 'メールアドレス', with: "band1@example.com"
+    fill_in 'メールアドレス', with: 'band1@example.com'
     fill_in 'パスワード', with: '12345678'
     click_on 'ログイン'
 

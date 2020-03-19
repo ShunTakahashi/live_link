@@ -9,7 +9,7 @@ RSpec.describe 'FollowBnad', type: :system do
   describe 'バンドフォローテスト' do
     before do
       visit new_user_session_path
-      fill_in 'メールアドレス', with: "user1@example.com"
+      fill_in 'メールアドレス', with: 'user1@example.com'
       fill_in 'パスワード', with: '12345678'
       click_on 'ログイン'
     end
