@@ -9,7 +9,7 @@ RSpec.describe 'User', type: :system do
   describe "アカウント作成" do
     it 'アカウントが作成され、同時にログインされること' do
       visit new_user_registration_path
-      fill_in 'email', with: "testtt@sample.com"
+      fill_in 'email', with: 'testtt@sample.com'
       fill_in 'user_name', with: 'true'
       fill_in 'ticket_name', with: 'ticket_true'
       fill_in 'new_password', with: 'password'
@@ -22,7 +22,7 @@ RSpec.describe 'User', type: :system do
   describe "ログイン" do
     before do
       visit new_user_session_path
-      fill_in 'メールアドレス', with: "user1@example.com"
+      fill_in 'メールアドレス', with: 'user1@example.com'
       fill_in 'パスワード', with: '12345678'
       click_on 'ログイン'
     end

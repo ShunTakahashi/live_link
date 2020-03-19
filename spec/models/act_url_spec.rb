@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe ActUrl, type: :model do
   let(:band) {create(:devise_band)}
-  # let(:live) {create(:live)}
   let(:act) {create(:act, live: create(:live))}
   let(:act_url) {create(:act_url)}
   let(:false_act_url) {build(:false_act_url)}
