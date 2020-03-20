@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Live, type: :model do
-  let(:band) {create(:devise_band)}
-  let(:live) {create(:live, band_id: band.id)}
+  let(:live) {create(:live, band: create(:devise_band))}
   let(:place) {create(:place, live_id: live.id)}
 
   describe 'バリデーションチェック' do
