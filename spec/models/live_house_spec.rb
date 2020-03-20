@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe LiveHouse, type: :model do
   let(:live_house) {create(:devise_live_house)}
-  let(:address) {create(:address)}
+  let(:duplicate_live_house) {build(:devise_live_house)}
 
   describe 'バリデーションチェック' do
 
@@ -25,14 +25,14 @@ RSpec.describe LiveHouse, type: :model do
     end
 
     it 'Emailが重複していると失敗すること' do
-      LiveHouse.create(email: 'foo@example.com')
-      @live_house = LiveHouse.create(email: 'foo@example.com')
-      expect(@live_house.save).to be_falsey
+      live_house
+      duplicate_live_house
+      expect(duplicate_live_house.save).to be_falsey
     end
 
     it 'Prefectureが空だと失敗すること' do
-      @live_house = FactoryBot.build(:devise_live_house, prefecture: '')
-      expect(@live_house).to be_invalid
+      live_house = build(:devise_live_house, prefecture: '')
+      expect(live_house.save).to be_falsey
     end
 
     it 'Telが空だと失敗すること' do
@@ -53,24 +53,29 @@ RSpec.describe LiveHouse, type: :model do
       expect(live_house.errors[:tel]).to include('は不正な値です')
     end
 
-
+    it 'Telに電話番号ではない数字が入力された場合桁数があっていても失敗すること' do
+      live_house.tel = '00011112222'
+      live_house.valid?
+      expect(live_house.errors[:tel]).to include('は不正な値です')
+    end
+    
     it 'Passwordが空だと失敗すること' do
-      expect(FactoryBot.build(:devise_live_house, password: "")).to_not be_valid
+      live_house.password = ''
+      expect(live_house.save).to be_falsey
     end
 
     it 'Passwordが6文字以内だと失敗すること' do
-      @live_house = FactoryBot.build(:devise_live_house, password: "a" * 5, password_confirmation: "a" * 5)
-      expect(@live_house).to be_invalid
+      live_house = build(:devise_live_house, password: 'a' * 5, password_confirmation: 'a' * 5)
+      expect(live_house.save).to be_falsey
     end
 
     it 'PasswordとPassword_confirmationが一致しなければ失敗すること' do
-      @live_house = FactoryBot.build(:devise_live_house, password: "a" * 9, password_confirmation: "a" * 10)
-      expect(@live_house).to be_invalid
+      live_house = build(:devise_live_house, password: 'a' * 9, password_confirmation: 'a' * 10)
+      expect(live_house.save).to be_falsey
     end
 
     it '全て正しく登録されてれば成功すること' do
       expect(live_house).to be_valid
-      expect(address).to be_valid
     end
 
   end

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) {build(:devise_user)}
+  let(:user) {create(:devise_user)}
+  let(:duplicate_user) {build(:devise_user)}
 
   describe 'バリデーションチェック' do
 
@@ -36,23 +37,24 @@ RSpec.describe User, type: :model do
     end
 
     it 'Emailが重複していると失敗すること' do
-      User.create(email: 'foo@example.com')
-      @user = User.create(email: 'foo@example.com')
-      expect(@user.save).to be_falsey
+      user
+      duplicate_user
+      expect(duplicate_user.save).to be_falsey
     end
 
     it 'Passwordが空だと失敗すること' do
-      expect(FactoryBot.build(:devise_user, password: "")).to_not be_valid
+      user.password = ''
+      expect(user.save).to be_falsey
     end
 
     it 'Passwordが6文字以内だと失敗すること' do
-      @user = FactoryBot.build(:devise_user, password: "a" * 5, password_confirmation: "a" * 5)
-      expect(@user).to be_invalid
+      user = build(:devise_user, password: 'a' * 5, password_confirmation: 'a' * 5)
+      expect(user.save).to be_falsey
     end
 
     it 'PasswordとPassword_confirmationが一致しなければ失敗すること' do
-      @user = FactoryBot.build(:devise_user, password: "a" * 9, password_confirmation: "a" * 10)
-      expect(@user).to be_invalid
+      user = build(:devise_user, password: 'a' * 9, password_confirmation: 'a' * 10)
+      expect(user.save).to be_falsey
     end
 
     it '全て正しく登録されてれば成功すること' do

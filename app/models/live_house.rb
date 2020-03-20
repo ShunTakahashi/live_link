@@ -15,8 +15,7 @@ class LiveHouse < ApplicationRecord
   # validates
   include DeviseValidators
   include PrefectureValidators
-  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
-  validates :tel, presence: true, format: { with: VALID_PHONE_REGEX }
+  validates :tel, presence: true, telephone_number: {country: :jp, types: %i[fixed_line mobile]}
 
   enum prefecture: {
     北海道: 1, 青森県: 2, 岩手県: 3, 宮城県: 4, 秋田県: 5, 山形県: 6, 福島県: 7,

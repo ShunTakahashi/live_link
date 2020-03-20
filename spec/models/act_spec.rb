@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Live, type: :model do
   let(:band) {create(:devise_band)}
-  let(:live) {create(:live, band: create(:devise_band))}
-  let(:place) {create(:place, live: create(:live, band: create(:devise_band)))}
-  let(:act) {create(:act, live: create(:live, band: create(:devise_band)))}
+  let(:live) {create(:live, band_id: band.id)}
+  let(:act) {create(:act, live_id: live.id)}
 
   describe 'バリデーションチェック' do
 
@@ -17,6 +16,5 @@ RSpec.describe Live, type: :model do
     it '全て正しく登録されてれば成功すること' do
       expect(live).to be_valid
     end
-
   end
 end
