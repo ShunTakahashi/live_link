@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'FollowBnad', type: :system do
   before do
-    FactoryBot.create(:devise_user)
-    FactoryBot.create(:devise_band)
+    create(:devise_user)
+    create(:devise_band)
   end
 
   describe 'バンドフォローテスト' do
