@@ -41,13 +41,13 @@ RSpec.describe Band, type: :model do
     end
 
     it 'Passwordが6文字以内だと失敗すること' do
-      @band = build(:devise_band, password: 'a' * 5, password_confirmation: 'a' * 5)
-      expect(@band.save).to be_falsey
+      band = build(:devise_band, password: 'a' * 5, password_confirmation: 'a' * 5)
+      expect(band.save).to be_falsey
     end
 
     it 'PasswordとPassword_confirmationが一致しなければ失敗すること' do
-      @band = build(:devise_band, password: 'a' * 9, password_confirmation: 'a' * 10)
-      expect(@band.save).to be_falsey
+      band = build(:devise_band, password: 'a' * 9, password_confirmation: 'a' * 10)
+      expect(band.save).to be_falsey
     end
 
     it '全て正しく登録されてれば成功すること' do

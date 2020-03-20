@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'LiveHouse', type: :system do
   before do
-    FactoryBot.create(:address, live_house: create(:devise_live_house))
+    create(:address, live_house: create(:devise_live_house))
   end
 
   describe 'アカウント作成が正しく機能する事' do
