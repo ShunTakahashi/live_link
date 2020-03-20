@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Band, type: :model do
-  let(:band) {build(:devise_band)}
+  let(:band) {create(:devise_band)}
+  let(:duplicate_band) {build(:devise_band)}
 
   describe 'バリデーションチェック' do
 
@@ -24,28 +25,29 @@ RSpec.describe Band, type: :model do
     end
 
     it 'Emailが重複していると失敗すること' do
-      Band.create(email: 'foo@example.com')
-      @band = Band.create(email: 'foo@example.com')
-      expect(@band.save).to be_falsey
+      band
+      duplicate_band
+      expect(duplicate_band.save).to be_falsey
     end
     
     it 'Prefectureが空だと失敗すること' do
-      @band = FactoryBot.build(:devise_band, prefecture: '')
-      expect(@band).to be_invalid
+      band.prefecture = ''
+      expect(band.save).to be_falsey
     end
 
     it 'Passwordが空だと失敗すること' do
-      expect(FactoryBot.build(:devise_band, password: "")).to_not be_valid
+      band.password = ''
+      expect(band.save).to be_falsey
     end
 
     it 'Passwordが6文字以内だと失敗すること' do
-      @band = FactoryBot.build(:devise_band, password: "a" * 5, password_confirmation: "a" * 5)
-      expect(@band).to be_invalid
+      @band = build(:devise_band, password: 'a' * 5, password_confirmation: 'a' * 5)
+      expect(@band.save).to be_falsey
     end
 
     it 'PasswordとPassword_confirmationが一致しなければ失敗すること' do
-      @band = FactoryBot.build(:devise_band, password: "a" * 9, password_confirmation: "a" * 10)
-      expect(@band).to be_invalid
+      @band = build(:devise_band, password: 'a' * 9, password_confirmation: 'a' * 10)
+      expect(@band.save).to be_falsey
     end
 
     it '全て正しく登録されてれば成功すること' do

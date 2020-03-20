@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Band', type: :system do
   before do
-    FactoryBot.create(:devise_band)
+    create(:devise_band)
   end
 
   describe 'アカウント作成が正しくされる事' do

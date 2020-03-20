@@ -53,6 +53,12 @@ RSpec.describe LiveHouse, type: :model do
       expect(live_house.errors[:tel]).to include('は不正な値です')
     end
 
+    it 'Telに電話番号ではない数字が入力された場合桁数があっていても失敗すること' do
+      live_house.tel = '00011112222'
+      live_house.valid?
+      expect(live_house.errors[:tel]).to include('は不正な値です')
+    end
+
 
     it 'Passwordが空だと失敗すること' do
       expect(FactoryBot.build(:devise_live_house, password: "")).to_not be_valid
