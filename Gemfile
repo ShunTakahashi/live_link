@@ -53,6 +53,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
 gem 'tel_formatter'
+gem 'telephone_number'
 gem 'rails-i18n'
 
 group :development, :test do

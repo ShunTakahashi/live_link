@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'LiveHouse', type: :system do
   before do
-    FactoryBot.create(:address, live_house: FactoryBot.create(:devise_live_house))
+    FactoryBot.create(:address, live_house: create(:devise_live_house))
   end
 
   describe 'アカウント作成が正しく機能する事' do
@@ -10,7 +10,7 @@ RSpec.describe 'LiveHouse', type: :system do
       visit new_live_house_registration_path
       fill_in 'live_house_email', with: 'testlive_house@sample.com'
       fill_in 'live_house_name', with: '渋谷サイクロン'
-      fill_in 'live_house_tel', with: '00012345678'
+      fill_in 'live_house_tel', with: '09012345678'
       select '東京都', from: 'live_house_prefecture'
       fill_in 'address', with: '東京都渋谷区宇田川町13-16 コクサイビルA館'
       fill_in 'live_house_password', with: 'password'
