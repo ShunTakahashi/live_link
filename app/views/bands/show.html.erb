@@ -33,6 +33,7 @@
   <table>
     <tbody>
     <% @lives.each do |live| %>
+    <tr>
       <td><%= l(live.date, format: :default) %></td>
       <td><%= link_to live.title, live_path(live) %></td>
       <% live.act.each do |act| %>
