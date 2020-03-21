@@ -10,7 +10,7 @@
       <tr>
         <th><%= f.label t('views.live.prefecture') %></th>
         <td><%= f.select :place_place_to_live_houses_prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
-                         class: 'form-control btn btn-info',id: 'search_prefecture', autofocus: true %></td>
+                         class: 'form-control btn btn-info', id: 'search_prefecture', autofocus: true %></td>
       </tr>
       <tr>
         <th><%= f.label t('views.live.place') %></th>
@@ -44,10 +44,16 @@
         <td><%= l(live.date, format: :default) %></td>
         <td><%= link_to live.title, live_path(live) %></td>
         <% live.place.each do |place| %>
-          <td><%= place.name %></td>
+          <% if place.place_to_live_houses.present? %>
+            <% place.place_to_live_houses.each do |live_house| %>
+              <td><%= place.name %>(<%= live_house.prefecture %>)</td>
+            <% end %>
+          <% else %>
+            <td><% place.name %></td>
+          <% end %>
         <% end %>
-      </tr>
     <% end %>
+    </tr>
     </tbody>
   </table>
   <%= paginate @lives %>
