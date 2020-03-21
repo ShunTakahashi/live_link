@@ -33,21 +33,29 @@
   <table>
     <tbody>
     <% @lives.each do |live| %>
-      <tr>
-        <td><%= l(live.date, format: :default) %></td>
-        <td><%= link_to live.title, live_path(live) %></td>
-        <% live.place.each do |place| %>
-          <td><%= place.name %></td>
-        <% end %>
-        <% if current_band != nil %>
-          <% if current_band.id = live.band_id %>
-            <td><%= link_to t('views.edit'), edit_live_path(live.id) %></td>
-            <td><%= link_to t('views.live.destory'), live_path(live.id), method: :delete,
-                            data: {confirm: '本当に削除してもよろしいですか？'} %></td>
+      <td><%= l(live.date, format: :default) %></td>
+      <td><%= link_to live.title, live_path(live) %></td>
+      <% live.act.each do |act| %>
+        <td>Act:<%= act.name %></td>
+      <% end %>
+      <% live.place.each do |place| %>
+        <% if place.place_to_live_houses.present? %>
+          <% place.place_to_live_houses.each do |live_house| %>
+            <td><%= place.name %>(<%= live_house.prefecture %>)</td>
           <% end %>
+        <% else %>
+          <td><% place.name %></td>
         <% end %>
-      </tr>
+      <% end %>
+      <% if current_band != nil %>
+        <% if current_band.id = live.band_id %>
+          <td><%= link_to t('views.edit'), edit_live_path(live.id) %></td>
+          <td><%= link_to t('views.live.destory'), live_path(live.id), method: :delete,
+                          data: {confirm: '本当に削除してもよろしいですか？'} %></td>
+        <% end %>
+      <% end %>
     <% end %>
+    </tr>
     </tbody>
     <br>
     <%= link_to t('views.back'), :back %>
