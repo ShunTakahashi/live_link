@@ -43,13 +43,17 @@
       <tr>
         <td><%= l(live.date, format: :default) %></td>
         <td><%= link_to live.title, live_path(live) %></td>
+        <% live.act.each do |act| %>
+          <td>Act:<%= act.name %></td>
+        <% end %>
         <% live.place.each do |place| %>
           <% if place.place_to_live_houses.present? %>
             <% place.place_to_live_houses.each do |live_house| %>
               <td><%= place.name %>(<%= live_house.prefecture %>)</td>
             <% end %>
           <% else %>
-            <td><% place.name %></td>
+            <td>
+              <% place.name %></td>
           <% end %>
         <% end %>
     <% end %>
