@@ -52,7 +52,7 @@ RSpec.describe 'Live', type: :system do
   describe '検索機能テスト' do
     it '日付検索で検索日当日のライブが表示される事' do
       visit lives_path
-      fill_in 'search_date', with: '2020/10/19'
+      fill_in 'search_date_gteq', with: '2020/10/19'
       expect(page).to have_content 'テスト1'
     end
 

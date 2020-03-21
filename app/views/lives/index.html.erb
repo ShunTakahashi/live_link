@@ -5,7 +5,8 @@
       <tbody>
       <tr>
         <th><%= f.label t('views.live.date') %></th>
-        <td><%= f.date_field :date_eq, id: 'search_date', max: '9999/12/31' %></td>
+        <td><%= f.date_field :date_gteq, id: 'search_date_gteq', max: '9999/12/31' %> ~ </td>
+        <td><%= f.date_field :date_lteq, id: 'search_date_lteq', max: '9999/12/31' %></td>
       </tr>
       <tr>
         <th><%= f.label t('views.live.prefecture') %></th>
@@ -52,8 +53,7 @@
               <td><%= place.name %>(<%= live_house.prefecture %>)</td>
             <% end %>
           <% else %>
-            <td>
-              <% place.name %></td>
+            <td><%= place.name %></td>
           <% end %>
         <% end %>
     <% end %>
