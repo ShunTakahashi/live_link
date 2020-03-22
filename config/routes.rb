@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   devise_scope :band do
     get '/bands/sign_out', to: 'bands/sessions#destroy'
+    post 'bands/guest_sign_in', to: 'bands/sessions#new_guest'
   end
   devise_for :bands, controllers: {
     sessions: 'bands/sessions',
