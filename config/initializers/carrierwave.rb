@@ -12,6 +12,7 @@ CarrierWave.configure do |config|
   config.fog_public     = false
   config.cache_storage = :fog
 
+
   case Rails.env
   when 'production'
     config.fog_directory = 'livelink-production'

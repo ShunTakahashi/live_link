@@ -55,6 +55,7 @@ gem 'bcrypt_pbkdf'
 gem 'tel_formatter'
 gem 'telephone_number'
 gem 'rails-i18n'
+gem 'carrierwave-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
