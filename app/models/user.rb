@@ -13,4 +13,11 @@ class User < ApplicationRecord
   # validates
   include DeviseValidators
   validates :ticket_name, presence: true, length: {maximum: 30}
+
+  # ゲストユーザー
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com', name: 'guest_user', ticket_name: 'guest_user') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end

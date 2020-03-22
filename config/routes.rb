@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
 
   devise_scope :user do
-    get '/users/sign_out' => 'users/sessions#destroy'
+    get '/users/sign_out', to: 'users/sessions#destroy'
+    post '/users/guest_sign_in', to: 'users/sessions#new_guest'
   end
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   devise_scope :band do
-    get '/bands/sign_out' => 'bands/sessions#destroy'
+    get '/bands/sign_out', to: 'bands/sessions#destroy'
   end
   devise_for :bands, controllers: {
     sessions: 'bands/sessions',
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
 
 
   devise_scope :live_house do
-    get '/live_houses/sign_out' => 'live_houses/sessions#destroy'
+    get '/live_houses/sign_out', to: 'live_houses/sessions#destroy'
   end
   devise_for :live_houses, controllers: {
     sessions: 'live_houses/sessions',
