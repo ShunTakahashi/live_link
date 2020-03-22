@@ -103,13 +103,12 @@
   </table>
   <br>
   <%= link_to t('views.back'), :back %>
-
-</div>
-
-<% if user_signed_in? %>
-  <% if !GoingToLive.exists?(user_id: current_user.id, live_id: @live.id) %>
-    <%= link_to '行く予定ボタン', going_to_lives_path(live_id: @live.id), method: :post %>
-  <% else %>
-    <%= link_to '行く予定ボタン解除', going_to_live_path(id: @live), method: :delete %>
+  <br>
+  <% if user_signed_in? %>
+    <% if !GoingToLive.exists?(user_id: current_user.id, live_id: @live.id) %>
+      <%= link_to '行く予定ボタン', going_to_lives_path(live_id: @live.id), method: :post %>
+    <% else %>
+      <%= link_to '行く予定ボタン解除', going_to_live_path(id: @live), method: :delete %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
