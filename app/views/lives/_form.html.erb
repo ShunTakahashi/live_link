@@ -64,14 +64,14 @@
     <tr>
       <th><%= form.label t('views.live.image') %></th>
       <td><%= form.file_field :image %></td>
-      <td><%= image_tag(@live.image.url, class: "blog_image　rm_img") if @live.image? %></td>
+      <td><%= image_tag(@live.image.url, class: 'live_image') if @live.image? %></td>
       <%= form.hidden_field :image_cache %>
     </tr>
 
     <tr>
       <th><%= form.label t('views.live.time_table_image') %></th>
       <td><%= form.file_field :time_table_image %></td>
-      <td><%= image_tag(@live.time_table_image.url, class: "blog_image　rm_img") if @live.time_table_image.url %></td>
+      <td><%= image_tag(@live.time_table_image.url, lass: 'live_image') if @live.time_table_image.url %></td>
       <%= form.hidden_field :time_table_image_cache %>
     </tr>
 
