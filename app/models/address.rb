@@ -8,4 +8,8 @@ class Address < ApplicationRecord
 
   # validates
   validates :address, presence: true
+
+  def self.guest(params)
+    find_or_create_by!(address: '東京', live_house_id: params)
+  end
 end

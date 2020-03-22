@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
   devise_scope :live_house do
     get '/live_houses/sign_out', to: 'live_houses/sessions#destroy'
+    post 'live_houses/guest_sign_in', to: 'live_houses/sessions#new_guest'
   end
   devise_for :live_houses, controllers: {
     sessions: 'live_houses/sessions',
