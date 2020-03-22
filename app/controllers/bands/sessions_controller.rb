@@ -3,6 +3,12 @@
 class Bands::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  def new_guest
+    band = Band.guest
+    sign_in band
+    redirect_to root_path, notice: 'ゲストバンドとしてログインしました。'
+  end
+
   # GET /resource/sign_in
   # def new
   #   super

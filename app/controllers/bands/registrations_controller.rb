@@ -4,6 +4,7 @@ class Bands::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   before_action :login_check, only: [:new]
+  before_action :check_guest, only: %i[update destroy]
 
   # GET /resource/sign_up
   # def new
@@ -72,4 +73,10 @@ class Bands::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def check_guest
+    if resource.email == 'guestband@example.com'
+      redirect_to band_path(@band.id), notice: 'ゲストバンドの変更はできません。'
+    end
+  end
 end

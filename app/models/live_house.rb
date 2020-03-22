@@ -17,6 +17,14 @@ class LiveHouse < ApplicationRecord
   include PrefectureValidators
   validates :tel, presence: true, telephone_number: {country: :jp, types: %i[fixed_line mobile]}
 
+  def self.guest
+    find_or_create_by!(email: 'guest.live.house@example.com', name: 'ゲストライブハウス',
+                       tel: '09012345678', prefecture: 13) do |live_house|
+      live_house.password = SecureRandom.urlsafe_base64
+
+    end
+  end
+
   enum prefecture: {
     北海道: 1, 青森県: 2, 岩手県: 3, 宮城県: 4, 秋田県: 5, 山形県: 6, 福島県: 7,
     茨城県: 8, 栃木県: 9, 群馬県: 10, 埼玉県: 11, 千葉県: 12, 東京都: 13, 神奈川県: 14,
