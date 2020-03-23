@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def follow_band_page
+    @follow_bands = current_user.user_to_bands.count
     @follow_bands = current_user.user_to_bands.all
   end
 end

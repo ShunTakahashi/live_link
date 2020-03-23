@@ -10,9 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+@import "bootstrap";
 
 .clearfix:after {
   content: "";
@@ -29,24 +28,24 @@ body {
 }
 
 
-header {
-  width: 100%;
-  background-color: #2E2F30;
-  height: 3rem;
-}
+//header {
+//  width: 100%;
+//  background-color: #2E2F30;
+//  height: 3rem;
+//}
 
 .header_top_link{
   width: 50%;
   float: left;
 }
 
-.header_logo{
-  margin-left: 15%;
-  text-decoration: none;
-  font-size: 2rem;
-  color: #e2e2e2;
-  float: left;
-}
+//.header_logo{
+//  margin-left: 15%;
+//  text-decoration: none;
+//  font-size: 2rem;
+//  color: #e2e2e2;
+//  float: left;
+//}
 
 .header_my_page_link{
   width: 50%;
@@ -59,11 +58,6 @@ header {
   font-size: 1.8rem;
   color: #e2e2e2;
   float: right;
-}
-
-.main_body {
-  padding-left: 10%;
-  padding-right: 10%;
 }
 
 .search_form table{

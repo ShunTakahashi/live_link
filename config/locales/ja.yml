@@ -43,6 +43,8 @@ ja:
     sign_up: 登録する
     log_in: ログイン
     log_out: ログアウト
+    my_page: 詳細ページ
+    follow_band: フォローバンド
     user:
       name: ユーザー名
       ticket_name: チケット予約名
