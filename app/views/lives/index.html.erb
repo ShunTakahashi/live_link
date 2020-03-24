@@ -1,42 +1,41 @@
-<div class="search_form">
-  <h1>ライブ検索フォーム</h1>
+<div class="container">
+  <h2 class="text-center">ライブ検索フォーム</h2>
   <%= search_form_for @q do |f| %>
-    <table>
+    <table class="table table-dark table-borderless table-sm col-sm-12 col-md-5" align="center">
       <tbody>
       <tr>
-        <th><%= f.label t('views.live.date') %></th>
-        <td><%= f.date_field :date_gteq, id: 'search_date_gteq', max: '9999/12/31' %> ~ </td>
-        <td><%= f.date_field :date_lteq, id: 'search_date_lteq', max: '9999/12/31' %></td>
+        <th class="text-center"><%= f.label t('views.live.date') %></th>
+        <td><%= f.date_field :date_gteq, id: 'search_date_gteq', max: '9999/12/31' %> ~
+          <%= f.date_field :date_lteq, id: 'search_date_lteq', max: '9999/12/31' %></td>
       </tr>
       <tr>
-        <th><%= f.label t('views.live.prefecture') %></th>
+        <th class="text-center"><%= f.label t('views.live.prefecture') %></th>
         <td><%= f.select :place_place_to_live_houses_prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
-                         class: 'form-control btn btn-info', id: 'search_prefecture', autofocus: true %></td>
+                         class: 'form-control col-11', id: 'search_prefecture', autofocus: true %></td>
       </tr>
       <tr>
-        <th><%= f.label t('views.live.place') %></th>
-        <td><%= f.search_field :place_name_cont, id: 'search_place' %></td>
+        <th class="text-center"><%= f.label t('views.live.place') %></th>
+        <td><%= f.search_field :place_name_cont, class: 'col-11', id: 'search_place' %></td>
       </tr>
       <tr>
-        <th><%= f.label t('views.live.act') %></th>
-        <td><%= f.search_field :act_name_cont, id: 'search_band' %></td>
+        <th class="text-center"><%= f.label t('views.live.act') %></th>
+        <td><%= f.search_field :act_name_cont, class: 'col-11', id: 'search_band' %></td>
+      </tr>
+      <tr>
+        <th colspan='2'><%= f.submit class: 'btn btn-block btn-secondary' %></th>
       </tr>
       </tbody>
     </table>
-
-    <div class="search_submit">
-      <%= f.submit %>
-    </div>
   <% end %>
-  <div class="search_link">
-    <%= link_to "バンドから探す", bands_path %>
-    <%= link_to "ライブハウスから探す", live_houses_path %>
+  <div class="text-center">
+    <%= link_to "バンドから探す", bands_path, class: 'btn btn-secondary' %>
+    <%= link_to "ライブハウスから探す", live_houses_path, class: 'btn btn-secondary' %>
   </div>
 </div>
 
 
 <div class="live_index_page">
-  <h1>ライブ一覧</h1>
+  <h2 class="text-center">ライブ一覧</h2>
 
   <table>
     <tbody>
