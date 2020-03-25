@@ -1,5 +1,5 @@
 <h2 class="text-center">ユーザーログイン</h2>
-<div class="devise_form">
+<div class="container">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <table class="table table-dark table-borderless table-sm col-sm-12 col-md-5" align="center">
       <tr>
@@ -17,10 +17,10 @@
           <th></th>
           <td><%= f.check_box :remember_me %> <%= "　" %> <%= f.label :remember_me %></td>
         </tr>
-        <tr>
-          <th colspan='2'><%= f.submit t('views.log_in'), class: 'btn btn-block btn-secondary' %></th>
-        </tr>
       <% end %>
+      <tr>
+        <th colspan='2'><%= f.submit t('views.log_in'), class: 'btn btn-block btn-secondary' %></th>
+      </tr>
     </table>
   <% end %>
   <%= render "users/shared/links" %>
