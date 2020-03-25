@@ -1,31 +1,32 @@
-<h2 class="top_title">ライブハウスログイン</h2>
-<div class="devise_form">
+<h2 class="text-center">ライブハウスログイン</h2>
+<div class="container">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <table>
+    <table class="table table-dark table-borderless table-sm col-sm-12 col-md-5" align="center">
       <tr>
-        <th><%= f.label :email %></th>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        <th class="text-center"><%= f.label :email %></th>
+        <td><%= f.email_field :email, class: 'col-11', autofocus: true, autocomplete: "email" %></td>
       </tr>
 
       <tr>
-        <th><%= f.label :password %></th>
-        <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+        <th class="text-center"><%= f.label :password %></th>
+        <td><%= f.password_field :password, class: 'col-11', autocomplete: "current-password" %></td>
       </tr>
 
       <% if devise_mapping.rememberable? %>
         <tr>
-          <th><%= f.label :remember_me %></th>
-          <td><%= f.check_box :remember_me %></td>
+          <th></th>
+          <td><%= f.check_box :remember_me %> <%= "　" %> <%= f.label :remember_me %></td>
         </tr>
       <% end %>
+      <tr>
+        <th colspan='2'><%= f.submit t('views.log_in'), class: 'btn btn-block btn-secondary' %></th>
+      </tr>
     </table>
-    <div class="actions_submit">
-      <%= f.submit t('views.log_in') %>
-    </div>
   <% end %>
 
   <%= render "live_houses/shared/links" %>
-  <div class="devise_link">
+  <div class="text-center">
+    <br>
     <%= link_to 'ゲストライブハウスログイン', live_houses_guest_sign_in_path, method: :post %>
   </div>
 </div>
