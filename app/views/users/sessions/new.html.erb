@@ -1,31 +1,31 @@
-<h2 class="top_title">ユーザーログイン</h2>
+<h2 class="text-center">ユーザーログイン</h2>
 <div class="devise_form">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <table>
+    <table class="table table-dark table-borderless table-sm col-sm-12 col-md-5" align="center">
       <tr>
-        <th><%= f.label :email %></th>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        <th class="text-center"><%= f.label :email %></th>
+        <td><%= f.email_field :email, class: 'col-11', autofocus: true, autocomplete: "email" %></td>
       </tr>
 
       <tr>
-        <th><%= f.label :password %></th>
-        <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+        <th class="text-center"><%= f.label :password %></th>
+        <td><%= f.password_field :password, class: 'col-11', autocomplete: "current-password" %></td>
       </tr>
 
       <% if devise_mapping.rememberable? %>
         <tr>
-          <th><%= f.label :remember_me %></th>
-          <td><%= f.check_box :remember_me %></td>
+          <th></th>
+          <td><%= f.check_box :remember_me %> <%= "　" %> <%= f.label :remember_me %></td>
+        </tr>
+        <tr>
+          <th colspan='2'><%= f.submit t('views.log_in'), class: 'btn btn-block btn-secondary' %></th>
         </tr>
       <% end %>
     </table>
-    <div class="actions_submit">
-      <%= f.submit t('views.log_in') %>
-    </div>
   <% end %>
   <%= render "users/shared/links" %>
   <br>
-  <div class="devise_link">
-    <%= link_to 'ゲストユーザーログイン', users_guest_sign_in_path, method: :post %>
+  <div class="text-center">
+    <%= link_to 'ゲストユーザーログイン', users_guest_sign_in_path, class: 'a', method: :post %>
   </div>
 </div>
