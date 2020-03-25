@@ -37,7 +37,7 @@
 
       <div class="form-group">
         <label class="control-label"><%= f.label :password_confirmation %></label>
-        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "パスワードを再度入力してください。", autocomplete: "new-password", id: 'password_confirmation', required: true %>
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "パスワードを再度入力してください", autocomplete: "new-password", id: 'password_confirmation', required: true %>
         <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
           <li class="list-unstyled text-danger"><%= message %></li>
         <% end %>
@@ -46,7 +46,6 @@
       <div class="text-center">
         <%= f.submit t('views.sign_up'), class: 'btn-primary rounded-pill' %>
       </div>
-
     </form>
     <br>
     <%= render "users/shared/links" %>
