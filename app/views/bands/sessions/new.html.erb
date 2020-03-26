@@ -2,6 +2,9 @@
 <br>
 <div class="container col-md-4">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}", class: 'text-center text-danger' if msg.is_a?(String) %>
+    <% end %>
     <form class='needs-validation' novalidate>
       <div class='form-group'>
         <label class='control-label'><%= f.label :email %></label>
