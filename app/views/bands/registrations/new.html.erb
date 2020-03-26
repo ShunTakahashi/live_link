@@ -1,55 +1,54 @@
-<h2 class="text-center">バンド新規登録</h2>
+<h2 class='text-center'>バンド新規登録</h2>
+<br>
 
-<div class="container col-md-5">
+<div class='container col-md-5'>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%#= render "devise/shared/error_messages", resource: resource %>
-    <form class="needs-validation" novalidate>
-
-      <div class="form-group">
-        <label class="control-label"><%= f.label :email %></label>
-        <%= f.email_field :email, class: "form-control", placeholder: "Eメールアドレス", autofocus: true, autocomplete: "email", required: true %>
+    <form class='needs-validation' novalidate>
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :email %></label>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'Eメールアドレス', autofocus: true, autocomplete: 'email', required: true %>
         <% resource.errors.full_messages_for(:email).each do |message| %>
-          <li class="list-unstyled text-danger"><%= message %></li>
+          <li class='list-unstyled text-danger'><%= message %></li>
         <% end %>
       </div>
 
-      <div class="form-group">
-        <label class="control-label"><%= f.label :name %></label>
-        <%= f.text_field :name, class: "form-control", placeholder: "バンド名", autofocus: true, required: true %>
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :name %></label>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'バンド名', autofocus: true, required: true, required: true %>
         <% resource.errors.full_messages_for(:name).each do |message| %>
-          <li class="list-unstyled text-danger"><%= message %></li>
+          <li class='list-unstyled text-danger'><%= message %></li>
         <% end %>
       </div>
 
-      <div class="form-group">
-        <label class="control-label"><%= f.label :prefecture %></label>
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :prefecture %></label>
         <%= f.select :prefecture, Band.prefectures.keys, {prompt: '選択してください'},
-                         class: 'form-control btn-default', autofocus: true %>
+                         class: 'form-control btn-default', autofocus: true, required: true %>
         <% resource.errors.full_messages_for(:prefecture).each do |message| %>
-          <li class="list-unstyled text-danger"><%= message %></li>
+          <li class='list-unstyled text-danger'><%= message %></li>
         <% end %>
       </div>
 
-      <div class="form-group">
-        <label class="control-label"><%= f.label :password %></label>
-        <%= f.password_field :password,  class: "form-control", placeholder: "パスワード(6文字以上)", autocomplete: "new-password" %>
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :password %></label>
+        <%= f.password_field :password, class: 'form-control', placeholder: 'パスワード(6文字以上)', autocomplete: 'new-password', required: true %>
         <% resource.errors.full_messages_for(:password).each do |message| %>
-          <li class="list-unstyled text-danger"><%= message %></li>
+          <li class='list-unstyled text-danger'><%= message %></li>
         <% end %>
       </div>
 
-      <div class="form-group">
-        <label class="control-label"><%= f.label :password_confirmation %></label>
-        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "パスワードを再度入力してください", autocomplete: "new-password" %>
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :password_confirmation %></label>
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワードを再度入力してください', autocomplete: 'new-password', required: true %>
         <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
-          <li class="list-unstyled text-danger"><%= message %></li>
+          <li class='list-unstyled text-danger'><%= message %></li>
         <% end %>
       </div>
-      <div class="text-center">
+      <div class='text-center'>
         <%= f.submit t('views.sign_up'), class: 'btn-primary rounded-pill' %>
       </div>
     </form>
     <br>
-    <%= render "bands/shared/links" %>
+    <%= render 'bands/shared/links' %>
   <% end %>
 </div>
