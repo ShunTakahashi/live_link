@@ -1,6 +1,10 @@
 <h2 class="text-center">ユーザーログイン</h2>
 <div class="container">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}", class: 'text-center text-danger' if msg.is_a?(String) %>
+    <% end %>
+
     <table class="table table-dark table-borderless table-sm col-sm-12 col-md-5" align="center">
       <tr>
         <th class="text-center"><%= f.label :email %></th>
