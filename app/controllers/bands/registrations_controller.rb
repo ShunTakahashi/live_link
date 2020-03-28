@@ -57,9 +57,9 @@ class Bands::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    band_path(@band.id)
-  end
+  # def after_sign_up_path_for(resource)
+  #   band_path(@band.id)
+  # end
 
   def after_update_path_for(resource)
     if @band.save
