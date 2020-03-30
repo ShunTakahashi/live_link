@@ -1,25 +1,18 @@
-<h1 class="top_title">ユーザーマイページ</h1>
-<div class="user_profile">
-  <div class="profile_left">
-    <h3>ユーザー名:<%= @user.name %></h3>
-    <h4>チケット予約名:<%= @user.ticket_name %></h4>
-  </div>
+<%= render 'profile' %>
 
-  <div class="profile_right">
-    <h3>フォローバンド数:<%= link_to @follow_bands, follow_band_page_user_path %></h3>
-    <% if current_user.id == @user.id %>
-      <%= link_to t('views.edit_page'), edit_user_registration_path %>
-      <%= link_to t('views.log_out'), destroy_user_session_path %>
+<div class="container">
+  <!--  <h3 class="text-center">行く予定のライブ</h3>-->
+  <div class="row text-center">
+    <%= link_to user_path(@user.id) do %>
+      <div class="col-4 p-3 bg-dark"><h6>ライブうぃる</h6></div>
     <% end %>
+    <div class="col-4 p-3 bg-secondary block"><h6>ライブわず</h6></div>
+    <div class="col-4 p-3 bg-secondary block"><h6>フォローバンド</h6></div>
   </div>
-</div>
-
-<div class="profile_menu_list">
-
 </div>
 
 <div class="profile_content">
-  <h2>行く予定のライブ</h2>
+
   <table>
     <tbody>
     <% @going_to_lives.each do |live| %>

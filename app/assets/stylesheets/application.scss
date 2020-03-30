@@ -10,8 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap/dist/css/bootstrap.min
  */
-@import "bootstrap";
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 .clearfix:after {
   content: "";
@@ -61,4 +62,16 @@ label{
 
 .btn-orange{
   background-color: #ffae00;
+}
+
+.icon-image{
+  border-radius: 120px;
+}
+
+.pc-dsp { display:block; }
+.sp-dsp { display:none; }
+
+@media only screen and (max-width : 736px){
+  .pc-dsp { display:none; }
+  .sp-dsp { display:block; }
 }

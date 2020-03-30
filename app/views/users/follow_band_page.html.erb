@@ -1,4 +1,14 @@
-<h1 class="top_title">フォローバンド一覧</h1>
+<%= render 'profile' %>
+
+<div class="container">
+  <!--  <h3 class="text-center">行く予定のライブ</h3>-->
+  <div class="row text-center">
+    <div class="col-4 p-3 bg-secondary block"><h6><%= link_to 'ライブうぃる', user_path(@user.id) %></h6></div>
+    <div class="col-4 p-3 bg-dark block"><h6>ライブわず</h6></div>
+    <div class="col-4 p-3 bg-secondary block"><h6>フォローバンド</h6></div>
+  </div>
+</div>
+
 <div class="my_page_content">
   <table>
     <tbody>
