@@ -7,7 +7,7 @@ set :application, 'live_link'
 # （xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
 set :repo_url, 'https://github.com/ShunTakahashi/live_link'
 # deployするブランチ。デフォルトはmasterなのでなくても可。
-set :branch, 'add_bootstrap4'
+set :branch, 'add_bootsrap4'
 # deploy先のディレクトリ。
 set :deploy_to, '/var/www/live_link'
 # シンボリックリンクをはるフォルダ・ファイル
