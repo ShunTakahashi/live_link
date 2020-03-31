@@ -36,15 +36,13 @@
     <br><br>
   </div>
 </div>
-
-
 <div class="live_index_page">
   <h2 class="text-center">ライブ一覧</h2>
 
   <table>
     <tbody>
     <% @lives.each do |live| %>
-      <div class='form-group row'>
+      <tr>
         <td><%= l(live.date, format: :default) %></td>
         <td><%= link_to live.title, live_path(live) %></td>
         <% live.act.each do |act| %>
@@ -60,7 +58,7 @@
           <% end %>
         <% end %>
     <% end %>
-    </div>
+    </tr>
     </tbody>
   </table>
   <%= paginate @lives %>

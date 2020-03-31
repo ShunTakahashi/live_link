@@ -1,4 +1,3 @@
-<!--<h2 class="text-center">ユーザーマイページ</h2>-->
 <div class="container">
   <br><br>
   <div class="row">
@@ -12,7 +11,7 @@
       <small>チケット予約名:</small>
       <p><%= @user.ticket_name %></p>
       <h5 class="pc-dsp">フォローバンド数</h5>
-      <h4 class="pc-dsp"><strong><%= link_to @follow_bands, follow_band_page_user_path %></strong></h4>
+      <h4 class="pc-dsp"><strong><%= link_to @follow_bands_count, follow_band_page_user_path %></strong></h4>
       <br>
     </div>
   </div>

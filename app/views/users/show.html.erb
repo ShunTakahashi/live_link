@@ -1,13 +1,11 @@
 <%= render 'profile' %>
 
 <div class="container">
-  <!--  <h3 class="text-center">行く予定のライブ</h3>-->
+    <h3 class="text-center">行く予定のライブ</h3>
   <div class="row text-center">
-    <%= link_to user_path(@user.id) do %>
-      <div class="col-4 p-3 bg-dark"><h6>ライブうぃる</h6></div>
-    <% end %>
-    <div class="col-4 p-3 bg-secondary block"><h6>ライブわず</h6></div>
-    <div class="col-4 p-3 bg-secondary block"><h6>フォローバンド</h6></div>
+    <%= link_to 'ライブうぃる', user_path(@user.id), class: 'btn bg-secondary col-4 p-3' %>
+    <%= link_to 'ライブわず', user_path(@user.id), class: 'btn bg-secondary col-4 p-3' %>
+    <%= link_to 'フォローパンド一覧', follow_band_page_user_path, class: 'btn bg-secondary col-4 p-3' %>
   </div>
 </div>
 
