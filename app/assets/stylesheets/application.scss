@@ -9,9 +9,11 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
- *= require bootstrap/dist/css/bootstrap.min
+ *= require_tree .
+ *= require_self
  */
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
 
 .clearfix:after {
   content: "";
@@ -27,50 +29,83 @@ body {
   min-height: 100%;
 }
 
-.profile_profile{
+.profile_profile {
   width: 100%;
   height: 10rem;
 }
 
-.profile_left, .profile_right{
+.profile_left, .profile_right {
   width: 50%;
   float: left;
   text-align: center;
 }
 
-.profile_content{
+.profile_content {
   text-align: center;
 }
 
-.profile_content table{
+.profile_content table {
   margin: 0 auto;
   text-align: center;
 }
 
-.profile_content h2{
+.profile_content h2 {
   text-align: center;
 }
 
-label{
+label {
   margin: 0;
 }
 
-.btn-water-blue{
+.btn-water-blue {
   background-color: #3fa7c9;
 }
 
-.btn-orange{
+.btn-orange {
   background-color: #ffae00;
 }
 
-.icon-image{
+.icon-image {
   border-radius: 120px;
 }
 
-.pc-dsp { display:block; }
-.sp-dsp { display:none; }
+//pc,sp時の表示分け
 
-@media only screen and (max-width : 736px){
-  .pc-dsp { display:none; }
-  .sp-dsp { display:block; }
+.pc-dsp {
+  display: block;
+}
+
+.sp-dsp {
+  display: none;
+}
+
+@media only screen and (max-width: 736px) {
+  .pc-dsp {
+    display: none;
+  }
+  .sp-dsp {
+    display: block;
+  }
+}
+
+//font-sizeレスポンシブ対応
+
+@media (min-width: 100px) {
+  html {
+    font-size: 14px
+  }
+}
+
+
+@media (min-width: 768px) {
+  html {
+    font-size: 15px
+  }
+}
+
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 16px
+  }
 }

@@ -58,6 +58,7 @@ gem 'geocoder'
 gem 'gon'
 gem 'ransack'
 gem 'kaminari'
+gem 'bootstrap', '~> 4.4.1'
 # 日本語化
 gem 'rails-i18n'
 gem 'carrierwave-i18n'
