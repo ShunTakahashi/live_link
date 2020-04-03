@@ -1,0 +1,17 @@
+<div class="container">
+  <br><br>
+  <div class="row">
+    <div class="col-sm-5 col-xs-12">
+      <%= image_tag 'default_icon.jpeg', class: "pc-dsp img-thumbnail icon-image float-right", alt: 'バンドトップ画像' %>
+      <%= image_tag 'default_icon.jpeg', class: "sp-dsp img-thumbnail icon-image mx-auto", alt: 'バンドトップ画像' %>
+      <br>
+    </div>
+    <div class="col-sm-5 col-xs-12 text-center">
+      <h3><%= @live_house.name %></h3>
+      <p>活動拠点:<%= @live_house.prefecture %></p>
+      <h3><%= t('views.live_house.address') %>:<%= @live_house.address.address %></h3>
+      <h4><%= t('views.live_house.tel') %>:<%= TelFormatter.format(@live_house.tel) %></h4>
+      <br>
+    </div>
+  </div>
+</div>

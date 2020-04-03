@@ -5,7 +5,7 @@
       <%= link_to '新たにライブを追加する', new_live_path, class: 'btn btn-primary' %>
     <% end %>
   <% end %>
-  <br><br><br>
+  <br>
   <div class="row text-center">
     <% if @band == current_band %>
       <%= link_to '主催ライブ', band_path(@band.id), class: 'btn bg-secondary col p-3 text-light' %>
@@ -18,8 +18,6 @@
   </div>
 
   <div class="profile_content">
-    <h2>ライブスケジュール</h2>
-    <br>
     <br>
     <table>
       <tbody>
@@ -50,9 +48,6 @@
       <% end %>
       </tr>
       </tbody>
-      <br>
-      <%= link_to t('views.back'), :back %>
-      <br><br>
       <% if user_signed_in? %>
         <% if !FollowBand.exists?(user_id: current_user.id, band_id: @band.id) %>
           <%= link_to 'フォロー', follow_bands_path(band_id: @band.id), method: :post %>
@@ -61,5 +56,9 @@
         <% end %>
       <% end %>
     </table>
+  </div>
+  <br>
+  <div class="text-center">
+    <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
   </div>
 </div>

@@ -1,28 +1,9 @@
-<h1 class="top_title">ライブハウスページ</h1>
-<div class="user_profile">
-  <div class="profile_left">
-    <h3><%= t('views.live_house.name') %>:<%= @live_house.name %></h3>
-    <h4><%= t('views.live_house.prefecture') %>:<%= @live_house.prefecture %></h4>
-  </div>
-
-  <div class="profile_right">
-    <h3><%= t('views.live_house.address') %>:<%= @live_house.address.address %></h3>
-    <h4><%= t('views.live_house.tel') %>:<%= TelFormatter.format(@live_house.tel) %></h4>
-    <% if current_live_house != nil %>
-      <% if current_live_house.id == @live_house.id %>
-        <%= link_to t('views.edit_page'), edit_live_house_registration_path %>
-        <%= link_to t('views.log_out'), destroy_live_house_session_path %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-<div class="profile_menu_list">
-
-</div>
-
+<%= render 'profile' %>
 <div class="profile_content">
-  <h2>ライブスケジュール</h2>
+  <div class="row text-center">
+    <%= link_to 'ライブスケジュール', live_house_path(@live_house.id), class: 'btn bg-secondary col p-3 text-light' %>
+  </div>
+  <br>
   <table>
     <tbody>
     <% unless @lives == nil %>
@@ -39,7 +20,9 @@
     </tbody>
   </table>
   <br>
-  <%= link_to t('views.back'), :back %>
+  <div class="text-center">
+    <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
+  </div>
 </div>
 <div class="map_area">
   <br><br>
