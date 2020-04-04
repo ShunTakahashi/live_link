@@ -5,7 +5,7 @@
       <%= link_to '新たにライブを追加する', new_live_path, class: 'btn btn-primary' %>
     <% end %>
   <% end %>
-  <br>
+  <br><br>
   <div class="row text-center">
     <% if @band == current_band %>
       <%= link_to '主催ライブ', band_path(@band.id), class: 'btn bg-secondary col p-3 text-light' %>

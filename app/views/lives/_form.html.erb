@@ -1,89 +1,140 @@
-<%= form_with(model: @live, url: url, local: true) do |form| %>
-  <% if @live.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(live.errors.count, "件のエラーが発生しました。再度確認してください。") %></h2>
+<div class='container col-md-5'>
+  <%= form_with(model: @live, url: url, local: true) do |form| %>
+    <% if @live.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(live.errors.count, "件のエラーが発生しました。再度確認してください。") %></h2>
+        <ul>
+          <% live.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-        <% live.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+    <form class="needs-validation" novalidate>
+      <div class='form-group'>
+        <label class='control-label'><%= form.label t('views.live.title') %></label>
+        <%= form.text_field :title, class: 'form-control', placeholder: 'ライブタイトル', autofocus: true, autocomplete: 'title', required: true %>
+        <% live.errors.full_messages_for(:title).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
         <% end %>
-      </ul>
-    </div>
+      </div>
+
+      <%= form.fields_for :place do |n| %>
+        <div class='form-group'>
+          <label class='control-label'><%= n.label t('views.live.place') %></label>
+          <%= n.text_field :name, class: 'form-control', placeholder: 'ライブハウス名', autofocus: true, required: true, id: 'place' %>
+          <%# @live.place.errors.full_messages_for(:name).each do |message| %>
+          <!--            <li class='list-unstyled text-danger'><%#= message %></li>-->
+          <%# end %>
+          <% if @live.errors.any? %>
+            <div id="error_explanation">
+              <% live.errors.full_messages.each do |message| %>
+                <li class='list-unstyled text-danger'><%= message %></li>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class='form-group'>
+        <label class='control-label'><%= form.label t('views.live.date') %></label>
+        <%= form.date_field :date, class: 'form-control', autofocus: true, required: true, id: 'live_date', max: "9999-12-31" %>
+        <% live.errors.full_messages_for(:date).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
+
+      <%= form.fields_for :act do |m| %>
+        <div class='form-group'>
+          <label class='control-label'><%= m.label t('views.live.act') %></label>
+          <%= m.text_field :name, class: 'form-control', placeholder: '出演バンド名', autofocus: true, autocomplete: 'email', required: true, id: 'act_name' %>
+          <%# act.errors.full_messages_for(:name).each do |message| %>
+          <!--            <li class='list-unstyled text-danger'><%#= message %></li>-->
+          <%# end %>
+          <% if @live.errors.any? %>
+            <div id="error_explanation">
+              <% live.errors.full_messages.each do |message| %>
+                <li class='list-unstyled text-danger'><%= message %></li>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class='form-group'>
+        <label class='control-label'><%= form.label t('views.live.open_time') %></label>
+        <%= form.time_select :open_time, include_blank: true %>
+        <% live.errors.full_messages_for(:open_time).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
+
+      <div class='form-group'>
+        <label class='control-label'><%= form.label t('views.live.start_time') %></label>
+        <%= form.time_select :start_time, include_blank: true %>
+        <% live.errors.full_messages_for(:start_time).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
+
+      <div class='form-group'>
+        <label class='control-label'><%= form.label t('views.live.end_time') %></label>
+        <%= form.time_select :end_time, include_blank: true %>
+        <% live.errors.full_messages_for(:end_time).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
+
+      <div class='form-group'>
+        <label class='control-label'><%= form.label t('views.live.early_bird_ticket_price') %></label>
+        <%= form.number_field :early_bird_ticket_price, class: 'form-control', placeholder: '前売りチケット価格', autofocus: true, required: true %>
+        <% live.errors.full_messages_for(:early_bird_ticket_price).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
+
+      <div class='form-group'>
+        <label class='control-label'><%= form.label t('views.live.tickets_for_today_price') %></label>
+        <%= form.number_field :tickets_for_today_price, class: 'form-control', placeholder: '当日チケット価格', autofocus: true, required: true %>
+        <% live.errors.full_messages_for(:tickets_for_today_price).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
+
+      <div class='form-group'>
+        <label class='control-label'><%= form.label t('views.live.image') %></label>
+        <%= form.file_field :image, class: 'col-12' %>
+        <%= image_tag(@live.image.url, class: 'live_image') if @live.image? %>
+        <% live.errors.full_messages_for(:image).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+        <%= form.hidden_field :image_cache %>
+      </div>
+
+      <div class='form-group'>
+        <label class='control-label'><%= form.label t('views.live.time_table_image') %></label>
+        <%= form.file_field :time_table_image, class: 'col-12' %>
+        <%= image_tag(@live.time_table_image.url, lass: 'live_image') if @live.time_table_image.url %>
+        <% live.errors.full_messages_for(:time_table_image).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+        <%= form.hidden_field :time_table_image_cache %>
+      </div>
+
+      <div class='form-group'>
+        <label class='control-label'><%= form.label t('views.live.remarks') %></label>
+        <%= form.text_area :remarks, class: 'form-control', placeholder: '備考欄', autofocus: true %>
+        <% live.errors.full_messages_for(:remarks).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
+      <div class='text-center'>
+        <br>
+        <%= form.submit t('views.sign_up'), class: 'btn btn-primary rounded-pill btn-block' %>
+        <br>
+        <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
+      </div>
+    </form>
   <% end %>
-
-  <table>
-    <tr>
-      <th><%= form.label t('views.live.title') %></th>
-      <td><%= form.text_field :title %></td>
-    </tr>
-
-    <%= form.fields_for :place do |n| %>
-      <tr>
-        <th><%= n.label t('views.live.place') %></th>
-        <td><%= n.text_field :name, id: 'place' %></td>
-      </tr>
-    <% end %>
-
-    <tr>
-      <th><%= form.label t('views.live.date') %></th>
-      <td><%= form.date_field :date, id: 'live_date', max: "9999-12-31" %></td>
-    </tr>
-
-    <%= form.fields_for :act do |m| %>
-      <tr>
-        <th><%= m.label t('views.live.act') %></th>
-        <td><%= m.text_field :name, id: 'act_name' %></td>
-      </tr>
-    <% end %>
-
-    <tr>
-      <th><%= form.label t('views.live.open_time') %></th>
-      <td><%= form.time_field :open_time, {minute_step: 10} %></td>
-    </tr>
-
-    <tr>
-      <th><%= form.label t('views.live.start_time') %></th>
-      <td><%= form.time_field :start_time, {minute_step: 10} %></td>
-    </tr>
-
-    <tr>
-      <th><%= form.label t('views.live.end_time') %></th>
-      <td><%= form.time_field :end_time, {minute_step: 10} %></td>
-    </tr>
-
-    <tr>
-      <th><%= form.label t('views.live.early_bird_ticket_price') %></th>
-      <td><%= form.number_field :early_bird_ticket_price %></td>
-    </tr>
-
-    <tr>
-      <th><%= form.label t('views.live.tickets_for_today_price') %></th>
-      <td><%= form.number_field :tickets_for_today_price %></td>
-    </tr>
-
-    <tr>
-      <th><%= form.label t('views.live.image') %></th>
-      <td><%= form.file_field :image %></td>
-      <td><%= image_tag(@live.image.url, class: 'live_image') if @live.image? %></td>
-      <%= form.hidden_field :image_cache %>
-    </tr>
-
-    <tr>
-      <th><%= form.label t('views.live.time_table_image') %></th>
-      <td><%= form.file_field :time_table_image %></td>
-      <td><%= image_tag(@live.time_table_image.url, lass: 'live_image') if @live.time_table_image.url %></td>
-      <%= form.hidden_field :time_table_image_cache %>
-    </tr>
-
-    <tr>
-      <th><%= form.label t('views.live.remarks') %></th>
-      <td><%= form.text_area :remarks %></td>
-    </tr>
-  </table>
-
-  <div class="actions_submit">
-    <%= form.submit %>
-    <br><br><br>
-    <%= link_to t('views.back'), lives_path, class: "actions_back" %>
-  </div>
-<% end %>
+</div>
