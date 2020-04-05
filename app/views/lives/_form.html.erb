@@ -131,7 +131,11 @@
       </div>
       <div class='text-center'>
         <br>
-        <%= form.submit t('views.sign_up'), class: 'btn btn-primary rounded-pill btn-block' %>
+        <% if url == "#{live_index_path}" %>
+          <%= form.submit t('views.sign_up'), class: 'btn btn-primary rounded-pill btn-block' %>
+        <% else %>
+          <%= form.submit t('views.update'), class: 'btn btn-primary rounded-pill btn-block' %>
+        <% end %>
         <br>
         <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
       </div>
