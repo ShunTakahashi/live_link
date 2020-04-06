@@ -30,11 +30,11 @@
 <h2 class="text-center">バンド一覧</h2>
 <div class="band_index">
   <% @bands.each do |band| %>
-    <table>
+    <table class="col-sm-6 col-xs-12 text-center">
       <tbody>
       <tr>
-        <td><%= band.prefecture %></td>
-        <td><%= link_to band.name, band_path(band) %></td>
+        <th class="w-50 p-3"><%= band.prefecture %></th>
+        <td class="w-50"><%= link_to band.name, band_path(band), class: 'p-3' %></td>
       </tr>
       </tbody>
     </table>

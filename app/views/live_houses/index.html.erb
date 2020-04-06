@@ -30,13 +30,11 @@
 <div class="live_house_index">
   <h2 class="text-center">ライブハウス一覧</h2>
   <% @live_houses.each do |live_house| %>
-    <table>
+    <table class="col-sm-6 col-xs-12 text-center">
       <tbody>
       <tr>
-        <div class="">
         <th class="w-50 p-3"><%= live_house.prefecture %></th>
         <td class="w-50"><%= link_to live_house.name, live_house_path(live_house), class: 'p-3' %></td>
-        </div>
       </tr>
       </tbody>
     </table>
