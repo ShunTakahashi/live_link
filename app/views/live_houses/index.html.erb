@@ -1,40 +1,38 @@
-<div class="search_form">
-  <h1>ライブハウス検索フォーム</h1>
+<h2 class="text-center">ライブハウス検索フォーム</h2>
+<br>
+<div class="container col-sm-6 col-xs-12">
   <%= search_form_for @q do |f| %>
-    <table>
-      <tbody>
-      <tr>
-        <th><%= f.label t('views.live_house.name') %></th>
-        <td><%= f.search_field :name_cont, id: 'search_live_house' %></td>
-      </tr>
-      <tr>
-        <th><%= f.label t('views.live_house.prefecture') %></th>
-        <td><%= f.select :prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
-                         class: 'form-control btn btn-info', id: 'search_prefecture', autofocus: true %></td>
-      </tr>
-      </tbody>
-    </table>
-    <div class="search_submit">
-      <%= f.submit %>
-    </div>
+    <form class='needs-validation' novalidate>
+
+      <div class='form-group row d-flex align-items-center'>
+        <label class="control-label text-center col-4"><%= f.label t('views.live_house.name') %></label>
+        <%= f.search_field :name_cont, class: 'form-control col-8', placeholder: '調べたいライブハウス名を入力', id: 'search_live_house' %>
+      </div>
+
+      <div class='form-group row d-flex align-items-center'>
+        <label class="control-label text-center col-4"><%= f.label t('views.live_house.prefecture') %></label>
+        <%= f.select :prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
+                     class: 'form-control col-8', id: 'search_prefecture', autofocus: true %>
+      </div>
+
+      <div class='form-group row'>
+        <%= f.submit class: 'btn btn-block btn-water-blue rounded-pill' %>
+      </div>
+    </form>
   <% end %>
-  <div class="search_link">
-    <%= link_to "ライブを直接探す", lives_path %>
-    <%= link_to "バンドから探す", bands_path %>
+  <div class=" text-center">
+    <%= link_to "ライブを直接探す", lives_path, class: 'btn btn-orange rounded-pill' %>
+    <%= link_to "バンドから探す", bands_path, class: 'btn btn-orange rounded-pill' %>
+    <br><br>
   </div>
 </div>
 
-<div class="live_house_index">
-  <h1 class="top_title">ライブハウス一覧</h1>
-  <% @live_houses.each do |live_house| %>
-    <table>
-      <tbody>
-      <tr>
-        <th><%= live_house.prefecture %></th>
-        <td><%= link_to live_house.name, live_house_path(live_house) %></td>
-      </tr>
-      </tbody>
-    </table>
-  <% end %>
-  <%= paginate @live_houses %>
-</div>
+<h2 class="text-center">ライブハウス一覧</h2>
+
+<% @live_houses.each do |live_house| %>
+  <div class="row text-center align-middle link_box">
+    <div class="col-5 p-2"><%= link_to live_house.prefecture, live_house_path(live_house), class: 'link_value d-block text-white' %></div>
+    <div class="col-7 p-2"><%= link_to live_house.name, live_house_path(live_house), class: 'link_value d-block text-white' %></div>
+  </div>
+<% end %>
+<%= paginate @live_houses %>

@@ -1,0 +1,127 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *= require_tree .
+ *= require_self
+ */
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1b1b1b;
+  color: #e2e2e2;
+  min-height: 100%;
+}
+
+.profile_profile {
+  width: 100%;
+  height: 10rem;
+}
+
+.profile_left, .profile_right {
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+.profile_content {
+  text-align: center;
+}
+
+.profile_content table {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.profile_content h2 {
+  text-align: center;
+}
+
+label {
+  margin: 0;
+}
+
+.btn-water-blue {
+  background-color: #3fa7c9;
+}
+
+.btn-orange {
+  background-color: #ffae00;
+}
+
+.icon-image {
+  border-radius: 120px;
+}
+
+.link_box{
+  border: solid #343A40;
+}
+
+.link_box + .link_box{
+  border-top: none;
+}
+
+.link_box:hover{
+  opacity: 0.6;
+}
+
+.link_value:hover {
+  text-decoration: none;
+}
+
+//pc,sp時の表示分け
+
+.pc-dsp {
+  display: block;
+}
+
+.sp-dsp {
+  display: none;
+}
+
+@media only screen and (max-width: 736px) {
+  .pc-dsp {
+    display: none;
+  }
+  .sp-dsp {
+    display: block;
+  }
+}
+
+//font-sizeレスポンシブ対応
+
+@media (min-width: 100px) {
+  html {
+    font-size: 14px
+  }
+}
+
+
+@media (min-width: 768px) {
+  html {
+    font-size: 15px
+  }
+}
+
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 16px
+  }
+}

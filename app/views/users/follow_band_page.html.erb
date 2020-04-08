@@ -1,4 +1,14 @@
-<h1 class="top_title">フォローバンド一覧</h1>
+<%= render 'profile' %>
+
+<div class="container">
+    <h3 class="text-center">フォローバンド一覧</h3>
+  <div class="row text-center">
+    <%= link_to 'ライブうぃる', user_path(@user.id), class: 'btn bg-secondary col-4 p-3 text-light' %>
+    <%= link_to 'ライブわず', user_path(@user.id), class: 'btn bg-secondary col-4 p-3 text-light' %>
+    <%= link_to 'フォローパンド一覧', follow_band_page_user_path, class: 'btn bg-secondary col-4 p-3 text-light' %>
+  </div>
+</div>
+
 <div class="my_page_content">
   <table>
     <tbody>

@@ -1,64 +1,94 @@
-<div class="search_form">
-  <h1>ライブ検索フォーム</h1>
+<h2 class="text-center">ライブ検索フォーム</h2>
+<br>
+<div class="container col-sm-6 col-xs-12">
   <%= search_form_for @q do |f| %>
-    <table>
-      <tbody>
-      <tr>
-        <th><%= f.label t('views.live.date') %></th>
-        <td><%= f.date_field :date_gteq, id: 'search_date_gteq', max: '9999/12/31' %> ~ </td>
-        <td><%= f.date_field :date_lteq, id: 'search_date_lteq', max: '9999/12/31' %></td>
-      </tr>
-      <tr>
-        <th><%= f.label t('views.live.prefecture') %></th>
-        <td><%= f.select :place_place_to_live_houses_prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
-                         class: 'form-control btn btn-info', id: 'search_prefecture', autofocus: true %></td>
-      </tr>
-      <tr>
-        <th><%= f.label t('views.live.place') %></th>
-        <td><%= f.search_field :place_name_cont, id: 'search_place' %></td>
-      </tr>
-      <tr>
-        <th><%= f.label t('views.live.act') %></th>
-        <td><%= f.search_field :act_name_cont, id: 'search_band' %></td>
-      </tr>
-      </tbody>
-    </table>
+    <form class='needs-validation' novalidate>
 
-    <div class="search_submit">
-      <%= f.submit %>
-    </div>
+      <div class='form-group row d-flex align-items-center'>
+        <label class="control-label text-center col-4"><%= f.label t('views.live.date') %></label>
+        <%= f.date_field :date_gteq, id: 'search_date_gteq', max: '9999/12/31' %>~
+        <%= f.date_field :date_lteq, id: 'search_date_lteq', max: '9999/12/31' %>
+      </div>
+
+      <div class='form-group row d-flex align-items-center'>
+        <label class="control-label text-center col-4"><%= f.label t('views.live.prefecture') %></label>
+        <%= f.select :place_place_to_live_houses_prefecture_eq, LiveHouse.prefectures.keys.map {|k| [k, LiveHouse.prefectures[k]]}, {prompt: '選択してください'},
+                     class: 'form-control col-8', id: 'search_prefecture', autofocus: true %>
+      </div>
+      <div class='form-group row d-flex align-items-center'>
+        <label class="control-label text-center col-4"><%= f.label t('views.live.place') %></label>
+        <%= f.search_field :place_name_cont, class: 'form-control col-8', placeholder: '行きたいライブハウス名を入力', id: 'search_place' %>
+      </div>
+
+      <div class='form-group row d-flex align-items-center'>
+        <label class="control-label text-center col-4"><%= f.label t('views.live.act') %></label>
+        <%= f.search_field :act_name_cont, class: 'form-control col-8', placeholder: '見たいバンド名を入力', id: 'search_band' %>
+      </div>
+
+      <div class='form-group row'>
+        <%= f.submit class: 'btn btn-block btn-water-blue rounded-pill' %>
+      </div>
+    </form>
   <% end %>
-  <div class="search_link">
-    <%= link_to "バンドから探す", bands_path %>
-    <%= link_to "ライブハウスから探す", live_houses_path %>
+  <div class="text-center">
+    <%= link_to "バンドから探す", bands_path, class: 'btn btn-orange rounded-pill' %>
+    <%= link_to "ライブハウスから探す", live_houses_path, class: 'btn btn-orange rounded-pill' %>
+    <br><br>
   </div>
 </div>
+<h2 class="text-center">ライブ一覧</h2>
 
+<!--  <table class="mx-auto">-->
+<!--    <tbody>-->
+<%# @lives.each do |live| %>
+<!--      <div class="bg-white">-->
+<!--        <tr>-->
+<!--          <td class="p-2"><%#= l(live.date, format: :default) %></td>-->
+<!--          <td class="p-2"><%#= link_to live.title, live_path(live) %></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<%# live.place.each do |place| %>
+<%# if place.place_to_live_houses.present? %>
+<%# place.place_to_live_houses.each do |live_house| %>
+<!--                <td class="p-2"><%#= place.name %>(<%#= live_house.prefecture %>)</td>-->
+<%# end %>
+<%# else %>
+<!--              <td class="p-2"><%#= place.name %></td>-->
+<%# end %>
+<%# end %>
+<%# live.act.each do |act| %>
+<!--            <td class="p-2">Act:<%#= act.name %></td>-->
+<%# end %>
+<!--        </tr>-->
+<!--      </div>-->
+<%# end %>
+<!--    </tbody>-->
+<!--  </table>-->
 
-<div class="live_index_page">
-  <h1>ライブ一覧</h1>
-
-  <table>
-    <tbody>
-    <% @lives.each do |live| %>
-      <tr>
-        <td><%= l(live.date, format: :default) %></td>
-        <td><%= link_to live.title, live_path(live) %></td>
-        <% live.act.each do |act| %>
-          <td>Act:<%= act.name %></td>
-        <% end %>
-        <% live.place.each do |place| %>
-          <% if place.place_to_live_houses.present? %>
-            <% place.place_to_live_houses.each do |live_house| %>
-              <td><%= place.name %>(<%= live_house.prefecture %>)</td>
+<div class="container">
+  <% @lives.each do |live| %>
+      <div class="row text-center align-middle link_box">
+        <div class="col-5 p-2"><%= link_to l(live.date, format: :default), live_path(live), class: 'link_value d-block text-white' %></div>
+        <div class="col-7 p-2"><%= link_to live.title, live_path(live), class: 'link_value d-block text-white' %></div>
+        <div class="col-5">
+          <% live.place.each do |place| %>
+            <% if place.place_to_live_houses.present? %>
+              <% place.place_to_live_houses.each do |live_house| %>
+                <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value d-block text-white' %>
+                  <small><%= link_to "(#{live_house.prefecture})", live_path(live), class: 'link_value d-block text-white' %></small>
+                </td>
+              <% end %>
+            <% else %>
+              <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value d-block text-white' %></td>
             <% end %>
-          <% else %>
-            <td><%= place.name %></td>
           <% end %>
-        <% end %>
+        </div>
+        <div class="col-7">
+          <% live.act.each do |act| %>
+            <td class="p-2"><%= link_to act.name, live_path(live), class: 'link_value d-block text-white' %></td>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-    </tr>
-    </tbody>
-  </table>
-  <%= paginate @lives %>
 </div>
+<%= paginate @lives %>

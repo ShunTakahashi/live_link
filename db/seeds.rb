@@ -11,15 +11,9 @@ User.create!(
   [
     {
       email: 'user1@user.com',
-      password: 'testtest',
-      name: 'テスト1',
-      ticket_name: 'テスト1',
-    },
-    {
-      email: 'user2@user.com',
-      password: 'testtest',
-      name: 'テスト2',
-      ticket_name: 'テスト2'
+      password: '111111',
+      name: 'テストユーザー',
+      ticket_name: 'テストユーザー',
     }
   ]
 )
@@ -28,21 +22,21 @@ Band.create!(
   [
     {
       email: 'band1@band.com',
-      password: 'testtest',
-      name: 'バンド1',
-      prefecture: 1,
+      password: '111111',
+      name: '東京テストバンド',
+      prefecture: 13,
     },
     {
       email: 'band2@band.com',
-      password: 'testtest',
-      name: 'バンド2',
-      prefecture: 1,
+      password: '111111',
+      name: '神奈川テストバンド',
+      prefecture: 14,
     },
     {
       email: 'band3@band.com',
-      password: 'testtest',
-      name: 'バンド3',
-      prefecture: 1,
+      password: '111111',
+      name: '大分テストバンド',
+      prefecture: 44,
     }
   ]
 )
@@ -51,22 +45,22 @@ LiveHouse.create!(
   [
     {
       email: 'live1@live.com',
-      password: 'testtest',
-      name: '渋谷サイクロン',
+      password: '111111',
+      name: '東京テストライブハウス',
       tel: '09011112222',
       prefecture: 13,
     },
     {
       email: 'live2@live.com',
-      password: 'testtest',
-      name: '新宿サイエンス',
+      password: '111111',
+      name: '神奈川テストライブハウス',
       tel: '09022223333',
-      prefecture: 13,
+      prefecture: 14,
     },
     {
       email: 'live3@live.com',
-      password: 'testtest',
-      name: '大分T.O.P.S',
+      password: '111111',
+      name: '大分テストライブハウス',
       tel: '09033334444',
       prefecture: 44,
     }
@@ -76,94 +70,190 @@ LiveHouse.create!(
 Address.create!(
   [
     {
-      address: '東京都渋谷区宇田川町13-16 コクサイビルＡ館',
-      latitude: 35.661461,
-      longitude: 139.698408,
+      address: '東京',
+      latitude: 35.6804,
+      longitude: 139.769017,
       live_house_id: 1,
     },
     {
-      address: "東京都新宿区歌舞伎町2丁目25−6 B1",
-      latitude: 35.695503,
-      longitude: 139.703556,
+      address: '神奈川',
+      latitude: 35.491354,
+      longitude: 139.284143,
       live_house_id: 2,
     },
     {
-      address: "大分県大分市生石5丁目3-783",
-      latitude: 33.247542,
-      longitude: 131.587605,
+      address: '大分',
+      latitude: 33.15893,
+      longitude: 131.361112,
       live_house_id: 3,
     }
   ]
 )
 
-# 2.times do |n|
-#   Live.create!(
-#     [
-#       {
-#         id: n,
-#         band_id: 1,
-#         title: "test#{n}",
-#         date: '2020/10/01',
-#         open_time: '12:00',
-#         start_time: '13:00',
-#         end_time: '18:00',
-#         early_bird_ticket_price: 1500,
-#         tickets_for_today_price: 2000,
-#       }
-#     ]
-#   )
-# end
-#
-# Place.create!(
-#   [
-#     {
-#       live_id: 0,
-#       id: 1,
-#       name: '渋谷サイクロン'
-#     },
-#     {
-#       live_id: 1,
-#       id: 2,
-#       name: '新宿サイエンス'
-#     }
-#   ]
-# )
-#
-# PlaceUrl.create!(
-#   [
-#     {
-#       place_id: 1,
-#       live_house_id: 1
-#     },
-#     {
-#       place_id: 2,
-#       live_house_id: 2
-#     }
-#   ]
-# )
-#
-# Act.create!(
-#   [
-#     {
-#       live_id: 0,
-#       name: 'バンド1'
-#     },
-#     {
-#       live_id: 1,
-#       name: 'バンド2'
-#     }
-#   ]
-# )
-#
-# ActUrl.create!(
-#   [
-#     {
-#       band_id: 1,
-#       act_id: 1
-#     },
-#     {
-#       band_id: 2,
-#       act_id: 2
-#     }
-#   ]
-# )
+(1..3).each do |n|
+  Live.create!(
+    [
+      {
+        id: n,
+        band_id: 1,
+        title: "test#{n}",
+        date: '2020/10/01',
+        open_time: '12:00',
+        start_time: '13:00',
+        end_time: '18:00',
+        early_bird_ticket_price: 1500,
+        tickets_for_today_price: 2000,
+      }
+    ]
+  )
+  Place.create!(
+    [
+      {
+        id: n,
+        live_id: n,
+        name: '東京テストライブハウス',
+        url: '/live_houses/1'
+      }
+    ]
+  )
+  PlaceUrl.create!(
+    [
+      {
+        id: n,
+        place_id: n,
+        live_house_id: 1
+      }
+    ]
+  )
+  Act.create!(
+    [
+      {
+        id: n,
+        live_id: n,
+        name: '東京テストバンド',
+        url: '/bands/1'
+      }
+    ]
+  )
+  ActUrl.create!(
+    [
+      {
+        id: n,
+        act_id: n,
+        band_id: 1
+      }
+    ]
+  )
+end
+
+(4..6).each do |n|
+  Live.create!(
+    [
+      {
+        id: n,
+        band_id: 2,
+        title: "test#{n}",
+        date: '2020/10/01',
+        open_time: '12:00',
+        start_time: '13:00',
+        end_time: '18:00',
+        early_bird_ticket_price: 1500,
+        tickets_for_today_price: 2000,
+      }
+    ]
+  )
+  Place.create!(
+    [
+      {
+        id: n,
+        live_id: n,
+        name: '神奈川テストライブハウス',
+        url: '/live_houses/2'
+      }
+    ]
+  )
+  PlaceUrl.create!(
+    [
+      {
+        id: n,
+        place_id: n,
+        live_house_id: 2
+      }
+    ]
+  )
+  Act.create!(
+    [
+      {
+        id: n,
+        live_id: n,
+        name: '神奈川テストバンド',
+        url: '/bands/2'
+      }
+    ]
+  )
+  ActUrl.create!(
+    [
+      {
+        id: n,
+        act_id: n,
+        band_id: 2
+      }
+    ]
+  )
+end
+
+(7..9).each do |n|
+  Live.create!(
+    [
+      {
+        id: n,
+        band_id: 3,
+        title: "test#{n}",
+        date: "2020/10/0#{n}",
+        open_time: '12:00',
+        start_time: '13:00',
+        end_time: '18:00',
+        early_bird_ticket_price: 1500,
+        tickets_for_today_price: 2000,
+      }
+    ]
+  )
+  Place.create!(
+    [
+      {
+        id: n,
+        live_id: n,
+        name: '大分テストライブハウス',
+        url: '/live_houses/3'
+      }
+    ]
+  )
+  PlaceUrl.create!(
+    [
+      {
+        id: n,
+        place_id: n,
+        live_house_id: 3
+      }
+    ]
+  )
+  Act.create!(
+    [
+      {
+        id: n,
+        live_id: n,
+        name: '大分テストバンド',
+        url: '/bands/3'
+      }
+    ]
+  )
+  ActUrl.create!(
+    [
+      {
+        id: n,
+        act_id: n,
+        band_id: 3
+      }
+    ]
+  )
+end

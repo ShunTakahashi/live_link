@@ -2,9 +2,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-
-
-
   protected
 
   def login_check
@@ -23,6 +20,16 @@ class ApplicationController < ActionController::Base
                                                          address_attributes: %i[address latitude longitude]])
       devise_parameter_sanitizer.permit(:account_update, keys: [:name, :tel, :prefecture,
                                                                 address_attributes: %i[address latitude longitude]])
+    end
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    if resource_or_scope.is_a?(User)
+      user_path(@user.id)
+    elsif resource_or_scope.is_a?(Band)
+      band_path(@band.id)
+    else
+      live_house_path(@live_house.id)
     end
   end
 end

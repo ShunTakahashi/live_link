@@ -1,34 +1,35 @@
-<h2 class="top_title">バンドログイン</h2>
-
-<div class="devise_form">
+<h2 class="text-center">バンドログイン</h2>
+<br>
+<div class="container col-md-4">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <table>
-      <tr>
-        <th><%= f.label :email %></th>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-      </tr>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}", class: 'text-center text-danger' if msg.is_a?(String) %>
+    <% end %>
+    <form class='needs-validation' novalidate>
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :email %></label>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'Eメールアドレス', autofocus: true, autocomplete: "email", required: true %>
+      </div>
 
-      <tr>
-        <th><%= f.label :password %></th>
-        <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-      </tr>
+      <div class="form_group">
+        <label class="control-label"><%= f.label :password %></label>
+        <%= f.password_field :password, class: 'form-control', placeholder: 'パスワード', autocomplete: "current-password", required: true %>
+      </div>
 
-      <% if devise_mapping.rememberable? %>
-        <tr>
-          <th><%= f.label :remember_me %></th>
-          <td><%= f.check_box :remember_me %></td>
-        </tr>
-      <% end %>
-    </table>
-
-    <div class="actions_submit">
-      <%= f.submit t('views.log_in') %>
-    </div>
+      <div class="form_group text-center">
+        <% if devise_mapping.rememberable? %>
+          <br>
+          <label class='control-label'><%= f.check_box :remember_me %>　<%= f.label :remember_me %></label>
+        <% end %>
+      </div>
+      <br>
+      <%= f.submit t('views.log_in'), class: 'btn btn-block btn-info' %>
+    </form>
   <% end %>
-
+  <br>
   <%= render "bands/shared/links" %>
-
-  <div class="devise_link">
-    <%= link_to 'ゲストバンドログイン）', bands_guest_sign_in_path, method: :post %>
+  <div class="text-center">
+    <br>
+    <%= link_to 'ゲストバンドログイン', bands_guest_sign_in_path, method: :post %>
   </div>
 </div>

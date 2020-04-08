@@ -1,22 +1,33 @@
-<h2>ユーザー編集ページ</h2>
-<div class="devise_form">
+<h2 class="text-center">ユーザー編集ページ</h2>
+<br>
+
+<div class="container col-md-5">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <table>
-      <tr>
-        <th><%= f.label :email %></th>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-      </tr>
+    <form class="needs-validation" novalidate>
+      <div class="form-group">
+        <label class="control-label"><%= f.label :email %></label>
+        <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email", required: true %>
+        <% resource.errors.full_messages_for(:email).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
 
-      <tr>
-        <th><%= f.label :name %></th>
-        <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
-      </tr>
+      <div class="form-group">
+        <label class="control-label"><%= f.label :name %></label>
+        <%= f.text_field :name, class: 'form-control', autofocus: true, autocomplete: "name", required: true %>
+        <% resource.errors.full_messages_for(:name).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
 
-      <tr>
-        <th><%= f.label :ticket_name %></th>
-        <td><%= f.text_field :ticket_name, autofocus: true, autocomplete: "ticket_name" %></td>
-      </tr>
+      <div class="form-group">
+        <label class="control-label"><%= f.label :ticket_name %></label>
+        <%= f.text_field :ticket_name, class: 'form-control', autofocus: true, autocomplete: "ticket_name", required: true %>
+        <% resource.errors.full_messages_for(:ticket_name).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
 
       <%# if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <!--    <div>Currently waiting confirmation for: <%#= resource.unconfirmed_email %></div>-->
@@ -40,17 +51,16 @@
       <!--    <%#= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />-->
       <%#= f.password_field :current_password, autocomplete: "current-password" %>
       <!--  </div>-->
-    </table>
-    <div class="actions_submit">
-      <%= f.submit t('views.update') %>
-    </div>
+        <%= f.submit t('views.update'), class: 'btn btn-primary rounded-pill btn-block' %>
   <% end %>
+
+  </form>
 
   <!--<h3>Cancel my account</h3>-->
 
   <!--<p>Unhappy? <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>-->
   <br>
-  <div class="devise_link">
-    <%= link_to t('views.back'), :back %>
+  <div class="text-center">
+    <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
   </div>
 </div>

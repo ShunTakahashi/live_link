@@ -40,9 +40,11 @@ ja:
     new_password_confirmation: 新しいパスワードの確認
     forgot_your_password: パスワードをお忘れですか?
     send_me_reset_password: パスワードリセット
-    sign_up: 登録する
+    sign_up: 新規登録
     log_in: ログイン
     log_out: ログアウト
+    my_page: 詳細ページ
+    follow_band: フォローバンド
     user:
       name: ユーザー名
       ticket_name: チケット予約名

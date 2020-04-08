@@ -35,25 +35,31 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+# 画像アップロード用gem
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+# envファイル読み出し用
 gem 'dotenv-rails'
-gem 'devise'
-gem 'jquery-rails'
-gem 'geocoder'
-gem 'gon'
-gem 'ransack'
-gem 'dotenv-rails'
-gem 'kaminari'
-gem 'dotenv-rails'
+# 電話番号用
+gem 'tel_formatter'
+gem 'telephone_number'
+# デプロイ用
 gem 'unicorn'
 gem 'mini_racer', platforms: :ruby
 gem 'bcrypt', '~> 3.1.7'
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
-gem 'tel_formatter'
-gem 'telephone_number'
+# アプリ用gem
+gem 'devise'
+gem 'jquery-rails'
+gem 'geocoder'
+gem 'gon'
+gem 'ransack'
+gem 'kaminari'
+gem 'bootstrap', '~> 4.4.1'
+# 日本語化
 gem 'rails-i18n'
 gem 'carrierwave-i18n'
 

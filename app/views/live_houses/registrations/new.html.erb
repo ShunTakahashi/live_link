@@ -1,54 +1,72 @@
-<h2 class="top_title">ライブハウス新規登録</h2>
-
-<div class="devise_form">
-
+<h2 class='text-center'>ライブハウス新規登録</h2>
+<br>
+<div class='container col-md-5'>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-    <table>
-      <tr>
-        <th><%= f.label :email %></th>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-      </tr>
-
-      <tr>
-        <th><%= f.label :name %></th>
-        <td><%= f.text_field :name, autofocus: true %></td>
-      </tr>
-
-      <tr>
-        <th><%= f.label :tel %><%= "(ハイフン無し)" %></th>
-        <td><%= f.telephone_field :tel, autofocus: true %></td>
-      </tr>
-
-      <tr>
-        <th><%= f.label :prefecture %></th>
-        <td><%= f.select :prefecture, LiveHouse.prefectures.keys, {prompt: '選択してください'},
-                         class: 'form-control btn btn-info', autofocus: true %></td>
-      </tr>
-
-      <tr>
-        <%= f.fields_for :address do |m| %>
-          <th><%= m.label t('views.live_house.address') %></th>
-          <td><%= m.text_field :address, id: 'address' %></td>
+    <form class='needs-validation' novalidate>
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :email %></label>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'Eメールアドレス', autofocus: true, autocomplete: 'email', required: true %>
+        <% resource.errors.full_messages_for(:email).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
         <% end %>
-      </tr>
+      </div>
 
-      <tr>
-        <th><%= f.label :password %><%= '(6文字以上)' %></th>
-        <td><%= f.password_field :password, autocomplete: "new-password" %></td>
-      </tr>
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :name %></label>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'ライブハウス名', autofocus: true, required: true %>
+        <% resource.errors.full_messages_for(:name).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
 
-      <tr>
-        <th><%= f.label :password_confirmation %></th>
-        <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-      </tr>
-    </table>
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :tel %></label>
+        <%= f.telephone_field :tel, class: 'form-control', placeholder: '電話番号(ハイフン無し)', autofocus: true, required: true %>
+        <% resource.errors.full_messages_for(:tel).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
 
-    <div class="actions_submit">
-      <%= f.submit t('views.sign_up') %>
-    </div>
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :prefecture %></label>
+        <%= f.select :prefecture, LiveHouse.prefectures.keys, {prompt: '選択してください'},
+                     class: 'form-control btn-default', autofocus: true, required: true %>
+        <% resource.errors.full_messages_for(:prefecture).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
 
-    <%= render "live_houses/shared/links" %>
+      <div class='form-group'>
+        <%= f.fields_for :address do |m| %>
+          <label class='control-label'><%= m.label t('views.live_house.address') %></label>
+          <%= m.text_field :address, class: 'form-control', placeholder: '住所', id: 'address', required: true %>
+          <% resource.errors.full_messages_for(:password).each do |message| %>
+            <li class='list-unstyled text-danger'><%= message %></li>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :password %></label>
+        <%= f.password_field :password, class: 'form-control', placeholder: 'パスワード(6文字以上)', autocomplete: 'new-password', required: true %>
+        <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
+
+      <div class='form-group'>
+        <label class='control-label'><%= f.label :password_confirmation %></label>
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワードを再度入力してください', autocomplete: 'new-password', required: true %>
+        <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+          <li class='list-unstyled text-danger'><%= message %></li>
+        <% end %>
+      </div>
+      <div class='text-center'>
+        <br>
+        <%= f.submit t('views.sign_up'), class: 'btn btn-primary rounded-pill btn-block' %>
+      </div>
+    </form>
+    <br>
+    <%= render 'live_houses/shared/links' %>
   <% end %>
 </div>

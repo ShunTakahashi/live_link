@@ -1,0 +1,18 @@
+<div class="container">
+  <br><br>
+  <div class="row">
+    <div class="col-sm-5 col-xs-12">
+      <%= image_tag 'default_icon.jpeg', class: "pc-dsp img-thumbnail icon-image float-right", alt: 'ユーザートップ画像' %>
+      <%= image_tag 'default_icon.jpeg', class: "sp-dsp img-thumbnail icon-image mx-auto", alt: 'ユーザートップ画像' %>
+      <br>
+    </div>
+    <div class="col-sm-5 col-xs-12 text-center">
+      <h3><%= @user.name %></h3>
+      <small>チケット予約名:</small>
+      <p><%= @user.ticket_name %></p>
+      <h5 class="pc-dsp">フォローバンド数</h5>
+      <h4 class="pc-dsp"><strong><%= link_to @follow_bands_count, follow_band_page_user_path %></strong></h4>
+      <br>
+    </div>
+  </div>
+</div>

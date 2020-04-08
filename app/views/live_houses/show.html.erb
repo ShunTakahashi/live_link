@@ -1,48 +1,40 @@
-<h1 class="top_title">ライブハウスページ</h1>
-<div class="user_profile">
-  <div class="profile_left">
-    <h3><%= t('views.live_house.name') %>:<%= @live_house.name %></h3>
-    <h4><%= t('views.live_house.prefecture') %>:<%= @live_house.prefecture %></h4>
-  </div>
-
-  <div class="profile_right">
-    <h3><%= t('views.live_house.address') %>:<%= @live_house.address.address %></h3>
-    <h4><%= t('views.live_house.tel') %>:<%= TelFormatter.format(@live_house.tel) %></h4>
-    <% if current_live_house != nil %>
-      <% if current_live_house.id == @live_house.id %>
-        <%= link_to t('views.edit_page'), edit_live_house_registration_path %>
-        <%= link_to t('views.log_out'), destroy_live_house_session_path %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-<div class="profile_menu_list">
-
-</div>
-
+<%= render 'profile' %>
 <div class="profile_content">
-  <h2>ライブスケジュール</h2>
-  <table>
-    <tbody>
-    <% unless @lives == nil %>
+  <div class="row text-center">
+    <%= link_to 'ライブスケジュール', live_house_path(@live_house.id), class: 'btn bg-secondary col p-3 text-light' %>
+  </div>
+  <% unless @lives == nil %>
       <% @lives.each do |live| %>
-        <tr>
-          <td><%= l(live.date, format: :default) %></td>
-          <td><%= link_to live.title, live_path(live) %></td>
-          <% live.place.each do |place| %>
-            <td><%= place.name %></td>
-          <% end %>
-        </tr>
+        <div class="row text-center align-middle link_box">
+          <div class="col-5 p-2"><%= link_to l(live.date, format: :default), live_path(live), class: 'link_value d-block text-white' %></div>
+          <div class="col-7 p-2"><%= link_to live.title, live_path(live), class: 'link_value d-block text-white' %></div>
+          <div class="col-5">
+            <% live.place.each do |place| %>
+              <% if place.place_to_live_houses.present? %>
+                <% place.place_to_live_houses.each do |live_house| %>
+                  <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value d-block text-white' %>
+                    <small><%= link_to "(#{live_house.prefecture})", live_path(live), class: 'link_value d-block text-white' %></small>
+                  </td>
+                <% end %>
+              <% else %>
+                <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value d-block text-white' %></td>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-7">
+            <% live.act.each do |act| %>
+              <td class="p-2"><%= link_to act.name, live_path(live), class: 'link_value d-block text-white' %></td>
+            <% end %>
+          </div>
+        </div>
       <% end %>
-    <% end %>
-    </tbody>
-  </table>
+  <% end %>
   <br>
-  <%= link_to t('views.back'), :back %>
+  <div class="text-center">
+    <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
+  </div>
 </div>
 <div class="map_area">
   <br><br>
   <div id="map"></div>
 </div>
-

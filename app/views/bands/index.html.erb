@@ -1,39 +1,37 @@
-<div class="search_form">
-  <h1>バンド検索フォーム</h1>
+<h2 class="text-center">バンド検索フォーム</h2>
+<br>
+<div class="container col-sm-6 col-xs-12">
   <%= search_form_for @q do |f| %>
-    <table>
-      <tbody>
-      <tr>
-        <th><%= f.label t('views.band.name') %></th>
-        <td><%= f.search_field :name_cont, id: 'search_band' %></td>
-      </tr>
-      <tr>
-        <th><%= f.label t('views.band.prefecture') %></th>
-        <td><%= f.select :prefecture_eq, Band.prefectures.keys.map {|k| [k, Band.prefectures[k]]}, {prompt: '選択してください'},
-                         class: 'form-control btn btn-info', id: 'search_prefecture', autofocus: true %></td>
-      </tr>
-      </tbody>
-    </table>
-    <div class="search_submit">
-      <%= f.submit %>
-    </div>
+    <form class='needs-validation' novalidate>
+
+      <div class='form-group row d-flex align-items-center'>
+        <label class="control-label text-center col-4"><%= f.label t('views.band.name') %></label>
+        <%= f.search_field :name_cont, class: 'form-control col-8', placeholder: '調べたいバンド名を入力', id: 'search_band' %>
+      </div>
+
+      <div class='form-group row d-flex align-items-center'>
+        <label class="control-label text-center col-4"><%= f.label t('views.band.prefecture') %></label>
+        <%= f.select :prefecture_eq, Band.prefectures.keys.map {|k| [k, Band.prefectures[k]]}, {prompt: '選択してください'},
+                     class: 'form-control col-8', id: 'search_prefecture', autofocus: true %>
+      </div>
+
+      <div class='form-group row'>
+        <%= f.submit class: 'btn btn-block btn-water-blue rounded-pill' %>
+      </div>
+    </form>
   <% end %>
-  <div class="search_link">
-    <%= link_to "ライブを直接探す", lives_path %>
-    <%= link_to "ライブハウスから探す", live_houses_path %>
+  <div class="text-center">
+    <%= link_to "ライブを直接探す", lives_path, class: 'btn btn-orange rounded-pill' %>
+    <%= link_to "ライブハウスから探す", live_houses_path, class: 'btn btn-orange rounded-pill' %>
+    <br><br>
   </div>
 </div>
-<h1 class="top_title">バンド一覧</h1>
-<div class="band_index">
-  <% @bands.each do |band| %>
-    <table>
-      <tbody>
-      <tr>
-        <td><%= band.prefecture %></td>
-        <td><%= link_to band.name, band_path(band) %></td>
-      </tr>
-      </tbody>
-    </table>
-  <% end %>
-  <%= paginate @bands %>
-</div>
+
+<h2 class="text-center">バンド一覧</h2>
+<% @bands.each do |band| %>
+  <div class="row text-center align-middle link_box">
+    <div class="col-5 p-2"><%= link_to band.prefecture, band_path(band), class: 'link_value d-block text-white' %></div>
+    <div class="col-7 p-2"><%= link_to band.name, band_path(band), class: 'link_value d-block text-white' %></div>
+  </div>
+<% end %>
+<%= paginate @bands %>
