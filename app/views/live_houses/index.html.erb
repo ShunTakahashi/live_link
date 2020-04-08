@@ -27,17 +27,12 @@
   </div>
 </div>
 
-<div class="live_house_index">
-  <h2 class="text-center">ライブハウス一覧</h2>
-  <% @live_houses.each do |live_house| %>
-    <table class="col-sm-6 col-xs-12 text-center">
-      <tbody>
-      <tr>
-        <th class="w-50 p-3"><%= live_house.prefecture %></th>
-        <td class="w-50"><%= link_to live_house.name, live_house_path(live_house), class: 'p-3' %></td>
-      </tr>
-      </tbody>
-    </table>
-  <% end %>
-  <%= paginate @live_houses %>
-</div>
+<h2 class="text-center">ライブハウス一覧</h2>
+
+<% @live_houses.each do |live_house| %>
+  <div class="row text-center align-middle link_box">
+    <div class="col-5 p-2"><%= link_to live_house.prefecture, live_house_path(live_house), class: 'link_value d-block text-white' %></div>
+    <div class="col-7 p-2"><%= link_to live_house.name, live_house_path(live_house), class: 'link_value d-block text-white' %></div>
+  </div>
+<% end %>
+<%= paginate @live_houses %>
