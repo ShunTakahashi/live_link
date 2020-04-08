@@ -28,16 +28,10 @@
 </div>
 
 <h2 class="text-center">バンド一覧</h2>
-<div class="band_index">
-  <% @bands.each do |band| %>
-    <table class="col-sm-6 col-xs-12 text-center">
-      <tbody>
-      <tr>
-        <th class="w-50 p-3"><%= band.prefecture %></th>
-        <td class="w-50"><%= link_to band.name, band_path(band), class: 'p-3' %></td>
-      </tr>
-      </tbody>
-    </table>
-  <% end %>
-  <%= paginate @bands %>
-</div>
+<% @bands.each do |band| %>
+  <div class="row text-center align-middle link_box">
+    <div class="col-5 p-2"><%= link_to band.prefecture, band_path(band), class: 'link_value d-block text-white' %></div>
+    <div class="col-7 p-2"><%= link_to band.name, band_path(band), class: 'link_value d-block text-white' %></div>
+  </div>
+<% end %>
+<%= paginate @bands %>
