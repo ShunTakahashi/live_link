@@ -11,7 +11,7 @@
       <% @live.place.each do |place| %>
         <td>
           <% if place.url != nil %>
-            <div><%= link_to place.name, place.url %></div>
+            <div><%= link_to place.name, place.url, class: 'd-block' %></div>
           <% else %>
             <div><%= place.name %></div>
           <% end %>
@@ -29,7 +29,7 @@
       <td>
         <% @live.act.each do |act| %>
           <% if act.url != nil %>
-            <div><%= link_to act.name, act.url %></div>
+            <div><%= link_to act.name, act.url, class: 'd-block' %></div>
           <% else %>
             <div><%= act.name %></div>
           <% end %>
