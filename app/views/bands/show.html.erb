@@ -5,6 +5,14 @@
       <%= link_to '新たにライブを追加する', new_live_path, class: 'btn btn-primary' %>
     <% end %>
   <% end %>
+
+  <% if user_signed_in? %>
+    <% if !FollowBand.exists?(user_id: current_user.id, band_id: @band.id) %>
+      <%= link_to 'フォロー', follow_bands_path(band_id: @band.id), class: 'btn btn-primary', method: :post %>
+    <% else %>
+      <%= link_to 'フォロー解除', follow_band_path(id: @band), class: 'btn btn-primary', method: :delete %>
+    <% end %>
+  <% end %>
   <br><br>
   <div class="row text-center">
     <% if @band == current_band %>
@@ -17,48 +25,32 @@
     <% end %>
   </div>
 
-  <div class="profile_content">
-    <br>
-    <table>
-      <tbody>
-      <% @lives.each do |live| %>
-        <tr>
-          <td><%= l(live.date, format: :default) %></td>
-          <td><%= link_to live.title, live_path(live) %></td>
-          <% live.act.each do |act| %>
-            <td>Act:<%= act.name %></td>
-          <% end %>
-          <% live.place.each do |place| %>
-            <% if place.place_to_live_houses.present? %>
-              <% place.place_to_live_houses.each do |live_house| %>
-                <td><%= place.name %>(<%= live_house.prefecture %>)</td>
-              <% end %>
-            <% else %>
-              <td>
-                <% place.name %></td>
+  <% @lives.each do |live| %>
+    <div class="row text-center align-middle link_box">
+      <div class="col-5 p-2"><%= link_to l(live.date, format: :default), live_path(live), class: 'link_value d-block text-white' %></div>
+      <div class="col-7 p-2"><%= link_to live.title, live_path(live), class: 'link_value d-block text-white' %></div>
+      <div class="col-5">
+        <% live.place.each do |place| %>
+          <% if place.place_to_live_houses.present? %>
+            <% place.place_to_live_houses.each do |live_house| %>
+              <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value d-block text-white' %>
+                <small><%= link_to "(#{live_house.prefecture})", live_path(live), class: 'link_value d-block text-white' %></small>
+              </td>
             <% end %>
+          <% else %>
+            <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value d-block text-white' %></td>
           <% end %>
-          <% if current_band != nil %>
-            <% if current_band.id = live.band_id %>
-              <td><%= link_to t('views.edit'), edit_live_path(live.id) %></td>
-              <td><%= link_to t('views.live.destory'), live_path(live.id), method: :delete,
-                              data: {confirm: '本当に削除してもよろしいですか？'} %></td>
-            <% end %>
-          <% end %>
-      <% end %>
-      </tr>
-      </tbody>
-      <% if user_signed_in? %>
-        <% if !FollowBand.exists?(user_id: current_user.id, band_id: @band.id) %>
-          <%= link_to 'フォロー', follow_bands_path(band_id: @band.id), method: :post %>
-        <% else %>
-          <%= link_to 'フォロー解除', follow_band_path(id: @band), method: :delete %>
         <% end %>
-      <% end %>
-    </table>
-  </div>
-  <br>
-  <div class="text-center">
-    <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
-  </div>
+      </div>
+      <div class="col-7">
+        <% live.act.each do |act| %>
+          <td class="p-2"><%= link_to act.name, live_path(live), class: 'link_value d-block text-white' %></td>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<br>
+<div class="text-center">
+  <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
 </div>
