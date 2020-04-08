@@ -9,19 +9,29 @@
   </div>
 </div>
 
-<div class="profile_content">
-
-  <table>
-    <tbody>
-    <% @going_to_lives.each do |live| %>
-      <tr>
-        <td><%= l(live.date, format: :default) %></td>
-        <td><%= link_to live.title, live_path(live) %></td>
+<div class="container">
+  <% @going_to_lives.each do |live| %>
+    <div class="row text-center align-middle link_box">
+      <div class="col-5 p-2"><%= link_to l(live.date, format: :default), live_path(live), class: 'link_value d-block text-white' %></div>
+      <div class="col-7 p-2"><%= link_to live.title, live_path(live), class: 'link_value d-block text-white' %></div>
+      <div class="col-5">
         <% live.place.each do |place| %>
-          <td><%= place.name %></td>
+          <% if place.place_to_live_houses.present? %>
+            <% place.place_to_live_houses.each do |live_house| %>
+              <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value d-block text-white' %>
+                <small><%= link_to "(#{live_house.prefecture})", live_path(live), class: 'link_value d-block text-white' %></small>
+              </td>
+            <% end %>
+          <% else %>
+            <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value d-block text-white' %></td>
+          <% end %>
         <% end %>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+      </div>
+      <div class="col-7">
+        <% live.act.each do |act| %>
+          <td class="p-2"><%= link_to act.name, live_path(live), class: 'link_value d-block text-white' %></td>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
