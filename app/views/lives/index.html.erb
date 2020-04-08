@@ -68,24 +68,24 @@
 <div class="container">
   <% @lives.each do |live| %>
       <div class="row text-center align-middle link_box">
-        <div class="col-5 p-2"><%= link_to l(live.date, format: :default), live_path(live), class: 'link_value text-white text-white' %></div>
-        <div class="col-7 p-2"><%= link_to live.title, live_path(live), class: 'link_value text-white text-white' %></div>
+        <div class="col-5 p-2"><%= link_to l(live.date, format: :default), live_path(live), class: 'link_value d-block text-white' %></div>
+        <div class="col-7 p-2"><%= link_to live.title, live_path(live), class: 'link_value d-block text-white' %></div>
         <div class="col-5">
           <% live.place.each do |place| %>
             <% if place.place_to_live_houses.present? %>
               <% place.place_to_live_houses.each do |live_house| %>
-                <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value text-white text-white' %>
-                  <small><%= link_to "(#{live_house.prefecture})", live_path(live), class: 'link_value text-white text-white' %></small>
+                <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value d-block text-white' %>
+                  <small><%= link_to "(#{live_house.prefecture})", live_path(live), class: 'link_value d-block text-white' %></small>
                 </td>
               <% end %>
             <% else %>
-              <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value text-white text-white' %></td>
+              <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value d-block text-white' %></td>
             <% end %>
           <% end %>
         </div>
         <div class="col-7">
           <% live.act.each do |act| %>
-            <td class="p-2"><%= link_to act.name, live_path(live), class: 'link_value text-white text-white' %></td>
+            <td class="p-2"><%= link_to act.name, live_path(live), class: 'link_value d-block text-white' %></td>
           <% end %>
         </div>
       </div>

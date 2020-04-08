@@ -1,21 +1,22 @@
-<div class="live_show_page">
-
-  <table>
-
+<div class="container text-center col-sm-6 col-xs-12">
+  <br>
+  <table class="table table-dark table-borderless">
     <tr>
       <th><%= t('views.live.title') %></th>
       <td><%= @live.title %></td>
     </tr>
 
     <tr>
-      <th><%= t('views.live.place') %></th>
+      <th class="w-25"><%= t('views.live.place') %></th>
       <% @live.place.each do |place| %>
-        <% if place.url != nil %>
-          <td><%= link_to place.name, place.url %></td>
-        <% else %>
-          <td><%= place.name %></td>
-        <% end %>
+        <td>
+          <% if place.url != nil %>
+            <div><%= link_to place.name, place.url %></div>
+          <% else %>
+            <div><%= place.name %></div>
+          <% end %>
       <% end %>
+      </td>
     </tr>
 
     <tr>
@@ -25,13 +26,15 @@
 
     <tr>
       <th><%= t('views.live.act') %></th>
-      <% @live.act.each do |act| %>
-        <% if act.url != nil %>
-          <td><%= link_to act.name, act.url %></td>
-        <% else %>
-          <td><%= act.name %></td>
+      <td>
+        <% @live.act.each do |act| %>
+          <% if act.url != nil %>
+            <div><%= link_to act.name, act.url %></div>
+          <% else %>
+            <div><%= act.name %></div>
+          <% end %>
         <% end %>
-      <% end %>
+      </td>
     </tr>
 
     <tr>
@@ -100,15 +103,25 @@
       </tr>
     <% end %>
 
-  </table>
-  <br>
-  <%= link_to t('views.back'), :back %>
-  <br>
-  <% if user_signed_in? %>
-    <% if !GoingToLive.exists?(user_id: current_user.id, live_id: @live.id) %>
-      <%= link_to '行く予定ボタン', going_to_lives_path(live_id: @live.id), method: :post %>
-    <% else %>
-      <%= link_to '行く予定ボタン解除', going_to_live_path(id: @live), method: :delete %>
+    <% if current_band != nil %>
+      <% if current_band.id = @live.band_id %>
+        <td colspan="2"><%= link_to t('views.edit'), edit_live_path(@live.id), class: 'btn btn-success' %>
+          <%= link_to t('views.live.destory'), live_path(@live.id), class: 'btn btn-danger',
+                      method: :delete, data: {confirm: '本当に削除してもよろしいですか？'} %></td>
+      <% end %>
+      <br><br>
     <% end %>
-  <% end %>
+
+    <% if user_signed_in? %>
+      <% if !GoingToLive.exists?(user_id: current_user.id, live_id: @live.id) %>
+        <td colspan="2"><%= link_to '行く予定ボタン', going_to_lives_path(live_id: @live.id), class: 'btn btn-orange', method: :post %></td>
+      <% else %>
+        <td colspan="2"><%= link_to '行く予定ボタン解除', going_to_live_path(id: @live), class: 'btn btn-orange', method: :delete %></td>
+      <% end %>
+    <% end %>
+
+  </table>
+  <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
+  <br>
+
 </div>
