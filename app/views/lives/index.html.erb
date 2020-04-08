@@ -36,30 +36,59 @@
     <br><br>
   </div>
 </div>
-<div class="live_index_page">
-  <h2 class="text-center">ライブ一覧</h2>
+<h2 class="text-center">ライブ一覧</h2>
 
-  <table>
-    <tbody>
-    <% @lives.each do |live| %>
-      <tr>
-        <td><%= l(live.date, format: :default) %></td>
-        <td><%= link_to live.title, live_path(live) %></td>
-        <% live.act.each do |act| %>
-          <td>Act:<%= act.name %></td>
-        <% end %>
-        <% live.place.each do |place| %>
-          <% if place.place_to_live_houses.present? %>
-            <% place.place_to_live_houses.each do |live_house| %>
-              <td><%= place.name %>(<%= live_house.prefecture %>)</td>
+<!--  <table class="mx-auto">-->
+<!--    <tbody>-->
+<%# @lives.each do |live| %>
+<!--      <div class="bg-white">-->
+<!--        <tr>-->
+<!--          <td class="p-2"><%#= l(live.date, format: :default) %></td>-->
+<!--          <td class="p-2"><%#= link_to live.title, live_path(live) %></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<%# live.place.each do |place| %>
+<%# if place.place_to_live_houses.present? %>
+<%# place.place_to_live_houses.each do |live_house| %>
+<!--                <td class="p-2"><%#= place.name %>(<%#= live_house.prefecture %>)</td>-->
+<%# end %>
+<%# else %>
+<!--              <td class="p-2"><%#= place.name %></td>-->
+<%# end %>
+<%# end %>
+<%# live.act.each do |act| %>
+<!--            <td class="p-2">Act:<%#= act.name %></td>-->
+<%# end %>
+<!--        </tr>-->
+<!--      </div>-->
+<%# end %>
+<!--    </tbody>-->
+<!--  </table>-->
+
+<div class="container">
+  <% @lives.each do |live| %>
+      <div class="row text-center align-middle link_box">
+        <div class="col-5 p-2"><%= link_to l(live.date, format: :default), live_path(live), class: 'link_value text-white text-white' %></div>
+        <div class="col-7 p-2"><%= link_to live.title, live_path(live), class: 'link_value text-white text-white' %></div>
+        <div class="col-5">
+          <% live.place.each do |place| %>
+            <% if place.place_to_live_houses.present? %>
+              <% place.place_to_live_houses.each do |live_house| %>
+                <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value text-white text-white' %>
+                  <small><%= link_to "(#{live_house.prefecture})", live_path(live), class: 'link_value text-white text-white' %></small>
+                </td>
+              <% end %>
+            <% else %>
+              <td class="p-2"><%= link_to place.name, live_path(live), class: 'link_value text-white text-white' %></td>
             <% end %>
-          <% else %>
-            <td><%= place.name %></td>
           <% end %>
-        <% end %>
+        </div>
+        <div class="col-7">
+          <% live.act.each do |act| %>
+            <td class="p-2"><%= link_to act.name, live_path(live), class: 'link_value text-white text-white' %></td>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-    </tr>
-    </tbody>
-  </table>
-  <%= paginate @lives %>
 </div>
+<%= paginate @lives %>

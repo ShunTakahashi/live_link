@@ -69,6 +69,22 @@ label {
   border-radius: 120px;
 }
 
+.link_box{
+  border: solid #343A40;
+}
+
+.link_box + .link_box{
+  border-top: none;
+}
+
+.link_box:hover{
+  opacity: 0.6;
+}
+
+.link_value:hover {
+  text-decoration: none;
+}
+
 //pc,sp時の表示分け
 
 .pc-dsp {
