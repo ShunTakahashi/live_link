@@ -403,6 +403,7 @@ DEPENDENCIES
   ransack
   rspec-rails
   sass-rails (= 5.1.0)
+  sassc-rails
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
