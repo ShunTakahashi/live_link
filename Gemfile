@@ -60,6 +60,7 @@ gem 'ransack'
 gem 'kaminari'
 gem 'bootstrap', '~> 4.4.1'
 gem 'sassc', '2.1.0'
+gem 'popper_js', '~> 1.16.0'
 # 日本語化
 gem 'rails-i18n'
 gem 'carrierwave-i18n'

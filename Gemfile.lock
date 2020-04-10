@@ -396,6 +396,7 @@ DEPENDENCIES
   mini_magick
   mini_racer
   pg (>= 0.18, < 2.0)
+  popper_js (~> 1.16.0)
   pry-rails
   puma (~> 3.12)
   rails (= 5.2.3)
