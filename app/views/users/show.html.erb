@@ -1,7 +1,7 @@
 <%= render 'profile' %>
 
 <div class="container">
-    <h3 class="text-center">行く予定のライブ</h3>
+  <h3 class="text-center">行く予定のライブ</h3>
   <div class="row text-center">
     <%= link_to 'ライブうぃる', user_path(@user.id), class: 'btn bg-secondary col-4 p-3 text-light' %>
     <%= link_to 'ライブわず', user_path(@user.id), class: 'btn bg-secondary col-4 p-3 text-light' %>
@@ -34,4 +34,8 @@
       </div>
     </div>
   <% end %>
+  <br>
+  <div class="text-center">
+    <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
+  </div>
 </div>

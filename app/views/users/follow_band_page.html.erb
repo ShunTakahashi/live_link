@@ -1,23 +1,35 @@
 <%= render 'profile' %>
 
 <div class="container">
-    <h3 class="text-center">フォローバンド一覧</h3>
+  <h3 class="text-center">フォローバンド一覧</h3>
   <div class="row text-center">
     <%= link_to 'ライブうぃる', user_path(@user.id), class: 'btn bg-secondary col-4 p-3 text-light' %>
     <%= link_to 'ライブわず', user_path(@user.id), class: 'btn bg-secondary col-4 p-3 text-light' %>
     <%= link_to 'フォローパンド一覧', follow_band_page_user_path, class: 'btn bg-secondary col-4 p-3 text-light' %>
   </div>
-</div>
 
-<div class="my_page_content">
-  <table>
-    <tbody>
-    <% @follow_bands.each do |band| %>
-    <tr>
-      <td><%= band.prefecture %></td>
-      <td><%= link_to band.name, band_path(band) %></td>
-    </tr>
-    <% end %>
-    </tbody>
-  </table>
+
+  <!--<div class="my_page_content">-->
+  <!--  <table>-->
+  <!--    <tbody>-->
+  <%# @follow_bands.each do |band| %>
+  <!--    <tr>-->
+  <!--      <td><%#= band.prefecture %></td>-->
+  <!--      <td><%#= link_to band.name, band_path(band) %></td>-->
+  <!--    </tr>-->
+  <%# end %>
+  <!--    </tbody>-->
+  <!--  </table>-->
+  <!--</div>-->
+
+  <% @follow_bands.each do |band| %>
+    <div class="row text-center align-middle link_box">
+      <div class="col-5 p-2"><%= link_to band.prefecture, band_path(band), class: 'link_value d-block text-white' %></div>
+      <div class="col-7 p-2"><%= link_to band.name, band_path(band), class: 'link_value d-block text-white' %></div>
+    </div>
+  <% end %>
+</div>
+<br>
+<div class="text-center">
+  <%= link_to t('views.back'), :back, class: 'btn btn-primary' %>
 </div>
