@@ -81,8 +81,12 @@ label {
   opacity: 0.6;
 }
 
-.link_value:hover {
+.link_value:hover{
   text-decoration: none;
+}
+
+.dropdown-item:hover{
+  background-color: transparent;
 }
 
 //pc,sp時の表示分け
