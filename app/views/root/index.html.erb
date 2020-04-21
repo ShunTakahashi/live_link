@@ -1,73 +1,51 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
+    <br><br>
     <div class="smoke">
       <h1 class="display-4">LiveLink</h1>
       <p>人と音楽・ライブ・バンド・ライブハウスを繋げる為のアプリです。</p>
     </div>
-    <br><br>
-    <div class="smoke">
-      <h3 class="text-center">とりあえず使ってみる</h3>
-<!--      <div class="root_searching_live">-->
-<!--        <div class="circle_link">-->
-          <%= link_to "ライブを探す", lives_path %>
-<!--        </div>-->
-<!--      </div>-->
+    <br><br><br>
+    <div class="smoke p-2 ml-auto">
 
-<!--      <div class="root_searching_band">-->
-<!--        <div class="circle_link">-->
-          <%= link_to "バンドを探す", bands_path %>
-<!--        </div>-->
-<!--      </div>-->
+      <div class="btn-group center-block opacity_bg-blue w-100">
+        <button class="btn btn-lg center-block dropdown-toggle text-light opacity_bg-blue" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          とりあえず使ってみる <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu w-100">
+          <li><%= link_to "ライブを探す", lives_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
+          <li><%= link_to "バンドを探す", bands_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
+          <li><%= link_to "ライブハウスを探す", live_houses_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
+        </ul>
+      </div>
 
-<!--      <div class="root_searching_live_house">-->
-<!--        <div class="circle_link">-->
-          <%= link_to "ライブハウスを探す", live_houses_path %>
-<!--        </div>-->
-<!--      </div>-->
-    </div>
+      <br><br><br>
 
-    <div class="root_sign_up_link">
-      <p>更に便利に使うために新規登録する</p>
-      <div class="root_sign_up_user">
-        <div class="circle_link">
-          <%= link_to "一般ユーザー登録", new_user_registration_path %>
-        </div>
+      <div class="btn-group opacity_bg-blue w-100">
+        <button class="btn btn-lg dropdown-toggle text-light opacity_bg-blue" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          会員登録して便利に使う <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu opacity_bg-blue w-100">
+          <li><%= link_to "一般ユーザー登録", new_user_registration_path, class: "dropdown-item text-center" %></li>
+          <li><%= link_to "バンド登録", new_band_registration_path, class: "dropdown-item text-center" %></li>
+          <li><%= link_to "ライブハウス登録", new_live_house_registration_path, class: "dropdown-item text-center" %></li>
+        </ul>
       </div>
-      <div class="root_sign_up_band">
-        <div class="circle_link">
-          <%= link_to "バンド登録", new_band_registration_path %>
-        </div>
-      </div>
-      <div class="root_sign_up_live_house">
-        <div class="circle_link">
-          <%= link_to "ライブハウス登録", new_live_house_registration_path %>
-        </div>
-      </div>
-    </div>
 
-    <div class="root_login_link">
-      <p>ログインする</p>
-      <div class="root_login_user">
-        <div class="circle_link">
-          <%= link_to "ユーザーログイン", new_user_session_path %>
-        </div>
-      </div>
-      <div class="root_login_band">
-        <div class="circle_link">
-          <%= link_to "バンドログイン", new_band_session_path %>
-        </div>
-      </div>
-      <div class="root_login_live_house">
-        <div class="circle_link">
-          <%= link_to "ライブハウスログイン", new_live_house_session_path %>
-        </div>
+      <br><br><br>
+      <div class="btn-group opacity_bg-blue w-100">
+        <button class="btn btn-lg dropdown-toggle text-light opacity_bg-blue" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         ログインして使う <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu w-100">
+          <li><%= link_to "ユーザーログイン", new_user_session_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
+          <li><%= link_to "バンドログイン", new_band_session_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
+          <li><%= link_to "ライブハウスログイン", new_live_house_session_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
+        </ul>
       </div>
     </div>
-
-
   </div>
 </div>
-
 <!--<div class="root_description">-->
 <%#= image_tag 'top.jpg', class: 'img-fluid', alt: 'トップ画像' %>
 
@@ -81,19 +59,19 @@
 <!--  <p>とりあえず使ってみる</p>-->
 <!--  <div class="root_searching_live">-->
 <!--    <div class="circle_link">-->
-      <%#= link_to "ライブを直接探す", lives_path %>
+<%#= link_to "ライブを直接探す", lives_path %>
 <!--    </div>-->
 <!--  </div>-->
 
 <!--  <div class="root_searching_band">-->
 <!--    <div class="circle_link">-->
-      <%#= link_to "バンドから探す", bands_path %>
+<%#= link_to "バンドから探す", bands_path %>
 <!--    </div>-->
 <!--  </div>-->
 
 <!--  <div class="root_searching_live_house">-->
 <!--    <div class="circle_link">-->
-      <%#= link_to "ライブハウスから探す", live_houses_path %>
+<%#= link_to "ライブハウスから探す", live_houses_path %>
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
@@ -102,17 +80,17 @@
 <!--  <p>更に便利に使うために新規登録する</p>-->
 <!--  <div class="root_sign_up_user">-->
 <!--    <div class="circle_link">-->
-      <%#= link_to "一般ユーザー登録", new_user_registration_path %>
+<%#= link_to "一般ユーザー登録", new_user_registration_path %>
 <!--    </div>-->
 <!--  </div>-->
 <!--  <div class="root_sign_up_band">-->
 <!--    <div class="circle_link">-->
-      <%#= link_to "バンド登録", new_band_registration_path %>
+<%#= link_to "バンド登録", new_band_registration_path %>
 <!--    </div>-->
 <!--  </div>-->
 <!--  <div class="root_sign_up_live_house">-->
 <!--    <div class="circle_link">-->
-      <%#= link_to "ライブハウス登録", new_live_house_registration_path %>
+<%#= link_to "ライブハウス登録", new_live_house_registration_path %>
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
@@ -121,18 +99,46 @@
 <!--  <p>ログインする</p>-->
 <!--  <div class="root_login_user">-->
 <!--    <div class="circle_link">-->
-      <%#= link_to "ユーザーログイン", new_user_session_path %>
+<%#= link_to "ユーザーログイン", new_user_session_path %>
 <!--    </div>-->
 <!--  </div>-->
 <!--  <div class="root_login_band">-->
 <!--    <div class="circle_link">-->
-      <%#= link_to "バンドログイン", new_band_session_path %>
+<%#= link_to "バンドログイン", new_band_session_path %>
 <!--    </div>-->
 <!--  </div>-->
 <!--  <div class="root_login_live_house">-->
 <!--    <div class="circle_link">-->
-      <%#= link_to "ライブハウスログイン", new_live_house_session_path %>
+<%#= link_to "ライブハウスログイン", new_live_house_session_path %>
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
 
+
+<!--<a class="nav-link dropdown-toggle text-center opacity_bg-blue" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--  <h3 class="text-light">とりあえず使ってみる</h3>-->
+<!--</a>-->
+<!--<div class="dropdown-menu text-light w-75 opacity_bg-blue" aria-labelledby="navbarDropdown">-->
+  <%#= link_to "ライブを探す", lives_path, class: "dropdown-item opacity_bg-blue text-center" %>
+  <%#= link_to "バンドを探す", bands_path, class: "dropdown-item opacity_bg-blue text-center" %>
+  <%#= link_to "ライブハウスを探す", live_houses_path, class: "dropdown-item opacity_bg-blue text-center" %>
+<!--</div>-->
+<!--<br><br><br>-->
+<!--<a class="nav-link dropdown-toggle text-center opacity_bg-blue" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--  <h3 class="text-light">更に便利に使うために会員登録する</h3>-->
+<!--  <h5 class="text-light">バンド、ライブハウスは必須</h5>-->
+<!--</a>-->
+<!--<div class="dropdown-menu text-light w-75 opacity_bg-blue" aria-labelledby="navbarDropdown">-->
+  <%#= link_to "一般ユーザー登録", new_user_registration_path, class: "dropdown-item opacity_bg-blue text-center" %>
+  <%#= link_to "バンド登録", new_band_registration_path, class: "dropdown-item opacity_bg-blue text-center" %>
+  <%#= link_to "ライブハウス登録", new_live_house_registration_path, class: "dropdown-item opacity_bg-blue text-center" %>
+<!--</div>-->
+<!--<br><br><br>-->
+<!--<a class="nav-link dropdown-toggle text-center opacity_bg-blue" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--  <h3 class="text-light">ログインする</h3>-->
+<!--</a>-->
+<!--<div class="dropdown-menu text-light w-75 opacity_bg-blue" aria-labelledby="navbarDropdown">-->
+  <%#= link_to "ユーザーログイン", new_user_session_path, class: "dropdown-item opacity_bg-blue text-center" %>
+  <%#= link_to "バンドログイン", new_band_session_path, class: "dropdown-item opacity_bg-blue text-center" %>
+  <%#= link_to "ライブハウスログイン", new_live_house_session_path, class: "dropdown-item opacity_bg-blue text-center" %>
+<!--</div>-->
