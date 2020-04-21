@@ -5,7 +5,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= Gon::Base.render_data %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="//maps.google.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_KEY"] %>"></script>
@@ -33,20 +33,20 @@
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               ログイン
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to 'ユーザーログイン', new_user_session_path, class: "dropdown-item" %>
-              <%= link_to 'バンドログイン', new_band_session_path, class: "dropdown-item" %>
-              <%= link_to 'ライブハウスログイン', new_live_house_session_path, class: "dropdown-item" %>
+            <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <%= link_to 'ユーザーログイン', new_user_session_path, class: "dropdown-item text-light" %>
+              <%= link_to 'バンドログイン', new_band_session_path, class: "dropdown-item text-light" %>
+              <%= link_to 'ライブハウスログイン', new_live_house_session_path, class: "dropdown-item text-light" %>
             </div>
           </li>
           <li class="nav-item  dropdown">
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               新規登録
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to 'ユーザー登録', new_user_registration_path, class: "dropdown-item" %>
-              <%= link_to 'バンド登録', new_band_registration_path, class: "dropdown-item" %>
-              <%= link_to 'ライブハウス登録', new_live_house_registration_path, class: "dropdown-item" %>
+            <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <%= link_to 'ユーザー登録', new_user_registration_path, class: "dropdown-item text-light" %>
+              <%= link_to 'バンド登録', new_band_registration_path, class: "dropdown-item text-light" %>
+              <%= link_to 'ライブハウス登録', new_live_house_registration_path, class: "dropdown-item text-light" %>
             </div>
           </li>
         <% end %>
@@ -68,7 +68,7 @@
               マイページ
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to t('views.my_page'), user_path(current_user), class: "dropdown-item" %>
+              <%= link_to t('views.my_page'), user_path(current_user), class: "dropdown-ite" %>
               <%= link_to t('views.follow_band'), follow_band_page_user_path(current_user), class: "dropdown-item" %>
               <%= link_to t('views.edit_page'), edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to t('views.log_out'), destroy_user_session_path, class: "dropdown-item" %>
@@ -77,19 +77,19 @@
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               マイページ
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to t('views.my_page'), band_path(current_band), class: "dropdown-item" %>
-              <%= link_to t('views.edit_page'), edit_band_registration_path, class: "dropdown-item" %>
-              <%= link_to t('views.log_out'), destroy_band_session_path, class: "dropdown-item" %>
+            <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <%= link_to t('views.my_page'), band_path(current_band), class: "dropdown-item text-light" %>
+              <%= link_to t('views.edit_page'), edit_band_registration_path, class: "dropdown-item text-light" %>
+              <%= link_to t('views.log_out'), destroy_band_session_path, class: "dropdown-item text-light" %>
             </div>
           <% elsif live_house_signed_in? %>
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               マイページ
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to t('views.my_page'), live_house_path(current_live_house), class: "dropdown-item" %>
-              <%= link_to t('views.edit_page'), edit_live_house_registration_path, class: "dropdown-item" %>
-              <%= link_to t('views.log_out'), destroy_live_house_session_path, class: "dropdown-item" %>
+            <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <%= link_to t('views.my_page'), live_house_path(current_live_house), class: "dropdown-item text-light" %>
+              <%= link_to t('views.edit_page'), edit_live_house_registration_path, class: "dropdown-item text-light" %>
+              <%= link_to t('views.log_out'), destroy_live_house_session_path, class: "dropdown-item text-light" %>
             </div>
           <% end %>
         </li>
@@ -98,10 +98,14 @@
   </div>
 </nav>
 
-<div class="container">
-  <p id="notice"><%= notice %></p>
+<% if @root == 'true' %>
   <%= yield %>
-</div>
+<% else %>
+  <div class="container">
+    <p id="notice"><%= notice %></p>
+    <%= yield %>
+  </div>
+<% end %>
 
 </body>
 </html>

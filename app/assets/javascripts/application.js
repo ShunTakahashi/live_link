@@ -14,3 +14,7 @@
 //= require popper
 //= require jquery_ujs
 //= require bootstrap-sprockets
+
+$("i").click(function () {
+  $("ul").toggleClass("open");
+});
