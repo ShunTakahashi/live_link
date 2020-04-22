@@ -47,6 +47,7 @@ class LivesController < ApplicationController
     if @live.save
       redirect_to band_path(current_band.id), notice: '投稿が完了しました。'
     else
+      flash.now[:alert] = 'エラーが発生しました。'
       render new_live_path
     end
   end
