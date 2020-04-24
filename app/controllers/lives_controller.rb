@@ -76,9 +76,7 @@ class LivesController < ApplicationController
                                  :end_time, :early_bird_ticket_price,
                                  :tickets_for_today_price, :image, :image_cache,
                                  :time_table_image, :time_table_image_cache,
-                                 :remarks, :status,
-                                 act_attributes: %i[name url _destory id],
-                                 place_attributes: %i[name url _destory id])
+                                 :remarks, :status)
   end
 
 end
