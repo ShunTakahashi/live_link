@@ -98,6 +98,19 @@ label {
   background-color: transparent;
 }
 
+// kaminari
+
+.pagination {
+  justify-content: center;
+}
+
+// flash_message
+
+.notice {
+  color: white;
+  background-color: blue;
+}
+
 //pc,sp時の表示分け
 
 .pc-dsp {
@@ -137,9 +150,4 @@ label {
   html {
     font-size: 16px
   }
-}
-
-.notice {
-  color: white;
-  background-color: blue;
 }
