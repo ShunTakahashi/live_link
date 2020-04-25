@@ -79,7 +79,7 @@ class LiveHouses::RegistrationsController < Devise::RegistrationsController
 
   def check_guest
     if resource.email == 'guest.live.house@example.com'
-      redirect_to live_house_path(@live_house.id), notice: 'ゲストライブハウスの変更はできません。'
+      redirect_to live_house_path(@live_house.id), danger: 'ゲストライブハウスの変更はできません。'
     end
   end
 end

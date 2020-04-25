@@ -38,32 +38,6 @@
 </div>
 <h2 class="text-center">ライブ一覧</h2>
 
-<!--  <table class="mx-auto">-->
-<!--    <tbody>-->
-<%# @lives.each do |live| %>
-<!--      <div class="bg-white">-->
-<!--        <tr>-->
-<!--          <td class="p-2"><%#= l(live.date, format: :default) %></td>-->
-<!--          <td class="p-2"><%#= link_to live.title, live_path(live) %></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<%# live.place.each do |place| %>
-<%# if place.place_to_live_houses.present? %>
-<%# place.place_to_live_houses.each do |live_house| %>
-<!--                <td class="p-2"><%#= place.name %>(<%#= live_house.prefecture %>)</td>-->
-<%# end %>
-<%# else %>
-<!--              <td class="p-2"><%#= place.name %></td>-->
-<%# end %>
-<%# end %>
-<%# live.act.each do |act| %>
-<!--            <td class="p-2">Act:<%#= act.name %></td>-->
-<%# end %>
-<!--        </tr>-->
-<!--      </div>-->
-<%# end %>
-<!--    </tbody>-->
-<!--  </table>-->
 
 <div class="container">
   <% @lives.each do |live| %>

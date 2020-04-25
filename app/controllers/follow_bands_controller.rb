@@ -3,9 +3,9 @@ class FollowBandsController < ApplicationController
     user = current_user
     band = Band.find(params[:band_id])
     if FollowBand.create(user_id: user.id, band_id: band.id)
-      redirect_to bands_path
+      redirect_to band_path(band), success: 'フォローが完了しました'
     else
-      redirect_to root_url
+      render band_path(band), danger: 'エラーが発生しました'
     end
   end
 
@@ -14,9 +14,9 @@ class FollowBandsController < ApplicationController
     band = Band.find(params[:id])
     if folloe_band = FollowBand.find_by(user_id: user.id, band_id: band.id)
       folloe_band.delete
-      redirect_to bands_path
+      redirect_to band_path(band), danger: 'フォローを解除しました'
     else
-      redirect_to bands_path
+      redirect_to band_path(band), danger: 'エラーが発生しました'
     end
   end
 end

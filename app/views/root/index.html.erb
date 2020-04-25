@@ -1,3 +1,4 @@
+<%= render 'layouts/flash_messages' %>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <br><br>
@@ -35,7 +36,7 @@
       <br><br><br>
       <div class="btn-group opacity_bg-blue w-100">
         <button class="btn btn-lg dropdown-toggle text-light opacity_bg-blue" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         ログインして使う <span class="caret"></span>
+          ログインして使う <span class="caret"></span>
         </button>
         <ul class="dropdown-menu w-100">
           <li><%= link_to "ユーザーログイン", new_user_session_path, class: "dropdown-item opacity_bg-blue text-center" %></li>

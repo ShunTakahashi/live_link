@@ -25,7 +25,6 @@ class LivesController < ApplicationController
 
   def create
     @live = current_band.lives.create(live_params)
-
     if @live.valid?
       @live.place.each do |place|
         if LiveHouse.find_by(name: place.name) != nil
@@ -35,7 +34,7 @@ class LivesController < ApplicationController
         end
       end
 
-      @live.act.each do |act|
+      @live.acts.each do |act|
         if Band.find_by(name: act.name) != nil
           band = Band.find_by(name: act.name)
           act.act_urls.create(band_id: band.id)
@@ -45,23 +44,22 @@ class LivesController < ApplicationController
     end
 
     if @live.save
-      redirect_to band_path(current_band.id), notice: '投稿が完了しました。'
+      redirect_to band_path(current_band.id), success: '投稿が完了しました'
     else
-      flash.now[:alert] = 'エラーが発生しました。'
-      render new_live_path
+      render new_live_path, danger: 'エラーが発生しました'
     end
   end
 
   def destroy
     @live.destroy
-    redirect_to lives_path, notice: '投稿を削除しました。'
+    redirect_to lives_path, danger: '投稿を削除しました'
   end
 
   def update
     if @live.update(live_params)
-      redirect_to lives_path, notice: '編集が完了しました'
+      redirect_to lives_path, success: '編集が完了しました'
     else
-      render 'edit'
+      render 'edit', danger: 'エラーが発生しました'
     end
   end
 
@@ -76,7 +74,9 @@ class LivesController < ApplicationController
                                  :end_time, :early_bird_ticket_price,
                                  :tickets_for_today_price, :image, :image_cache,
                                  :time_table_image, :time_table_image_cache,
-                                 :remarks, :status)
+                                 :remarks, :status,
+                                 act_attributes: %i[name url],
+                                 place_attributes: %i[name url])
   end
 
 end

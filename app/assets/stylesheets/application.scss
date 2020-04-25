@@ -17,6 +17,7 @@
 @import "root";
 @import "users";
 @import "bootstrap";
+@import "custom";
 
 .clearfix:after {
   content: "";
@@ -136,4 +137,9 @@ label {
   html {
     font-size: 16px
   }
+}
+
+.notice {
+  color: white;
+  background-color: blue;
 }

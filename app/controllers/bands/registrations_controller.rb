@@ -76,7 +76,7 @@ class Bands::RegistrationsController < Devise::RegistrationsController
 
   def check_guest
     if resource.email == 'guestband@example.com'
-      redirect_to band_path(@band.id), notice: 'ゲストバンドの変更はできません。'
+      redirect_to band_path(@band.id), danger: 'ゲストバンドの変更はできません。'
     end
   end
 end

@@ -68,8 +68,7 @@
               マイページ
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to t('views.my_page'), user_path(current_user), class: "dropdown-ite" %>
-              <%= link_to t('views.follow_band'), follow_band_page_user_path(current_user), class: "dropdown-item" %>
+              <%= link_to t('views.my_page'), user_path(current_user), class: "dropdown-item" %>
               <%= link_to t('views.edit_page'), edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to t('views.log_out'), destroy_user_session_path, class: "dropdown-item" %>
             </div>
@@ -102,7 +101,7 @@
   <%= yield %>
 <% else %>
   <div class="container">
-    <p id="notice"><%= notice %></p>
+    <%= render 'layouts/flash_messages' %>
     <%= yield %>
   </div>
 <% end %>

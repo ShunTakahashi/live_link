@@ -6,7 +6,7 @@ class Bands::SessionsController < Devise::SessionsController
   def new_guest
     band = Band.guest
     sign_in band
-    redirect_to root_path, notice: 'ゲストバンドとしてログインしました。'
+    redirect_to root_path, success: 'ゲストバンドとしてログインしました。'
   end
 
   # GET /resource/sign_in

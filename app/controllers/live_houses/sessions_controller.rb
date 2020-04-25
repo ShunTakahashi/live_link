@@ -6,7 +6,7 @@ class LiveHouses::SessionsController < Devise::SessionsController
   def new_guest
     live_house = LiveHouse.guest
     sign_in live_house
-    redirect_to root_path, notice: 'ゲストライブハウスとしてログインしました。'
+    redirect_to root_path, success: 'ゲストライブハウスとしてログインしました。'
     @live_house = live_house.id
     Address.guest(@live_house)
   end
