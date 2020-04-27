@@ -34,7 +34,7 @@ class LivesController < ApplicationController
         end
       end
 
-      @live.acts.each do |act|
+      @live.act.each do |act|
         if Band.find_by(name: act.name) != nil
           band = Band.find_by(name: act.name)
           act.act_urls.create(band_id: band.id)
