@@ -2,41 +2,8 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.top_image {
-  min-width: 100%;
-  height: 100%;
-}
-
-.root_description {
-  text-align: center;
-}
-
-.root_starting_link, .root_sign_up_link, .root_login_link {
-  display: block;
-  text-align: center;
-}
-
-.root_searching_band, .root_searching_live, .root_searching_live_house,
-.root_sign_up_user, .root_sign_up_band, .root_sign_up_live_house,
-.root_login_user, .root_login_band, .root_login_live_house {
-  width: 15rem;
-  height: 10rem;
-  display: inline-block;
-}
-
-.circle_link {
-  display: inline-block;
-  vertical-align: middle;
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-  background: skyblue;
-  text-align: center;
-  line-height: 10rem;
-}
-
 .jumbotron{
-  background-image: url("top3.jpg");
+  background-image: url("top.jpg");
   background-size: cover;
   background-position: center 100%;
   background-attachment: fixed;
@@ -46,13 +13,17 @@
   width: 100vw;
 }
 
-.smoke{
+.smoke {
   padding-left: 3%;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .opacity_bg-blue{
+  background-color: rgba(70,70,255,0.45);
+}
+
+.hover_opacity_bg-blue:hover {
   background-color: rgba(70,70,255,0.45);
 }

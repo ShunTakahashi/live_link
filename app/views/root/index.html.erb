@@ -9,39 +9,39 @@
     <br><br><br>
     <div class="smoke p-2 ml-auto">
 
-      <div class="btn-group center-block opacity_bg-blue w-100">
-        <button class="btn btn-lg center-block dropdown-toggle text-light opacity_bg-blue" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div class="btn-group opacity_bg-blue w-100">
+        <button class="btn btn-lg dropdown-toggle text-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           とりあえず使ってみる <span class="caret"></span>
         </button>
         <ul class="dropdown-menu w-100">
-          <li><%= link_to "ライブを探す", lives_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
-          <li><%= link_to "バンドを探す", bands_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
-          <li><%= link_to "ライブハウスを探す", live_houses_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
+          <li class="hover_opacity_bg-blue"><%= link_to "ライブを探す", lives_path, class: "dropdown-item text-center" %></li>
+          <li class="hover_opacity_bg-blue"><%= link_to "バンドを探す", bands_path, class: "dropdown-item text-center" %></li>
+          <li class="hover_opacity_bg-blue"><%= link_to "ライブハウスを探す", live_houses_path, class: "dropdown-item text-center" %></li>
         </ul>
       </div>
 
       <br><br><br>
 
       <div class="btn-group opacity_bg-blue w-100">
-        <button class="btn btn-lg dropdown-toggle text-light opacity_bg-blue" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-lg dropdown-toggle text-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           会員登録して便利に使う <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu opacity_bg-blue w-100">
-          <li><%= link_to "一般ユーザー登録", new_user_registration_path, class: "dropdown-item text-center" %></li>
-          <li><%= link_to "バンド登録", new_band_registration_path, class: "dropdown-item text-center" %></li>
-          <li><%= link_to "ライブハウス登録", new_live_house_registration_path, class: "dropdown-item text-center" %></li>
+        <ul class="dropdown-menu w-100">
+          <li class="hover_opacity_bg-blue"><%= link_to "一般ユーザー登録", new_user_registration_path, class: "dropdown-item text-center" %></li>
+          <li class="hover_opacity_bg-blue"><%= link_to "バンド登録", new_band_registration_path, class: "dropdown-item text-center" %></li>
+          <li class="hover_opacity_bg-blue"><%= link_to "ライブハウス登録", new_live_house_registration_path, class: "dropdown-item text-center" %></li>
         </ul>
       </div>
 
       <br><br><br>
       <div class="btn-group opacity_bg-blue w-100">
-        <button class="btn btn-lg dropdown-toggle text-light opacity_bg-blue" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-lg dropdown-toggle text-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ログインして使う <span class="caret"></span>
         </button>
         <ul class="dropdown-menu w-100">
-          <li><%= link_to "ユーザーログイン", new_user_session_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
-          <li><%= link_to "バンドログイン", new_band_session_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
-          <li><%= link_to "ライブハウスログイン", new_live_house_session_path, class: "dropdown-item opacity_bg-blue text-center" %></li>
+          <li class="hover_opacity_bg-blue"><%= link_to "ユーザーログイン", new_user_session_path, class: "dropdown-item text-center" %></li>
+          <li class="hover_opacity_bg-blue"><%= link_to "バンドログイン", new_band_session_path, class: "dropdown-item text-center" %></li>
+          <li class="hover_opacity_bg-blue"><%= link_to "ライブハウスログイン", new_live_house_session_path, class: "dropdown-item text-center" %></li>
         </ul>
       </div>
     </div>
