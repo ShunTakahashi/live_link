@@ -24,9 +24,6 @@
         <div class='form-group'>
           <label class='control-label'><%= n.label t('views.live.place') %></label>
           <%= n.text_field :name, class: 'form-control', placeholder: 'ライブハウス名', autofocus: true, required: true, id: 'place' %>
-          <%# @live.place.errors.full_messages_for(:name).each do |message| %>
-          <!--            <li class='list-unstyled text-danger'><%#= message %></li>-->
-          <%# end %>
           <% if @live.errors.any? %>
             <div id="error_explanation">
               <% live.errors.full_messages.each do |message| %>
@@ -49,9 +46,6 @@
         <div class='form-group'>
           <label class='control-label'><%= m.label t('views.live.act') %></label>
           <%= m.text_field :name, class: 'form-control', placeholder: '出演バンド名', autofocus: true, autocomplete: 'email', required: true, id: 'act_name' %>
-          <%# act.errors.full_messages_for(:name).each do |message| %>
-          <!--            <li class='list-unstyled text-danger'><%#= message %></li>-->
-          <%# end %>
           <% if @live.errors.any? %>
             <div id="error_explanation">
               <% live.errors.full_messages.each do |message| %>
